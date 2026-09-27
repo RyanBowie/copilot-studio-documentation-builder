@@ -13,18 +13,39 @@ binaries below remain excluded. Pages publishes only `docs` on `main`.
 
 | Route | Observed status |
 | --- | --- |
-| Standard Word | Prepared content-control template + saved AI prompt + Power Automate produces editable documents. |
+| Standard Word | New subject/context/content populates a previously prepared Word layout through a saved prompt and Power Automate to produce editable documents. A different template needs maker setup first, not just a chat upload. |
 | Standard Long11 PPT | User subjects, context, public research and single-slide revision work with the registered design; editorial qualifications remain. |
 | Short5 / Long11 / Short5withImages picker | Separate topics staged, not deployed. Plain Short flows Started with zero end-to-end proof. Image renderer blocked at native nesting depth 9 > 8. Existing Word/Long preserved. |
-| Published GHCP Astra | Nine cost-study originals (3 Word, 3 Short PPT, 3 Long PPT) through published M365. A queued stop was not acted on until all nine ran: protocol deviation, not sequential metering. Full native visual/editability acceptance incomplete. Earlier Astra PPT/Sonnet Word evidence is separate. |
+| Published GHCP Astra | Nine originals (3 Word, 3 Short PPT, 3 Long PPT) through published M365. A queued stop was not acted on until all nine ran: protocol deviation, not sequential metering. Full native visual/editability acceptance incomplete. Earlier Astra PPT/Sonnet Word evidence is separate. |
 | Published GHCP GPT55Chat | Same instructions as Astra, code interpreter on, memory off. One pre-publication Preview Word and one authorised post-publication fresh-Preview Short PPT, without corrections or repairs. Both fail template completion: 32 Word instructional paragraphs, 5 PPT instructions on slides 2/5. |
-| Cost | Unknown. Last successful readings around 12:44 UTC on 27 September 2026: Astra 826.67 historical credits/12 sessions (baseline 826.67/3); GPT55Chat 0 sessions/no usage recorded, not settled zero. Reporting still unavailable at the 14:49 UTC follow-up. No per-file price or savings claim. |
 
-Standard is **content-dynamic, not arbitrary-template-dynamic**. New designs
-need mappings, limits, bindings and QA. Observed GHCP attachment flexibility is
-not a reliability guarantee or a controlled harness-only/model comparison.
-GHCP authoring, Preview, tests and evaluations are billable; publishing unlocks
-Monitor, not the start of billing. See [official billing documentation](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview).
+These prepared Standard integrations are **content-dynamic, not
+arbitrary-template-dynamic**. New designs need mappings, limits, bindings and QA.
+Observed GHCP cases handled ad-hoc attachments more flexibly, but exact template
+fidelity and content completion are not assured. This is not a controlled
+harness-only/model comparison. Costs have not been established; no savings claim.
+
+## Can I use my own Word template?
+
+**Yes, after a maker prepares it.** This working implementation accepts a new
+subject, context and requested content for a previously prepared Word layout.
+It is not a one-step "upload any DOCX and follow its layout" route. New content
+is dynamic; a new design is setup/engineering work. This describes the integration
+demonstrated here, not a product-wide restriction on Standard harness agents.
+
+For a different organisational template, add supported, uniquely named content
+controls and repeating sections in Word's Developer tab. Align the saved prompt's
+drafting schema and row-object keys with the flow's population mappings. Store
+and configure the exact template/version; select it in **Populate a Microsoft Word
+template** to expose its control schema and map fields/repeating-row arrays.
+Validate required fields and rows, then human-review the rendered pages and a
+marked editable copy. See Microsoft's
+[Word Online (Business) template guidance](https://learn.microsoft.com/en-us/connectors/wordonlinebusiness/)
+and the [Word reuse steps](docs/downloads/reuse-guide.md#word-v02).
+
+The original native/direct Standard Sonnet request was a separate ad-hoc-template
+experiment: it produced an incomplete 3-page/3-table Word file. It does not prove
+that the prepared integration can accept arbitrary newly uploaded layouts.
 
 ## Original input/output comparisons: coverage and download gaps
 
@@ -39,7 +60,7 @@ claim that all original inputs and outputs are downloadable.
 
 All native comparison arms used one request, without correction turns. Word used
 matching configured Sonnet 4.6 labels; native PowerPoint models differed. GHCP ran
-in Studio Preview, not the later published-M365 cost-study channel. The separate
+in Studio Preview, not the later published-M365 batch channel. The separate
 engineered Standard technical case05 used registered template bytes, Classic
 routing, GPT-5 reasoning drafting and a GPT-5-chat-configured renderer; it is
 **not cats-and-dogs creation05** and is not covered by those copies' Public authority.
@@ -186,5 +207,5 @@ solution packages. The private comparison HTML is not copied or embedded.
 The only retained policy identifiers are the specifically reviewed Public label
 record in the two release copies; this does not expose tenant evidence or grant
 permission to publish other labelled files.
-No new cost-study prompts, agent deployments or live Power Platform tests are
+No new generation prompts, agent deployments or live Power Platform tests are
 part of this release.

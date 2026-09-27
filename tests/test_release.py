@@ -250,11 +250,11 @@ class ReleaseTests(unittest.TestCase):
         self.assertIn('explicit === "light" ? "light" : "dark"', scripts[1])
         self.assertLess(html.index(scripts[1]), html.index("<style>"))
 
-    def test_published_evidence_text_is_unchanged(self):
+    def test_reviewed_public_content_and_transcript_pins(self):
         docs = MODULE_PATH.parent.parent / "docs"
         html = (docs / "index.html").read_text(encoding="utf-8")
         body = re.search(r"<body>.*</body>", html, re.S).group()
-        self.assertEqual(release.digest(body.encode()), "4f87dd89135c0041ad2bed428bb9045357ac1e63d975bf064c04593949a47b9b")
+        self.assertEqual(release.digest(body.encode()), "353b472d9f2f80255d8462f2c45bdeed59183f772600c74c8c9fd05916583110")
         transcripts = {
             "cats-and-dogs-transcript.txt": "135cd23aa6093fd8beab3a98851efc1253e374a895d7f671c0d5195fe752ed10",
             "original-word-conversations.txt": "633d135e4e78977b5fa93c2266cd1015e7e2d003b4cce0e75b980cb74c192abb",
@@ -273,6 +273,54 @@ class ReleaseTests(unittest.TestCase):
         self.assertIn("<span>", headings[0])
         title = unescape(re.search(r"<title>(.*?)</title>", html, re.S).group(1))
         self.assertEqual(title, "Standard and GitHub Copilot harnesses | Copilot Studio")
+
+    def test_prepared_word_boundary_and_maker_guidance(self):
+        root = MODULE_PATH.parent.parent
+        html = (root / "docs" / "index.html").read_text(encoding="utf-8")
+        boundary = re.search(r'<div id="word-template-boundary".*?</div>', html, re.S).group()
+        self.assertIn("Can I use my own Word template?", boundary)
+        self.assertNotIn("<details", boundary)
+        self.assertNotIn(" hidden", boundary)
+        self.assertIn("not a one-step", boundary)
+        self.assertIn("upload any DOCX and follow its layout", boundary)
+        card = re.search(r'<article id="standard-word".*?</article>', html, re.S).group()
+        self.assertIn("previously prepared Word layout", card)
+        self.assertIn("onboarded by a maker first", card)
+        implementation = re.search(r'<article id="prepared-word".*?</article>', html, re.S).group()
+        sources = [
+            implementation,
+            (root / "README.md").read_text(encoding="utf-8"),
+            (root / "docs" / "downloads" / "reuse-guide.md").read_text(encoding="utf-8"),
+        ]
+        for source in sources:
+            text = " ".join(unescape(re.sub(r"<[^>]+>", " ", source)).split())
+            for phrase in ("uniquely named", "repeating sections", "drafting schema",
+                           "population mappings", "template/version", "required fields and rows",
+                           "Populate a Microsoft Word template", "setup/engineering work"):
+                self.assertIn(phrase, text)
+            self.assertIn("https://learn.microsoft.com/en-us/connectors/wordonlinebusiness/", source)
+        self.assertIn("not a product-wide restriction", boundary)
+        self.assertIn("Separate ad-hoc-template experiment:", html)
+        self.assertIn("incomplete 3-page/3-table document", html)
+
+    def test_cost_section_removed_without_erasing_operational_evidence(self):
+        root = MODULE_PATH.parent.parent
+        html = (root / "docs" / "index.html").read_text(encoding="utf-8")
+        readme = (root / "README.md").read_text(encoding="utf-8")
+        page = release.Page(html)
+        self.assertNotIn("cost", page.ids)
+        self.assertNotIn("cost-title", page.ids)
+        self.assertTrue(all("#cost" not in link for link in page.links))
+        for source in (html, readme):
+            for removed in ("826.67", "credits /", "billing-credit-overview", "analytics-overview",
+                            "Cost &amp; limits", "| Cost |", 'aria-labelledby="cost-title"'):
+                self.assertNotIn(removed, source)
+        for retained in ("all nine ran after the stop", "Not compliant sequential metering",
+                         "32 instructional paragraphs remain", "five template instructions remain",
+                         "nesting depth 9 exceeds", "Human review is part of the workflow.",
+                         "No tenant-bound topics, connections, solution ZIPs or deployable flows"):
+            self.assertIn(retained, html)
+        self.assertIn("deployment, costs and document generation", html)
 
 
 if __name__ == "__main__":

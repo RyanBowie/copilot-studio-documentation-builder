@@ -139,7 +139,7 @@
     <div class="wrap nav-row">
       <a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">D</span>Documentation<br>Builder</a>
       <nav aria-label="Main navigation">
-        <a href="#results">Results</a><a href="#original-comparisons">Original comparisons</a><a href="#cats-and-dogs">Cats &amp; dogs</a><a href="#implementation">Implementation</a><a href="#downloads">Downloads</a><a href="#cost">Cost &amp; limits</a>
+        <a href="#results">Results</a><a href="#original-comparisons">Original comparisons</a><a href="#cats-and-dogs">Cats &amp; dogs</a><a href="#implementation">Implementation</a><a href="#downloads">Downloads</a>
       </nav>
       <button class="quiet-button" id="theme-toggle" type="button" hidden>Dark theme</button>
     </div>
@@ -168,7 +168,7 @@
     <div class="ribbon" aria-label="Key boundaries">
       <div><strong>Word + Long PowerPoint work</strong><span>Prepared Standard routes, with qualifications</span></div>
       <div><strong>Three-choice extension is staged</strong><span>Short and image routes are not end-to-end proved</span></div>
-      <div><strong>Per-file cost is unknown</strong><span>No settled price or measured productivity savings</span></div>
+      <div><strong>New Word content, prepared layout</strong><span>A different Word design needs maker setup first</span></div>
     </div>
 
     <section id="results" class="section" aria-labelledby="results-title">
@@ -177,6 +177,11 @@
         <h2 id="results-title">Different routes. Different proof.</h2>
         <p class="lede">The original request was for the <strong>Standard harness</strong>, not the GitHub Copilot harness (GHCP). Later attachment-driven comparisons are separate experiments, not replacements for that requirement.</p>
       </div>
+      <div id="word-template-boundary" class="card" aria-labelledby="word-template-title">
+        <h3 id="word-template-title">Can I use my own Word template?</h3>
+        <p><strong>Yes, after a maker prepares it.</strong> This working implementation accepts a new subject, context and requested content for a previously prepared Word layout. It is <strong>not a one-step &ldquo;upload any DOCX and follow its layout&rdquo; route</strong>. New content is dynamic; a new design is setup/engineering work. <a href="#prepared-word">See the template onboarding steps</a>.</p>
+        <p>This describes the integration demonstrated here, not a product-wide restriction on Standard harness agents. The <a href="#original-word">original ad-hoc Word comparison</a> is a separate experiment, not proof that the prepared flow accepts arbitrary templates.</p>
+      </div>
       <div class="filter-bar" id="result-filters" hidden role="group" aria-label="Filter evidence cases">
         <button type="button" data-filter="all" aria-pressed="true">All evidence</button>
         <button type="button" data-filter="standard" aria-pressed="false">Standard</button>
@@ -184,11 +189,11 @@
         <output id="result-count" aria-live="polite">6 evidence cases shown</output>
       </div>
       <div class="grid">
-        <article class="card" data-category="standard">
+        <article id="standard-word" class="card" data-category="standard">
           <span class="badge proved">Working prepared route</span>
           <h3>Standard / editable Word</h3>
-          <p>A content-control Word template, saved AI drafting prompt and Power Automate produce editable documents. The table-rich design contains six tables: document control plus five repeating tables.</p>
-          <p class="meta">A prepared integration, not arbitrary DOCX-template ingestion. Content completion and human review still matter.</p>
+          <p>Supply a new subject, context and requested content; the saved drafting prompt and Power Automate populate a previously prepared Word layout to produce an editable document. A different organisational template must be onboarded by a maker first, not simply uploaded in the chat.</p>
+          <p class="meta">The demonstrated content-control design contains six tables: document control plus five repeating tables. New content is dynamic; a new design needs setup and human review. <a href="#prepared-word">How to prepare your layout</a>.</p>
         </article>
         <article class="card" data-category="standard">
           <span class="badge proved">Working with qualifications</span>
@@ -204,7 +209,7 @@
         </article>
         <article class="card" data-category="ghcp">
           <span class="badge held">Protocol deviation</span>
-          <h3>GHCP / Astra cost-study batch</h3>
+          <h3>GHCP / Astra published batch</h3>
           <p>The published agent delivered nine originals through the published M365 channel: three Word, three Short PPT and three Long PPT. The stop request queued until the tester turn ended; all nine ran after the stop.</p>
           <p class="meta">Not compliant sequential metering. Body and structure reviewed; full native visual/editability acceptance incomplete. Earlier independent Astra PPT and Sonnet Word cases are not this batch.</p>
         </article>
@@ -221,7 +226,7 @@
           <p class="meta">No correction turns or local original repairs. Native rendered readability and edit/save/reopen are not established. This was Preview, not the published M365 channel.</p>
         </article>
       </div>
-      <div class="notice"><p><strong>No model leaderboard.</strong> Models, channels, tools and preparation differ. Observed GHCP cases were more flexible with ad-hoc attachments, but do not establish universal template reliability, equivalent quality or lower cost.</p></div>
+      <div class="notice"><p><strong>No model leaderboard.</strong> Models, channels, tools and preparation differ. Observed GHCP cases handled ad-hoc attachments more flexibly, but exact template fidelity and content completion are not assured. These cases do not establish universal reliability or equivalent quality.</p></div>
     </section>
 
     <section id="original-comparisons" class="section" aria-labelledby="original-title">
@@ -232,6 +237,7 @@
         <h3>Word PID: one template, one factual source, two actual outputs</h3>
         <p><strong>Layout template:</strong> <code>Sample-PID-Contoso-Horizon.docx</code>.<br><strong>Factual context:</strong> <code>Sample-PID-Northwind-FieldService.pdf</code> (not a second Word template).</p>
         <p>Both historical arms used identical input bytes and the same request, with configured <strong>Claude Sonnet 4.6</strong>. One request per arm; no correction turns. The existing GHCP C03 output was reused, not regenerated.</p>
+        <p><strong>Separate ad-hoc-template experiment:</strong> the native/direct Standard Sonnet request used the uploaded layout and returned an incomplete 3-page/3-table document. That is not the prepared content-control integration above, nor proof that it can populate arbitrary newly uploaded templates.</p>
         <div class="table-wrap" tabindex="0" role="region" aria-label="Original Word comparison results">
           <table><caption>Retained results / 25 September 2026</caption><thead><tr><th scope="col">Case and channel</th><th scope="col">Actual delivered file</th><th scope="col">Review boundary</th></tr></thead><tbody>
             <tr><th scope="row">Standard Sonnet / unpublished native Test chat</th><td>39,429-byte DOCX; 3 native pages, 3 editable tables.</td><td>Ends after section 2.1, despite the final response claiming a complete, exact-template PID. Formatting and unsupported assertions also need correction.</td></tr>
@@ -323,9 +329,21 @@
         <p class="lede">Conversation, research and revision logic can be reused. Each design still needs its own destinations, bounds, flow/topic bindings and quality review.</p>
       </div>
       <div class="grid">
-        <article class="card"><h3>Prepared Word</h3><p>Bind authorised source notes to a saved drafting prompt. Validate narrative fields and typed table rows. Add trusted application-owned date/version values; obtain creation consent for the reviewed draft; populate content controls through Power Automate.</p><p>Compare actual output text, table rows, static headings, styles, headers and footers with the intended content. Native rendering and edit/save/reopen check things schema validation cannot.</p></article>
+        <article id="prepared-word" class="card">
+          <h3>Prepared Word</h3>
+          <p><strong>New content uses a prepared layout.</strong> To use a different organisational Word template in this implementation, a maker must first:</p>
+          <ol class="checklist">
+            <li>Add supported, uniquely named content controls in Word's Developer tab, with repeating sections and named nested controls for dynamic table rows.</li>
+            <li>Align the saved prompt's drafting schema and row-object keys with the flow's population mappings.</li>
+            <li>Store and configure the exact template/version in the flow. Selecting that file in <strong>Populate a Microsoft Word template</strong> exposes its control schema; map fields and repeating-row arrays to it.</li>
+            <li>Validate required fields and rows, then human-review rendered pages and a marked editable copy before accepting the new design.</li>
+          </ol>
+          <p>See Microsoft's <a href="https://learn.microsoft.com/en-us/connectors/wordonlinebusiness/">Word Online (Business) template and repeating-section guidance</a>. Once that setup is complete, bind new authorised source notes to the saved drafting prompt. Validate narrative fields and typed table rows, add trusted application-owned date/version values, obtain creation consent for the reviewed draft and populate the prepared controls through Power Automate.</p>
+          <p>Compare actual output text, table rows, static headings, styles, headers and footers with the intended content. Native rendering and edit/save/reopen check things schema validation cannot. New content is dynamic; a new design is setup/engineering work, not a one-step upload-any-DOCX operation.</p>
+        </article>
         <article class="card"><h3>Prepared PowerPoint</h3><p>Register the exact template version and map editable shapes and paragraphs. Keep generation within explicit field bounds, validate before rendering and transfer accepted text without silent truncation or repairs.</p><p>For a slide revision, retain the successful full draft and source file. Merge only the requested slide and notes after validation; return a new file. Failed validation must not replace the last successful state.</p></article>
       </div>
+      <div class="notice"><p><strong>Human review is part of the workflow.</strong> Evaluate factual accuracy, completeness, readability, editability and data governance independently. Neither structural preservation nor file delivery certifies production readiness, compliance or approval.</p></div>
       <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable three-choice readiness table">
         <table>
           <caption>Three-choice extension: frozen templates are not runtime proof</caption>
@@ -379,32 +397,16 @@
       <p class="meta">The practice context is a newly authored teaching fixture, not evidence from the historical runs. The three templates and all historical originals remain unchanged. The <a href="#cats-and-dogs">two actual Long output downloads</a> are separately named, owner-authorised Public-release copies with documented native relabelling and metadata cleanup, not replacement benchmark originals.</p>
     </section>
 
-    <section id="cost" class="section" aria-labelledby="cost-title">
-      <div class="section-head"><p class="eyebrow">05 / Cost and measurement</p><h2 id="cost-title">Unknown is not free.</h2><p class="lede">The observations below are historical dashboard readings, not a per-file bill or a settled comparison.</p></div>
-      <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable cost observations">
-        <table>
-          <caption>Last successful observations: 27 September 2026, approximately 12:44 UTC</caption>
-          <thead><tr><th scope="col">Agent / observation</th><th scope="col">What was recorded</th><th scope="col">What it does not establish</th></tr></thead>
-          <tbody><tr><th scope="row">Astra / historical total</th><td>826.67 credits / 12 sessions. Earlier baseline: 826.67 credits / 3 sessions.</td><td>The unchanged aggregate does not isolate the nine-file batch or establish a zero-cost delta.</td></tr><tr><th scope="row">GPT55Chat / new agent</th><td>0 sessions; no usage recorded at that reading.</td><td>Not settled zero cost. Setup and Preview usage may arrive later; totals cannot be assigned solely to one file.</td></tr><tr><th scope="row">Follow-up reporting</th><td>First hourly follow-up attempted; a second observation at 14:49 UTC still found reporting unavailable.</td><td>No newer successful Monitor reading is claimed in this snapshot.</td></tr></tbody>
-        </table>
-      </div>
-      <div class="grid">
-        <article class="card"><h3>Billing starts during building</h3><p>For the GitHub Copilot harness, building, Preview, testing and evaluation can consume credits. Publication unlocks Monitor; it does not start billing. Credits cover model tokens, tools and the harness.</p><a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview">Official usage-based billing documentation</a></article>
-        <article class="card"><h3>A measurement boundary, not a savings claim</h3><p>Actual per-file prices, engineering-hours totals and productivity savings have not been established. The nine-file run violated the sequential stop/metering protocol. The two GPT55Chat outputs failed template completion.</p><a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-overview">Official Monitor availability and reporting guidance</a></article>
-      </div>
-      <div class="notice"><p><strong>Human review is part of the workflow.</strong> Evaluate factual accuracy, completeness, readability, editability, data governance and cost independently. Neither structural preservation nor file delivery certifies production readiness, compliance or approval.</p></div>
-    </section>
     <section id="sources" class="section" aria-labelledby="sources-title">
       <p class="eyebrow">Reference and provenance</p><h2 id="sources-title">A deliberately scoped public record.</h2>
       <p>Claims are curated from retained private run receipts, package comparisons, conversation captures and completed quality reviews. Public text uses case names instead of tenant identifiers. Raw logs, access links, UI screenshots and benchmark originals are intentionally not published. The two cats-and-dogs Public copies retain only their narrowly reviewed native classification identifiers.</p>
       <ul class="sources">
         <li><a href="https://github.com/RyanBowie/copilot-studio-documentation-builder">Source repository and release instructions</a></li>
         <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/harnesses-overview">Microsoft / agent harnesses overview</a></li>
-        <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview">Microsoft / usage-based billing</a></li>
-        <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-overview">Microsoft / Monitor availability and latency</a></li>
+        <li><a href="https://learn.microsoft.com/en-us/connectors/wordonlinebusiness/">Microsoft / prepared Word templates and repeating sections</a></li>
         <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/image-input-analysis">Microsoft / image and file inputs</a></li>
       </ul>
-      <p class="meta">Product capabilities and billing can change. Documentation checked 27 September 2026. Case outcomes are observations, not a controlled causal comparison of harnesses or models.</p>
+      <p class="meta">Product capabilities can change. Documentation checked 27 September 2026. Case outcomes are observations, not a controlled causal comparison of harnesses or models. Costs have not been established; no savings claim.</p>
     </section>
   </main>
   <footer class="wrap page-footer"><p>Documentation Builder / public technical reference<br>Authored templates. Qualified observations. No live tenant connection.</p><a href="#overview">Back to top</a></footer>

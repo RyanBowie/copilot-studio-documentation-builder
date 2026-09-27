@@ -6,17 +6,42 @@ packages are included. Start with your own authorised Copilot Studio environment
 
 ## Word v0.2
 
+**New content uses a prepared layout.** This working implementation accepts a
+new subject, context and requested content for a previously prepared Word layout.
+It is not a one-step "upload any DOCX and follow its layout" route. You can use
+a different organisational template after a maker onboards it: new content is
+dynamic; a new design is setup/engineering work. This is a boundary of the
+demonstrated integration, not a product-wide restriction on Standard harness agents.
+
 `Technical-Design-Tables-v0.2.docx` contains 18 narrative destinations, five
 repeating table sections and six total tables including document control.
 The original package contains 47 content-control elements (including nested
 table controls). Keep application-owned preparation date and draft version
 separate from model-authored business content.
 
-Inspect control tags in Word's Developer tools and define a schema for the
-corresponding narrative fields and row objects. Bind a saved drafting prompt and
-Power Automate population step in your own environment. Review the exact draft
-and obtain file-creation consent before producing a document. Do not infer
-working cross-tenant bindings from a downloadable template.
+To onboard a different Word design:
+
+1. Add supported, uniquely named content controls in Word's Developer tab.
+   Use repeating sections with uniquely named nested controls for dynamic table rows.
+2. Align the saved prompt's drafting schema for narrative fields and row objects
+   with the flow's population mappings; repeating-row array keys must match the
+   nested control names.
+3. Store and configure the exact template/version in your own flow. Select that
+   file in **Populate a Microsoft Word template** to expose its control schema,
+   then map the fields and repeating-row arrays.
+4. Validate required fields and rows. Human-review the rendered pages, including
+   static text, styles, headers and footers, and verify edit/save/reopen on a marked
+   QA copy before accepting the new design.
+
+Microsoft's [Word Online (Business) template and repeating-section guidance](https://learn.microsoft.com/en-us/connectors/wordonlinebusiness/)
+describes the named controls, selected-file schema and array inputs. For each
+document, review the exact draft and obtain file-creation consent before producing
+it. Do not infer working cross-tenant bindings from a downloadable template.
+
+The original native/direct Standard Sonnet request was a separate ad-hoc-template
+experiment with an incomplete 3-page/3-table output, not proof that this prepared
+integration accepts arbitrary uploaded templates. GHCP handled ad-hoc attachments
+more flexibly in observed cases, but exact fidelity and completion are not assured.
 
 ## Short presentation templates
 
