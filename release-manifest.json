@@ -1,6 +1,13 @@
 {
   "schemaVersion": 1,
-  "status": "approved-for-publication-not-yet-published",
+  "status": "published",
+  "publication": {
+    "siteUrl": "https://ryanbowie.github.io/copilot-studio-documentation-builder/",
+    "source": "main:/docs",
+    "initialReleaseCommit": "e36e35e680ebee541e22a808139529459839de99",
+    "initialDeploymentRun": "https://github.com/RyanBowie/copilot-studio-documentation-builder/actions/runs/36330133539",
+    "firstVerifiedUtc": "2026-09-27T15:37:27Z"
+  },
   "evidenceDate": "2026-09-27",
   "latestReportingAttemptUtc": "2026-09-27T14:49:31.922Z",
   "siteRoot": "docs",

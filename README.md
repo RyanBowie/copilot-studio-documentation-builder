@@ -5,9 +5,9 @@ The static site records working Standard-harness routes, unfinished extensions,
 qualified GitHub Copilot harness comparisons, and reusable authored templates.
 It does **not** contain an importable agent or claim production readiness.
 
-**Release state:** the bounded 23-file release is approved for publication;
-deployment is pending. The seven original-comparison binaries below remain
-excluded. Pages will publish only the `docs` directory on `main`.
+**Release state:** published at [GitHub Pages](https://ryanbowie.github.io/copilot-studio-documentation-builder/).
+The bounded release contains 23 repository files; the seven original-comparison
+binaries below remain excluded. Pages publishes only `docs` on `main`.
 
 ## What the evidence says
 
@@ -150,15 +150,21 @@ method. Inspect the full file allowlist, hashes, claims and excluded materials
 before later releases. **Every push to `main` can publish changes in `docs`.**
 There is no custom deployment workflow, manual-dispatch gate or approval variable.
 
+Initial publication used commit
+[`e36e35e`](https://github.com/RyanBowie/copilot-studio-documentation-builder/commit/e36e35e680ebee541e22a808139529459839de99)
+and a [successful GitHub-managed Pages deployment](https://github.com/RyanBowie/copilot-studio-documentation-builder/actions/runs/36330133539).
+The live project-path files, all nine download links and all nine pinned binary
+hashes were verified on 27 September 2026 at 15:37 UTC. The manifest records this
+initial publication receipt separately from the unchanged historical evidence.
+
 1. Run the release tests and validator above; review the exact allowlisted files.
 2. Commit and push only the approved files to the intended repository branch;
    fast-forward the reviewed release into `main` without force.
 3. In repository settings, choose **Pages > Source > Deploy from a branch**,
    select **main** and **/docs**, then save. GitHub manages the Pages build.
-4. Verify the Pages deployment and the live project-path links/downloads before
-   claiming publication. The expected URL is
-   `https://ryanbowie.github.io/copilot-studio-documentation-builder/`; it is not
-   asserted to be live by this prepared release.
+4. Verify the Pages deployment and the
+   [live project-path links/downloads](https://ryanbowie.github.io/copilot-studio-documentation-builder/)
+   against the reviewed commit and manifest before claiming an update is live.
 
 The published tree is the explicit `docs` allowlist, not the repository root.
 Its `.nojekyll` file keeps this a plain static site. No additional OAuth workflow
