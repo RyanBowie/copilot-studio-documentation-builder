@@ -1,4 +1,5 @@
 import importlib.util
+from html import unescape
 import json
 from pathlib import Path
 import re
@@ -253,7 +254,7 @@ class ReleaseTests(unittest.TestCase):
         docs = MODULE_PATH.parent.parent / "docs"
         html = (docs / "index.html").read_text(encoding="utf-8")
         body = re.search(r"<body>.*</body>", html, re.S).group()
-        self.assertEqual(release.digest(body.encode()), "020ae768faca85d999f9bd98ec799187845800fb11f2b9c695da861efe13d35d")
+        self.assertEqual(release.digest(body.encode()), "4f87dd89135c0041ad2bed428bb9045357ac1e63d975bf064c04593949a47b9b")
         transcripts = {
             "cats-and-dogs-transcript.txt": "135cd23aa6093fd8beab3a98851efc1253e374a895d7f671c0d5195fe752ed10",
             "original-word-conversations.txt": "633d135e4e78977b5fa93c2266cd1015e7e2d003b4cce0e75b980cb74c192abb",
@@ -261,6 +262,17 @@ class ReleaseTests(unittest.TestCase):
         }
         for name, expected in transcripts.items():
             self.assertEqual(release.digest((docs / "downloads" / name).read_text(encoding="utf-8").encode()), expected)
+
+    def test_harness_focused_titles(self):
+        html = (MODULE_PATH.parent.parent / "docs" / "index.html").read_text(encoding="utf-8")
+        headings = re.findall(r"<h1\b[^>]*>(.*?)</h1>", html, re.S)
+        self.assertEqual(len(headings), 1)
+        heading = " ".join(unescape(re.sub(r"<[^>]+>", " ", headings[0])).split())
+        self.assertEqual(heading, "Template-aligned documents in Copilot Studio\u2019s Standard and GitHub Copilot harnesses")
+        self.assertIn("<br>", headings[0])
+        self.assertIn("<span>", headings[0])
+        title = unescape(re.search(r"<title>(.*?)</title>", html, re.S).group(1))
+        self.assertEqual(title, "Standard and GitHub Copilot harnesses | Copilot Studio")
 
 
 if __name__ == "__main__":
