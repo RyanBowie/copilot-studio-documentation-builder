@@ -1,0 +1,82 @@
+ORIGINAL POWERPOINT COMPARISON / ACTUAL CONVERSATION EXCERPTS
+Historical native comparison: 25 September 2026
+Separate engineered Standard technical case05: 26 September 2026
+
+EDITORIAL CONTEXT / NOT AN AGENT MESSAGE
+The supplied visual TEMPLATE is Copilot session.pptx. There is no separate factual
+context attachment for the original presentation comparison.
+The two native comparison arms used matching request wording and original input
+bytes. Line-ending serialization and one terminal newline differed.
+Standard used configured Claude Sonnet 4.6 in the unpublished native Test chat;
+GHCP used configured GPT 6 Astra in Studio Preview. One request per arm, no correction
+turns. The models differ, so this is not an isolated harness-effect experiment.
+Only actual user/final-answer excerpts follow; internal traces and tool reasoning
+are excluded. The response claims are not independent acceptance evidence.
+
+ACTUAL USER REQUEST / NATIVE COMPARISON WORDING
+Create a new editable 11-slide PowerPoint presentation introducing Microsoft Copilot Studio to a technical audience. Use the attached Copilot session.pptx as the visual template: preserve its theme, slide size, fonts, colours, branding, layout patterns and editable shapes.
+
+Replace the Microsoft 365 Copilot training content with Copilot Studio content covering: what it is; agents and orchestration; instructions; knowledge; tools and agent flows; building and testing; authentication and governance; deployment; monitoring and costs; and a practical document-generation example. Reuse varied layouts from the template.
+
+Mark availability-dependent features clearly and do not invent pricing, capabilities or customer results. Return the completed .pptx as a downloadable file, not an outline or slide text. Preserve the original.
+
+STANDARD SONNET / ACTUAL TERMINAL RESPONSE
+Sorry, something went wrong. Error code: SystemError. Conversation ID: [REDACTED conversation identifier]. Time (UTC): 9/25/2026 7:40:02 PM.
+
+EDITORIAL FILE REVIEW / NOT AN AGENT MESSAGE
+The template was accepted and native style analysis completed, then the request
+failed. There was no returned PowerPoint file. The underlying cause is unestablished;
+this single result is not evidence of a permanent capability limit.
+
+GHCP GPT 6 ASTRA / ACTUAL FINAL ANSWER
+Created the editable 11-slide presentation, preserving the template’s theme, branding and varied layouts. Availability-dependent features are flagged, and the original is unchanged.
+
+Download the PowerPoint
+
+Microsoft_Copilot_Studio_Technical_Introduction.pptx
+
+EDITORIAL FILE REVIEW / NOT AN AGENT MESSAGE
+The real 91,796-byte output has eleven editable slides and strong individual-slide
+visual fidelity. Six inherited slides (6-11) remain hidden: default slideshow shows
+five slides, not eleven. Harness distinctions are omitted and current-release
+guidance is not certified. This original was not repaired or regenerated.
+
+SEPARATE ENGINEERED STANDARD TECHNICAL CASE05 / EDITORIAL CONTEXT
+This is NOT cats-and-dogs creation05 and NOT another matched native attachment arm.
+It uses the exact supplied Copilot session.pptx bytes registered in advance, a
+prepared content contract, saved drafting/rendering prompts, two flows and Classic
+routing. GPT-5 reasoning drafted content; the renderer was configured GPT-5 chat
+with supplied reference code. The preserved GPT55Chat router selector does not
+establish generative orchestration or the model used for every tool call.
+
+ACTUAL USER REQUEST / ENGINEERED STANDARD TECHNICAL CASE05
+Create a new editable 11-slide PowerPoint presentation introducing Microsoft Copilot Studio to a technical audience. Use the registered Copilot session.pptx as the visual template: preserve its theme, slide size, fonts, colours, branding, layout patterns and editable shapes.
+
+Replace the Microsoft 365 Copilot training content with Copilot Studio content covering: what it is; agents and orchestration; instructions; knowledge; tools and agent flows; building and testing; authentication and governance; deployment; monitoring and costs; and a practical document-generation example. Reuse varied layouts from the template.
+
+Mark availability-dependent features clearly and do not invent pricing, capabilities or customer results. Return the completed .pptx as a downloadable file, not an outline or slide text. Preserve the original.
+
+ENGINEERED STANDARD TECHNICAL CASE05 / ACTUAL FINAL ANSWER
+Open or download the PowerPoint draft [REDACTED private delivery URL]
+
+Filename: [REDACTED private generated filename]
+
+This editable presentation is a draft and requires human review for accuracy, completeness and layout. The link uses existing access; no sharing permissions were changed. It was created from the registered Copilot session.pptx template, not arbitrary newly attached PPTX binaries.
+
+EDITORIAL FILE REVIEW / NOT AN AGENT MESSAGE
+This actual 85,800-byte technical presentation has eleven visible slides. One native
+request, one draft and one renderer delivered it; retained structural and all-slide
+visual reviews passed with qualifications, and a separate QA copy passed native
+edit/save/reopen. It demonstrates the prepared route, not arbitrary-template adoption.
+It is distinct from the later pets example and the nine-file Astra cost-study batch.
+
+PUBLICATION BOUNDARY / NOT AN AGENT MESSAGE
+The original Copilot session.pptx, GHCP technical output and engineered Standard
+technical case05 output retain enabled native sensitivity labels and personal
+metadata. Their binary files and slide renders are withheld pending separate
+public-release authority. No new authority was obtained for this group.
+Only the two separately named cats-and-dogs creation05/revision06 copies have
+explicit native Public-reclassification approval in the current release.
+These excerpts remove a private conversation identifier, delivery URL and generated
+filename. HTML link/line-break markup and zero-width display separators were
+normalised to plain text. All originals remain untouched.

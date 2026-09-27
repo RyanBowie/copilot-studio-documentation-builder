@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An evidence-led reference for template-aligned Word and PowerPoint drafting in Copilot Studio. Working routes, staged extensions, observed failures and reusable templates.">
+  <meta name="referrer" content="no-referrer">
+  <title>Documentation Builder | Copilot Studio field reference</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+  </style>
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="wrap nav-row">
+      <a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">D</span>Documentation<br>Builder</a>
+      <nav aria-label="Main navigation">
+        <a href="#results">Results</a><a href="#original-comparisons">Original comparisons</a><a href="#cats-and-dogs">Cats &amp; dogs</a><a href="#implementation">Implementation</a><a href="#downloads">Downloads</a><a href="#cost">Cost &amp; limits</a>
+      </nav>
+      <button class="quiet-button" id="theme-toggle" type="button" hidden>Dark theme</button>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <section id="overview" class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Copilot Studio / field reference</p>
+        <h1 id="hero-title">Template-aligned documents.<br><span>Evidence, not promises.</span></h1>
+        <p class="lede">Editable Word and PowerPoint drafts, built with prepared templates. A candid record of what worked, what is still staged, and what failed.</p>
+        <div class="actions">
+          <a class="button primary" href="#cats-and-dogs">Explore the working example</a>
+          <a class="button" href="#downloads">Get the templates</a>
+        </div>
+        <p class="meta">Evidence snapshot: 27 September 2026. Independent project reference, not a Microsoft product or production-ready solution.</p>
+      </div>
+      <aside class="card pipeline" aria-label="Proved Standard route at a glance">
+        <header><strong>The prepared Standard route</strong><span class="badge proved">Observed</span></header>
+        <div class="step"><span class="number">01</span><div><strong>Authorised context + template</strong><p>Separate supplied facts from public research.</p></div></div>
+        <div class="step"><span class="number">02</span><div><strong>Saved prompt + content contract</strong><p>Draft once; validate structure and length.</p></div></div>
+        <div class="step"><span class="number">03</span><div><strong>Power Automate + controlled rendering</strong><p>Populate registered destinations; preserve the design.</p></div></div>
+        <div class="step"><span class="number">04</span><div><strong>Editable file + human review</strong><p>Delivery is not factual, visual or release approval.</p></div></div>
+        <footer><strong>Content-dynamic.</strong> Not arbitrary-template-dynamic.</footer>
+      </aside>
+    </section>
+    <div class="ribbon" aria-label="Key boundaries">
+      <div><strong>Word + Long PowerPoint work</strong><span>Prepared Standard routes, with qualifications</span></div>
+      <div><strong>Three-choice extension is staged</strong><span>Short and image routes are not end-to-end proved</span></div>
+      <div><strong>Per-file cost is unknown</strong><span>No settled price or measured productivity savings</span></div>
+    </div>
+
+    <section id="results" class="section" aria-labelledby="results-title">
+      <div class="section-head">
+        <p class="eyebrow">01 / Results and readiness</p>
+        <h2 id="results-title">Different routes. Different proof.</h2>
+        <p class="lede">The original request was for the <strong>Standard harness</strong>, not the GitHub Copilot harness (GHCP). Later attachment-driven comparisons are separate experiments, not replacements for that requirement.</p>
+      </div>
+      <div class="filter-bar" id="result-filters" hidden role="group" aria-label="Filter evidence cases">
+        <button type="button" data-filter="all" aria-pressed="true">All evidence</button>
+        <button type="button" data-filter="standard" aria-pressed="false">Standard</button>
+        <button type="button" data-filter="ghcp" aria-pressed="false">GitHub Copilot</button>
+        <output id="result-count" aria-live="polite">6 evidence cases shown</output>
+      </div>
+      <div class="grid">
+        <article class="card" data-category="standard">
+          <span class="badge proved">Working prepared route</span>
+          <h3>Standard / editable Word</h3>
+          <p>A content-control Word template, saved AI drafting prompt and Power Automate produce editable documents. The table-rich design contains six tables: document control plus five repeating tables.</p>
+          <p class="meta">A prepared integration, not arbitrary DOCX-template ingestion. Content completion and human review still matter.</p>
+        </article>
+        <article class="card" data-category="standard">
+          <span class="badge proved">Working with qualifications</span>
+          <h3>Standard / Long11 PowerPoint</h3>
+          <p>The registered eleven-slide route handles user-requested subjects, supplied context, public research and same-conversation single-slide revisions. Creation05 and revision06 are successful retained outputs.</p>
+          <p class="meta">120 mapped shapes, 158 paragraph fields, two saved prompts and two agent flows in the proved implementation. <a href="#cats-and-dogs">Read the example and cautions</a>.</p>
+        </article>
+        <article class="card" data-category="standard">
+          <span class="badge held">Staged / not deployed</span>
+          <h3>Standard / three presentation choices</h3>
+          <p>Separate, readable creation topics for Short5, Long11 and Short5withImages, plus shared research and revision handling. The new picker frontend is staged, not deployed or natively accepted.</p>
+          <p class="meta">Short flows are Started but have zero end-to-end runtime proof. The image renderer cannot activate: nesting depth 9 exceeds the native maximum of 8.</p>
+        </article>
+        <article class="card" data-category="ghcp">
+          <span class="badge held">Protocol deviation</span>
+          <h3>GHCP / Astra cost-study batch</h3>
+          <p>The published agent delivered nine originals through the published M365 channel: three Word, three Short PPT and three Long PPT. The stop request queued until the tester turn ended; all nine ran after the stop.</p>
+          <p class="meta">Not compliant sequential metering. Body and structure reviewed; full native visual/editability acceptance incomplete. Earlier independent Astra PPT and Sonnet Word cases are not this batch.</p>
+        </article>
+        <article class="card" data-category="ghcp">
+          <span class="badge failed">Template completion failed</span>
+          <h3>GHCP / GPT55Chat Word</h3>
+          <p>One pre-publication Studio Preview request. Six native pages and six editable tables, but <strong>32 instructional paragraphs remain</strong>. A separate inspection copy passed edit/save/reopen; the original was not repaired.</p>
+          <p class="meta">Same instructions as Astra, code interpreter enabled, memory disabled. Structural preservation is not successful completion. The GPT55Chat agent was subsequently published.</p>
+        </article>
+        <article class="card" data-category="ghcp">
+          <span class="badge failed">Template completion failed</span>
+          <h3>GHCP / GPT55Chat Short PPT</h3>
+          <p>One specifically authorised post-publication request in a fresh Studio Preview conversation. Five visible slides preserve the structural design, but <strong>five template instructions remain on slides 2 and 5</strong>.</p>
+          <p class="meta">No correction turns or local original repairs. Native rendered readability and edit/save/reopen are not established. This was Preview, not the published M365 channel.</p>
+        </article>
+      </div>
+      <div class="notice"><p><strong>No model leaderboard.</strong> Models, channels, tools and preparation differ. Observed GHCP cases were more flexible with ad-hoc attachments, but do not establish universal template reliability, equivalent quality or lower cost.</p></div>
+    </section>
+
+    <section id="original-comparisons" class="section" aria-labelledby="original-title">
+      <div class="section-head"><p class="eyebrow">The two original input/output comparisons</p><h2 id="original-title">Template, context, conversation, result.</h2><p class="lede">The original request supplied a Word PID template with a separate source PDF, then a PowerPoint template for a technical introduction to Copilot Studio. These are not the later starter templates or the pets example.</p></div>
+      <div class="notice"><p><strong>Conversation evidence is public; these original binaries are not.</strong> The exact input names, actual requests/final replies and reviewed results are paired below. Their downloadable template/output sets remain incomplete pending public-sharing clearance. No substitute template or newly generated output is presented as the original.</p></div>
+      <article id="original-word" class="card">
+        <span class="badge held">Original Word / binary downloads withheld</span>
+        <h3>Word PID: one template, one factual source, two actual outputs</h3>
+        <p><strong>Layout template:</strong> <code>Sample-PID-Contoso-Horizon.docx</code>.<br><strong>Factual context:</strong> <code>Sample-PID-Northwind-FieldService.pdf</code> (not a second Word template).</p>
+        <p>Both historical arms used identical input bytes and the same request, with configured <strong>Claude Sonnet 4.6</strong>. One request per arm; no correction turns. The existing GHCP C03 output was reused, not regenerated.</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Original Word comparison results">
+          <table><caption>Retained results / 25 September 2026</caption><thead><tr><th scope="col">Case and channel</th><th scope="col">Actual delivered file</th><th scope="col">Review boundary</th></tr></thead><tbody>
+            <tr><th scope="row">Standard Sonnet / unpublished native Test chat</th><td>39,429-byte DOCX; 3 native pages, 3 editable tables.</td><td>Ends after section 2.1, despite the final response claiming a complete, exact-template PID. Formatting and unsupported assertions also need correction.</td></tr>
+            <tr><th scope="row">GHCP Sonnet C03 / Studio Preview</th><td>47,637-byte DOCX; 13 native pages, 14 editable tables.</td><td>Substantially more complete, but headers/footers, table formatting, diagram placeholders and factual grounding have defects. Not template-exact or factually approved.</td></tr>
+          </tbody></table>
+        </div>
+        <details><summary>Actual shared request and qualified final-answer excerpts</summary><div class="detail-body">
+          <blockquote class="quote"><strong>User / same request in both arms</strong><p>Create a Word Project Initiation Document for Northwind Field Service Modernisation. Use Sample-PID-Contoso-Horizon.docx as the template for layout, styles, structure and tables, and Sample-PID-Northwind-FieldService.pdf as the factual source. Replace the Contoso/Horizon example content with Northwind content; mark missing details as 'To be confirmed'. Return the new editable .docx as a downloadable file.</p></blockquote>
+          <blockquote class="quote"><strong>Standard / final-answer claim, not an accepted verdict</strong><p>The .docx follows the Contoso/Horizon PID template structure exactly, with all Northwind content substituted throughout:</p></blockquote>
+          <p class="meta">The inspected Standard file contradicts that claim: sections after 2.1 are missing.</p>
+          <blockquote class="quote"><strong>GHCP C03 / final-answer excerpt</strong><p>PID-Northwind-FieldService-Modernisation.docx &mdash; attached and ready to edit.</p></blockquote>
+          <p class="meta">Editable delivery was established; the response's exact-fidelity claims were not accepted by the independent file review.</p>
+        </div></details>
+        <div class="actions"><a class="button" href="downloads/original-word-conversations.txt" download>Download Word conversation excerpts</a></div>
+        <p class="meta"><strong>Availability:</strong> neither the original template, PDF context nor the two output DOCX files is included. They have visible sample Internal/Confidential wording and named sample personas awaiting explicit public-sharing confirmation. No machine sensitivity label was found, but absence of a label is not clearance. The public content-control Word starter is a different, prepared-route input.</p>
+      </article>
+      <article id="original-powerpoint" class="card comparison">
+        <span class="badge held">Original PowerPoint / binary downloads withheld</span>
+        <h3>Copilot Studio technical briefing: native comparison and prepared-route success</h3>
+        <p><strong>Visual template:</strong> <code>Copilot session.pptx</code>, the supplied eleven-slide Microsoft 365 Copilot design. No separate factual source attachment was supplied for the native comparison. The later engineered route registered those same template bytes in advance.</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Original PowerPoint comparison results">
+          <table><caption>Distinct historical conversations, not one interchangeable case</caption><thead><tr><th scope="col">Case and channel</th><th scope="col">Observed outcome</th><th scope="col">Interpretation</th></tr></thead><tbody>
+            <tr><th scope="row">Standard Sonnet / unpublished native Test chat</th><td>Template accepted and style analysis completed; terminal SystemError. No PPTX.</td><td>One native attempt. Underlying cause unknown; not a permanent capability limit.</td></tr>
+            <tr><th scope="row">GHCP GPT 6 Astra / Studio Preview</th><td>91,796-byte PPTX; 11 editable slides with strong individual-slide fidelity. Slides 6&ndash;11 remain hidden.</td><td>Default slideshow shows 5 slides. Harness distinctions are omitted; current-release guidance is not certified. Models differ from the Standard arm.</td></tr>
+            <tr><th scope="row">Engineered Standard technical case05 / Classic-routed native Test chat</th><td>85,800-byte PPTX; 11 visible slides. One draft and one renderer; structural/visual reviews passed with qualifications.</td><td>Prepared template, saved prompts, flow bindings and supplied rendering code. GPT-5 reasoning drafted content; renderer configured GPT-5 chat. Not arbitrary-template ingestion.</td></tr>
+          </tbody></table>
+        </div>
+        <details><summary>Actual native-comparison request and terminal replies</summary><div class="detail-body">
+          <blockquote class="quote"><strong>User / shared request excerpt</strong><p>Create a new editable 11-slide PowerPoint presentation introducing Microsoft Copilot Studio to a technical audience. Use the attached Copilot session.pptx as the visual template: preserve its theme, slide size, fonts, colours, branding, layout patterns and editable shapes.</p></blockquote>
+          <p class="meta">The complete request in the transcript asks for agents, orchestration, instructions, knowledge, tools/flows, testing, governance, deployment, costs and document generation. Wording matched; line-ending serialization differed.</p>
+          <blockquote class="quote"><strong>Standard Sonnet / terminal error excerpt</strong><p>Sorry, something went wrong. Error code: SystemError. Conversation ID: [REDACTED conversation identifier]. Time (UTC): 9/25/2026 7:40:02 PM.</p></blockquote>
+          <blockquote class="quote"><strong>GHCP Astra / final reply</strong><p>Created the editable 11-slide presentation, preserving the template&rsquo;s theme, branding and varied layouts. Availability-dependent features are flagged, and the original is unchanged.</p></blockquote>
+        </div></details>
+        <details><summary>Separate successful engineered Standard technical case05 conversation</summary><div class="detail-body">
+          <blockquote class="quote"><strong>User / prepared-route request excerpt</strong><p>Create a new editable 11-slide PowerPoint presentation introducing Microsoft Copilot Studio to a technical audience. Use the registered Copilot session.pptx as the visual template: preserve its theme, slide size, fonts, colours, branding, layout patterns and editable shapes.</p></blockquote>
+          <blockquote class="quote"><strong>Standard technical case05 / actual final reply</strong><p>Open or download the PowerPoint draft [REDACTED private delivery URL]</p><p>Filename: [REDACTED private generated filename]</p><p>This editable presentation is a draft and requires human review for accuracy, completeness and layout. The link uses existing access; no sharing permissions were changed. It was created from the registered Copilot session.pptx template, not arbitrary newly attached PPTX binaries.</p></blockquote>
+          <p class="meta">This technical case05 is <strong>not cats-and-dogs creation05</strong>. A separate QA copy passed native content-edit/save/reopen; the original was not repaired. The saved GPT55Chat router selector does not establish generative orchestration or every tool's runtime model.</p>
+        </div></details>
+        <div class="actions"><a class="button" href="downloads/original-powerpoint-conversations.txt" download>Download PowerPoint conversation excerpts</a></div>
+        <p class="meta"><strong>Availability:</strong> the original PowerPoint template, GHCP technical output and engineered Standard technical case05 output retain enabled native sensitivity labels and personal metadata. Their files and slide renders are withheld. The explicit native Public approval covers only the separately named cats-and-dogs copies below, not this group. Short5/Long11 choices supplement these original comparisons; they do not replace them.</p>
+      </article>
+    </section>
+
+    <section id="cats-and-dogs" class="section" aria-labelledby="cats-title">
+      <div class="section-head">
+        <p class="eyebrow">02 / The successful Standard example</p>
+        <h2 id="cats-title">Cats, dogs, and one carefully isolated revision.</h2>
+        <p class="lede">A real request for an eleven-slide introduction to everyday pet care. A later request changed only slide 9 and its notes. Useful outputs deserve recognition without erasing failed attempts.</p>
+      </div>
+      <div class="timeline">
+        <article><span class="badge proved">Creation05</span><strong>11 slides delivered</strong><p>One draft call and one renderer. All 158 paragraphs transferred unchanged. The original is 86,155 bytes; retained all-slide visual review passed with minor cautions.</p></article>
+        <article><span class="badge failed">Revision05</span><strong>Notes validation failed</strong><p>768 characters exceeded the 650-character limit. No render, file or successful-state replacement. Creation05 stayed intact; no silent retry.</p></article>
+        <article><span class="badge proved">Revision06</span><strong>Only slide 9 changed</strong><p>A new recorded request after guidance-only changes delivered a distinct 86,093-byte deck in the same conversation. Only slide 9 and its notes differ; notes are 368 characters.</p></article>
+      </div>
+      <div class="grid comparison">
+        <article class="card download"><h4>Creation05 / actual output</h4><h3>Before: training and socialising</h3><figure><a href="assets/cats-and-dogs-creation05-slide-09.png"><img class="preview" src="assets/cats-and-dogs-creation05-slide-09.png" width="1600" height="900" loading="lazy" alt="Actual creation05 slide 9 about puppy socialising, kitten handling and vet familiarisation."></a><figcaption>Native export of the Public copy. Open the image for full-size text.</figcaption></figure><p class="meta">An eleven-slide, 25-minute briefing for ten first-time owners, using supplied organiser context and public research.</p><a class="button" href="downloads/Cats-and-Dogs-Creation05-PUBLIC.pptx" download>Download creation05 Public copy</a></article>
+        <article class="card download"><h4>Revision06 / actual output</h4><h3>The requested cat-focused slide 9</h3><figure><a href="assets/cats-and-dogs-revision06-slide-09.png"><img class="preview" src="assets/cats-and-dogs-revision06-slide-09.png" width="1600" height="900" loading="lazy" alt="Actual revision06 slide 9 about indoor cats, with hiding places, climbing opportunities and daily play."></a><figcaption>Native export of the Public copy. Ten other slide images match creation05 exactly.</figcaption></figure><p class="meta">Only slide 9 and its notes changed in the historical revision. No new agent output or editorial repair was made for publication.</p><a class="button" href="downloads/Cats-and-Dogs-Revision06-PUBLIC.pptx" download>Download revision06 Public copy</a></article>
+      </div>
+      <details open>
+        <summary>Actual request and final answer excerpts</summary>
+        <div class="detail-body">
+          <p class="meta">Verbatim excerpts with explicit redactions, not a recreated chat screenshot. Intermediate UI events and internal traces are excluded. The downloadable text also retains the failed revision response.</p>
+          <blockquote class="quote"><strong>User / creation05</strong><p>Create an editable PowerPoint about everyday care for cats and dogs using the existing registered eleven-slide template. Research public sources to support the content. Supplied organiser context: this is a 25-minute introductory session for ten first-time pet owners at Harbour Learning Club. Include practical comparisons and end with three useful questions to ask a vet. The club details are supplied context, not web facts. Internal test marker [REDACTED private test marker] must not appear in the deck or any public search query.</p></blockquote>
+          <blockquote class="quote"><strong>User / revision06</strong><p>Update slide 9 to focus on cats rather than dogs. Make its main points about safe hiding places, climbing opportunities and daily play for indoor cats. Update the speaker notes to match and support factual guidance with the available research. Keep every other slide and the template design unchanged, and give me a new PowerPoint file rather than replacing the original.</p></blockquote>
+          <blockquote class="quote"><strong>Agent / revision06 final answer</strong><p>Open or download the new PowerPoint draft [REDACTED private delivery URL]</p><p>Filename: [REDACTED private filename]</p><p>This editable draft requires human review for factual accuracy, completeness and fit. Existing access is used; no sharing permissions changed. The fixed G/C/S/E badges and template branding remain unchanged. Only slide 9's content and notes were revised; the previous file remains available.</p></blockquote>
+          <a href="downloads/cats-and-dogs-transcript.txt" download>Download the redacted conversation excerpts (TXT)</a>
+        </div>
+      </details>
+      <div class="notice"><p><strong>Actual outputs, explicitly labelled Public-release copies.</strong> The owner approved public sharing. Separate copies were relabelled from General through PowerPoint's actual Public policy and required justification dialog, then saved and reopened. Public means approved public consumption without encryption, tracking or revocation. These are not the byte-identical benchmark originals; the originals remain private and unchanged.</p></div>
+      <details>
+        <summary>Exact release-copy transformations and metadata boundary</summary>
+        <div class="detail-body"><p>Native personal-information removal cleared Author and LastModifiedBy. Generated text, notes, geometry, formatting, images and referential branding are retained. Native saving omitted eight empty text runs on slide 4; all other slide/notes XML content is equivalent. No content was repaired or regenerated. The fixed G/C/S/E badges are inherited template design, not the current sensitivity label.</p><p>One native Public classification record remains in each copy, including its opaque label/site identifiers. The record and identifier hashes are pinned in the manifest; no previous label history, account, connection or tenant evidence is approved. The native UI wrote <code>method=Privileged</code>; no API impersonation, invented IDs or raw label-XML rewriting was used. Public selection and lack of encryption were checked after save/close/reopen.</p></div>
+      </details>
+      <details>
+        <summary>What the successful result does not prove</summary>
+        <div class="detail-body">
+          <p>Creation05 was a new generation, not a local repair of the earlier praised creation03. The earlier creation03/revision03 pair remained on visual hold for overflowing slides. User praise did not override that result.</p>
+          <p>For revision06, nine render images matched creation05 exactly. Slide 2 had a small subtitle-rendering variation and was reviewed separately; package comparison still isolated changes to slide 9 and its notes.</p>
+          <p>Compact wording, repeated words, spacing and alignment need editorial attention. In the previews, creation05's puppy/kitten text crowds the bold keywords; revision06 repeats &quot;perches&quot; across tight lines. All-slide visual review found no conspicuous clipping or instructional placeholders, but source citations are not visible on the slides and branding text becomes small when downscaled. General source landing pages do not support every specific care claim. Microchipping summaries do not cover all thresholds or exemptions. This is neither veterinary nor legal approval.</p>
+          <p>Earlier native content-edit/save/reopen evidence applies to a marked QA copy of revision03. Public-copy checks here cover native relabelling, metadata cleanup, save/reopen, content/geometry preservation and rendering, not a new content-edit acceptance test of creation05/revision06. No live agent test was run for this public release.</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="implementation" class="section" aria-labelledby="build-title">
+      <div class="section-head">
+        <p class="eyebrow">03 / Reuse the approach, not the tenant</p>
+        <h2 id="build-title">A template is an integration contract.</h2>
+        <p class="lede">Conversation, research and revision logic can be reused. Each design still needs its own destinations, bounds, flow/topic bindings and quality review.</p>
+      </div>
+      <div class="grid">
+        <article class="card"><h3>Prepared Word</h3><p>Bind authorised source notes to a saved drafting prompt. Validate narrative fields and typed table rows. Add trusted application-owned date/version values; obtain creation consent for the reviewed draft; populate content controls through Power Automate.</p><p>Compare actual output text, table rows, static headings, styles, headers and footers with the intended content. Native rendering and edit/save/reopen check things schema validation cannot.</p></article>
+        <article class="card"><h3>Prepared PowerPoint</h3><p>Register the exact template version and map editable shapes and paragraphs. Keep generation within explicit field bounds, validate before rendering and transfer accepted text without silent truncation or repairs.</p><p>For a slide revision, retain the successful full draft and source file. Merge only the requested slide and notes after validation; return a new file. Failed validation must not replace the last successful state.</p></article>
+      </div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable three-choice readiness table">
+        <table>
+          <caption>Three-choice extension: frozen templates are not runtime proof</caption>
+          <thead><tr><th scope="col">Choice</th><th scope="col">Prepared design</th><th scope="col">Runtime boundary</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Short5</th><td>Five slides, 40 editable text fields; authored and frozen.</td><td>Plain Short draft/render flows Started, zero end-to-end runs. Creation topic staged.</td></tr>
+            <tr><th scope="row">Long11</th><td>The existing registered eleven-slide design.</td><td>Established route works unchanged. Its new picker branch is staged, not deployed.</td></tr>
+            <tr><th scope="row">Short5withImages</th><td>Five slides, 35 text fields; a user-supplied image on slide 4.</td><td>Draft flow Started; renderer activation rejected at depth 9 &gt; 8. No end-to-end output.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Why it is paused:</strong> local tests and the offline validator did not catch the <a href="https://learn.microsoft.com/power-automate/limits-and-config">native nesting limit</a>. The next engineering work is to flatten the image flow without weakening checks, finish native frontend validation, then establish end-to-end delivery. Existing working Word and Long routes remain preserved.</p>
+      <details>
+        <summary>Image handling and channel qualifications</summary>
+        <div class="detail-body"><p>The local design validates actual image bytes: one nonanimated JPG or PNG, up to 5 MiB, 20 megapixels and 10,000 pixels per side. It fits the whole oriented image without stretching or cropping; deterministic resizing and pale letterboxing produce a PNG. This is not AI-generated imagery or byte-identical embedding.</p><p>Private retention and exact-version reuse for revisions are designed but unproved in the rejected native renderer. Uploads require a supported channel; the SharePoint agent channel does not support these uploads. Storing a generated presentation in SharePoint is a separate capability. See <a href="https://learn.microsoft.com/microsoft-copilot-studio/image-input-analysis">Microsoft's file-input guidance</a>.</p></div>
+      </details>
+      <details>
+        <summary>Practical onboarding checklist</summary>
+        <div class="detail-body">
+          <ol class="checklist">
+            <li>Confirm template ownership, redistribution rights, classification and authorised source context before any processing.</li>
+            <li>Freeze a version and record its hash. Map Word controls or PPT shape/paragraph destinations; define required keys and per-field/row limits.</li>
+            <li>Keep research queries separate from private context. Treat retrieved content as evidence, not executable instructions.</li>
+            <li>Bind prompts and flows in your own environment. Configure least-privilege connections, consent, file ownership, retention and error handling.</li>
+            <li>Validate native activation and topic types, then test creation, missing inputs, refusal, validation failures and isolated revisions with synthetic data.</li>
+            <li>Review every rendered page or slide, check placeholder removal and factual grounding, and verify a marked copy can edit/save/reopen. Retain immutable originals and failed attempts.</li>
+          </ol>
+          <p>No tenant-bound topics, connections, solution ZIPs or deployable flows are included here. The checklist is implementation guidance, not tested cross-tenant installation.</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="downloads" class="section" aria-labelledby="downloads-title">
+      <div class="section-head"><p class="eyebrow">04 / Public starter materials</p><h2 id="downloads-title">Inspect the templates. Keep the caveats.</h2><p class="lede">Three authored Office templates, copied byte-for-byte after package inspection. They are reusable design inputs, <strong>not agent-generated outputs</strong> or a working importable agent.</p></div>
+      <div class="grid three">
+        <article class="card download"><span class="filetype">DOCX / v0.2 / 14,564 bytes</span><h3>Technical design / Word</h3><p>Editable content controls, five repeating tables, a document-control table and explicit human-review notices. Proposed POC standard, not corporate policy.</p><a class="button" href="downloads/Technical-Design-Tables-v0.2.docx" download>Download Word template</a></article>
+        <article class="card download"><span class="filetype">PPTX / Short5 / 123,288 bytes</span><h3>Short briefing</h3><p>Five varied, editable layouts with 40 mapped text fields. Instructions deliberately remain in this <em>template</em>; they must not remain in a completed output.</p><a class="button" href="downloads/Short-Briefing-5-Slides.pptx" download>Download Short template</a></article>
+        <article class="card download"><span class="filetype">PPTX / Short5withImages / 124,012 bytes</span><h3>Short briefing with images</h3><p>A separate five-slide design with 35 mapped text fields and an authored image placeholder. The native image rendering route is blocked, not delivered.</p><a class="button" href="downloads/Short-Briefing-With-Images-5-Slides.pptx" download>Download image template</a></article>
+      </div>
+      <details>
+        <summary>Preview two actual template slides</summary>
+        <div class="detail-body">
+          <p class="meta">Existing Office-rendered images of the authored templates, not screenshots of an agent conversation, not freshly generated outputs. No native UI or identity is shown.</p>
+          <div class="grid">
+            <figure><a href="assets/short-template-slide-01.png"><img class="preview" src="assets/short-template-slide-01.png" width="1600" height="901" loading="lazy" alt="Authored Short5 template opening slide, with a headline and three editable theme cards."></a><figcaption>Short5 / slide 1. Template content, not a generated briefing.</figcaption></figure>
+            <figure><a href="assets/image-template-slide-04.png"><img class="preview" src="assets/image-template-slide-04.png" width="1600" height="901" loading="lazy" alt="Authored image template slide 4, with a large generic image placeholder and caption area."></a><figcaption>Short5withImages / slide 4. Placeholder illustration, not a user photo.</figcaption></figure>
+          </div>
+        </div>
+      </details>
+      <div class="actions"><a class="button" href="downloads/synthetic-context.txt" download>Download synthetic practice context</a><a href="downloads/reuse-guide.md">Read the reuse guide</a><a href="https://github.com/RyanBowie/copilot-studio-documentation-builder/blob/main/release-manifest.json">Inspect source &amp; asset manifest</a></div>
+      <p class="meta">The practice context is a newly authored teaching fixture, not evidence from the historical runs. The three templates and all historical originals remain unchanged. The <a href="#cats-and-dogs">two actual Long output downloads</a> are separately named, owner-authorised Public-release copies with documented native relabelling and metadata cleanup, not replacement benchmark originals.</p>
+    </section>
+
+    <section id="cost" class="section" aria-labelledby="cost-title">
+      <div class="section-head"><p class="eyebrow">05 / Cost and measurement</p><h2 id="cost-title">Unknown is not free.</h2><p class="lede">The observations below are historical dashboard readings, not a per-file bill or a settled comparison.</p></div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable cost observations">
+        <table>
+          <caption>Last successful observations: 27 September 2026, approximately 12:44 UTC</caption>
+          <thead><tr><th scope="col">Agent / observation</th><th scope="col">What was recorded</th><th scope="col">What it does not establish</th></tr></thead>
+          <tbody><tr><th scope="row">Astra / historical total</th><td>826.67 credits / 12 sessions. Earlier baseline: 826.67 credits / 3 sessions.</td><td>The unchanged aggregate does not isolate the nine-file batch or establish a zero-cost delta.</td></tr><tr><th scope="row">GPT55Chat / new agent</th><td>0 sessions; no usage recorded at that reading.</td><td>Not settled zero cost. Setup and Preview usage may arrive later; totals cannot be assigned solely to one file.</td></tr><tr><th scope="row">Follow-up reporting</th><td>First hourly follow-up attempted; a second observation at 14:49 UTC still found reporting unavailable.</td><td>No newer successful Monitor reading is claimed in this snapshot.</td></tr></tbody>
+        </table>
+      </div>
+      <div class="grid">
+        <article class="card"><h3>Billing starts during building</h3><p>For the GitHub Copilot harness, building, Preview, testing and evaluation can consume credits. Publication unlocks Monitor; it does not start billing. Credits cover model tokens, tools and the harness.</p><a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview">Official usage-based billing documentation</a></article>
+        <article class="card"><h3>A measurement boundary, not a savings claim</h3><p>Actual per-file prices, engineering-hours totals and productivity savings have not been established. The nine-file run violated the sequential stop/metering protocol. The two GPT55Chat outputs failed template completion.</p><a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-overview">Official Monitor availability and reporting guidance</a></article>
+      </div>
+      <div class="notice"><p><strong>Human review is part of the workflow.</strong> Evaluate factual accuracy, completeness, readability, editability, data governance and cost independently. Neither structural preservation nor file delivery certifies production readiness, compliance or approval.</p></div>
+    </section>
+    <section id="sources" class="section" aria-labelledby="sources-title">
+      <p class="eyebrow">Reference and provenance</p><h2 id="sources-title">A deliberately scoped public record.</h2>
+      <p>Claims are curated from retained private run receipts, package comparisons, conversation captures and completed quality reviews. Public text uses case names instead of tenant identifiers. Raw logs, access links, UI screenshots and benchmark originals are intentionally not published. The two cats-and-dogs Public copies retain only their narrowly reviewed native classification identifiers.</p>
+      <ul class="sources">
+        <li><a href="https://github.com/RyanBowie/copilot-studio-documentation-builder">Source repository and release instructions</a></li>
+        <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/harnesses-overview">Microsoft / agent harnesses overview</a></li>
+        <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview">Microsoft / usage-based billing</a></li>
+        <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-overview">Microsoft / Monitor availability and latency</a></li>
+        <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/image-input-analysis">Microsoft / image and file inputs</a></li>
+      </ul>
+      <p class="meta">Product capabilities and billing can change. Documentation checked 27 September 2026. Case outcomes are observations, not a controlled causal comparison of harnesses or models.</p>
+    </section>
+  </main>
+  <footer class="wrap page-footer"><p>Documentation Builder / public technical reference<br>Authored templates. Qualified observations. No live tenant connection.</p><a href="#overview">Back to top</a></footer>
+</body>
+</html>

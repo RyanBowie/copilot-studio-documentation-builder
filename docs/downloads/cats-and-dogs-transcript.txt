@@ -1,0 +1,72 @@
+ACTUAL CONVERSATION EXCERPTS / STANDARD LONG11
+Cases: creation05, unsuccessful revision05, successful revision06
+Observed: 26 September 2026
+
+PROVENANCE AND REDACTION
+Selected user requests and final agent responses from the retained conversation.
+This is not a complete transcript or a reconstructed screenshot. Intermediate
+status messages, UI events and internal traces are omitted. A private test
+marker, delivery URLs, filenames and a request identifier are visibly redacted.
+HTML line breaks and link markup are rendered as plain text.
+The fictional club context is supplied context, not a public-web research fact.
+Nothing below is a newly generated agent response.
+
+CREATION05 / USER
+Create an editable PowerPoint about everyday care for cats and dogs using the existing registered eleven-slide template. Research public sources to support the content. Supplied organiser context: this is a 25-minute introductory session for ten first-time pet owners at Harbour Learning Club. Include practical comparisons and end with three useful questions to ask a vet. The club details are supplied context, not web facts. Internal test marker [REDACTED private test marker] must not appear in the deck or any public search query.
+
+CREATION05 / USER'S EVIDENCE-MODE ANSWER
+web
+
+CREATION05 / USER'S PUBLIC-SUBJECT ANSWER
+Everyday cat and dog care for first-time pet owners in the UK
+
+CREATION05 / AGENT FINAL ANSWER
+Open or download the new PowerPoint draft [REDACTED private delivery URL]
+
+Filename: [REDACTED private filename]
+This editable draft requires human review for factual accuracy, completeness and fit. Existing access is used; no sharing permissions changed. The fixed G/C/S/E badges and template branding remain unchanged.
+
+REVISION05 / USER
+Update slide 9 to focus on cats rather than dogs. Make its main points about safe hiding places, climbing opportunities and daily play for indoor cats. Update the speaker notes to match and support factual guidance with the available research. Keep every other slide and the template design unchanged, and give me a new PowerPoint file rather than replacing the original.
+
+REVISION05 / USER'S PUBLIC-SUBJECT ANSWER
+Indoor cat wellbeing: hiding places, climbing opportunities and daily play
+
+REVISION05 / AGENT FINAL ANSWER
+POWERPOINT_FAILED drafting.
+Status: failed
+Message: The prompt, connector, or strict validation failed. No successful delivery is claimed. Inspect this flow run for the service error; do not silently retry generation.
+Request ID: [REDACTED private request identifier]
+No rendering or state replacement was requested. No automatic retry.
+
+EDITORIAL CONTEXT / NOT AN AGENT MESSAGE
+Revision05 failed the speaker-notes length limit: 768 characters against a hard
+maximum of 650. After a guidance-only change, the user submitted the following
+new request in the same retained conversation. This was not a silent retry.
+
+REVISION06 / USER
+Update slide 9 to focus on cats rather than dogs. Make its main points about safe hiding places, climbing opportunities and daily play for indoor cats. Update the speaker notes to match and support factual guidance with the available research. Keep every other slide and the template design unchanged, and give me a new PowerPoint file rather than replacing the original.
+
+REVISION06 / USER'S PUBLIC-SUBJECT ANSWER
+Indoor cat wellbeing: hiding places, climbing opportunities and daily play
+
+REVISION06 / AGENT FINAL ANSWER
+Open or download the new PowerPoint draft [REDACTED private delivery URL]
+
+Filename: [REDACTED private filename]
+This editable draft requires human review for factual accuracy, completeness and fit. Existing access is used; no sharing permissions changed. The fixed G/C/S/E badges and template branding remain unchanged. Only slide 9's content and notes were revised; the previous file remains available.
+
+PUBLICATION BOUNDARY / NOT AN AGENT MESSAGE
+The responses above describe historical private delivery. The owner subsequently
+authorised public sharing of separately named copies of creation05 and revision06.
+PowerPoint's native Sensitivity picker and required downgrade-justification dialog
+applied the available Public policy to those copies. Native personal-information
+removal cleared Author and LastModifiedBy; Public was verified after save/reopen.
+Original files and hashes remain unchanged and private. The public copies retain
+the actual generated content, notes, geometry, formatting and referential branding;
+native saving only omitted eight empty text runs on slide 4. No content was repaired
+or regenerated. Matching slide previews are native exports of the Public copies.
+The narrow, hash-pinned native Public label record remains; no labels were stripped
+or XML identifiers fabricated. These copies are not byte-identical benchmark originals.
+Readability, factual accuracy, legal/veterinary suitability and editability
+are separate acceptance questions; the site records their qualifications.

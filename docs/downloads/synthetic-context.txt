@@ -1,0 +1,29 @@
+SYNTHETIC PRACTICE CONTEXT
+Newly authored for the public release. Not an historical benchmark input or an agent output.
+
+Project: Cedar Library Equipment Loans
+Audience: library operations and a technical reviewer
+Purpose: replace a paper sign-out sheet with a proposed small equipment-loan service.
+
+Supplied facts for this fictional exercise:
+- Volunteers currently record equipment loans on paper.
+- The proposed service should record an item, checkout date and expected return date.
+- A volunteer should be able to mark an item returned.
+- The library wants a weekly list of overdue items.
+- No implementation has been deployed or tested.
+
+Open decisions:
+- Data store, identity provider, hosting and integration mechanism are not selected.
+- Retention, support ownership, recovery targets and access policy need approval.
+- No performance or availability commitments have been agreed.
+
+Authoring task:
+Draft for the intended audience using an appropriate downloaded template.
+Label proposed controls and tests as proposed, not implemented or passed.
+Do not invent a cloud architecture, policy, owner, compliance status or approval.
+Replace template instructions with source-grounded content or a visible confirmation gap.
+For PowerPoint, use five slides: purpose, context, key requirements, proposed next steps,
+and decisions for review. Keep details in notes and verify readability yourself.
+
+This local fixture contains no personal information or secrets. Its existence does not
+authorize a billable agent run, deployment or public upload of any other material.
