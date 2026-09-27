@@ -193,6 +193,7 @@
           <span class="badge proved">Working prepared route</span>
           <h3>Standard / editable Word</h3>
           <p>Supply a new subject, context and requested content; the saved drafting prompt and Power Automate populate a previously prepared Word layout to produce an editable document. A different organisational template must be onboarded by a maker first, not simply uploaded in the chat.</p>
+          <p><a href="#prepared-word-preview">Compare the prepared Word template with its actual output</a>.</p>
           <p class="meta">The demonstrated content-control design contains six tables: document control plus five repeating tables. New content is dynamic; a new design needs setup and human review. <a href="#prepared-word">How to prepare your layout</a>.</p>
         </article>
         <article class="card" data-category="standard">
@@ -227,6 +228,49 @@
         </article>
       </div>
       <div class="notice"><p><strong>No model leaderboard.</strong> Models, channels, tools and preparation differ. Observed GHCP cases handled ad-hoc attachments more flexibly, but exact template fidelity and content completion are not assured. These cases do not establish universal reliability or equivalent quality.</p></div>
+    </section>
+
+    <section id="prepared-word-preview" class="section" aria-labelledby="prepared-word-preview-title">
+      <div class="section-head">
+        <p class="eyebrow">Prepared Standard Word / actual document pages</p>
+        <h2 id="prepared-word-preview-title">Prepared Standard Word: template and actual output</h2>
+        <p class="lede">The genuine v0.2 template and its Orchard Relay POC output from 24 September 2026. This is the prepared Standard integration, not the separate 3-page/3-table ad-hoc Word experiment below.</p>
+      </div>
+      <p>The historical workflow used two authorised drafting calls, review and refinement, cancel/resume, then one separately confirmed document creation. The actual output has <strong>10 native pages and 6 tables</strong>. Historical structural checks passed, and a separate QA copy passed native edit/save/reopen; factual approval was withheld.</p>
+      <p class="meta"><strong>Fresh native Word renders of the unchanged historical files; page numbering recalculated by Word.</strong> Rendered on 27 September 2026: the prepared template has 6 pages and the actual output has 10, matching the historical output page count. Full document pages only: no account UI, redactions, content repairs or model regeneration. The output DOCX and intermediate PDFs remain private; this release adds screenshots only.</p>
+      <div class="comparison">
+        <h3>Document control and opening content</h3>
+        <p>Compare the same opening fields and headings. Template placeholders are intentional; the output's longer body continues onto page 2.</p>
+        <div class="grid">
+          <figure>
+            <h4>Prepared template / page 1 of 6</h4>
+            <a href="assets/prepared-word-template-page-01.png"><img class="preview" src="assets/prepared-word-template-page-01.png" width="1600" height="2263" loading="lazy" alt="Prepared Word v0.2 template page 1: title and document-control placeholders, draft warning, executive summary and purpose headings."></a>
+            <figcaption><a href="assets/prepared-word-template-page-01.png">Open full-size template page 1</a>. The same unchanged template is available in Downloads.</figcaption>
+          </figure>
+          <figure>
+            <h4>Actual Standard output / page 1 of 10</h4>
+            <a href="assets/prepared-word-output-page-01.png"><img class="preview" src="assets/prepared-word-output-page-01.png" width="1600" height="2263" loading="lazy" alt="Actual Orchard Relay output page 1: populated title, Test Platform Team document owner, draft date and version, executive summary and dense purpose text."></a>
+            <figcaption><a href="assets/prepared-word-output-page-01.png">Open full-size output page 1</a>. Generated content and static draft-review guidance are retained exactly, including the page continuation.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="comparison">
+        <h3>Repeating requirements table</h3>
+        <p>Logical sections align, not page numbers: requirements begin on template page 2 and output page 3. The expanded output table continues on page 4.</p>
+        <div class="grid">
+          <figure>
+            <h4>Prepared template / page 2 of 6</h4>
+            <a href="assets/prepared-word-template-page-02.png"><img class="preview" src="assets/prepared-word-template-page-02.png" width="1600" height="2263" loading="lazy" alt="Prepared Word template page 2: requirements table with one placeholder row, followed by architecture and component placeholders."></a>
+            <figcaption><a href="assets/prepared-word-template-page-02.png">Open full-size template page 2</a>. A repeating row defines the requirement, priority and evidence fields.</figcaption>
+          </figure>
+          <figure>
+            <h4>Actual Standard output / page 3 of 10</h4>
+            <a href="assets/prepared-word-output-page-03.png"><img class="preview" src="assets/prepared-word-output-page-03.png" width="1600" height="2263" loading="lazy" alt="Actual output page 3: requirements narrative and populated rows REQ-01 through REQ-07; the first four evidence cells incorrectly promote proposed design to fact."></a>
+            <figcaption><a href="assets/prepared-word-output-page-03.png">Open full-size output page 3</a>. REQ-01 through REQ-07 are visible; the incorrect &ldquo;fact&rdquo; labels in REQ-01 through REQ-04 have not been repaired.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="notice"><p><strong>Representative pages, not complete quality proof.</strong> Review found proposed design presented as fact in requirements rows, inferred queue/topic classifications elsewhere, and an acceptance-test condition that omits the non-duplicate requirement. Dense text, page continuations and static instructional guidance remain as generated. These screenshots do not establish exact factual alignment, full content completion or production approval. Human factual, layout and editability review remains required.</p></div>
     </section>
 
     <section id="original-comparisons" class="section" aria-labelledby="original-title">

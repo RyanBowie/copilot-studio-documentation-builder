@@ -6,7 +6,7 @@ qualified GitHub Copilot harness comparisons, and reusable authored templates.
 It does **not** contain an importable agent or claim production readiness.
 
 **Release state:** published at [GitHub Pages](https://ryanbowie.github.io/copilot-studio-documentation-builder/).
-The bounded release contains 23 repository files; the seven original-comparison
+The bounded release contains 27 repository files; the seven original-comparison
 binaries below remain excluded. Pages publishes only `docs` on `main`.
 
 ## What the evidence says
@@ -46,6 +46,37 @@ and the [Word reuse steps](docs/downloads/reuse-guide.md#word-v02).
 The original native/direct Standard Sonnet request was a separate ad-hoc-template
 experiment: it produced an incomplete 3-page/3-table Word file. It does not prove
 that the prepared integration can accept arbitrary newly uploaded layouts.
+
+## Prepared Standard Word: page previews
+
+[See the prepared template beside its actual output](https://ryanbowie.github.io/copilot-studio-documentation-builder/#prepared-word-preview).
+The genuine v0.2 / Orchard Relay POC case from 24 September 2026 used two
+authorised drafting calls, review/refinement, cancel/resume and one separately
+confirmed creation. Its actual output has 10 native pages and six tables.
+Structural checks and native edit/save/reopen on a separate QA copy passed;
+factual approval remains withheld.
+
+| Logical view | Prepared template | Actual Standard output |
+| --- | --- | --- |
+| Document control and opening content | Page 1 of 6 | Page 1 of 10; body continues on page 2 |
+| Repeating requirements table | Page 2 of 6 | Page 3 of 10; table continues on page 4 |
+
+**Fresh native Word renders of the unchanged historical files; page numbering
+recalculated by Word.** The 27 September 2026 render independently confirms the
+historical output's ten pages. Four full-page PNGs have full-size links. No
+content was repaired, redacted or regenerated; only existing PAGE/NUMPAGES
+results could change during native pagination, without saving either DOCX.
+Source hashes, page mappings and image hashes are recorded in the manifest.
+
+These are representative pages, not complete quality proof. Requirements rows
+REQ-01 through REQ-04 incorrectly promote proposed design to fact. Other reviewed
+defects include inferred queue/topic classifications and an acceptance-test
+condition missing the non-duplicate requirement. Dense text, continuations and
+static instructional guidance remain visible. **The actual output DOCX and
+intermediate PDFs stay private: screenshots only are included.** The already
+public authored template remains downloadable. This is not the separate
+incomplete 3-page/3-table ad-hoc experiment below and does not clear any of the
+seven withheld original-comparison input/output binaries.
 
 ## Original input/output comparisons: coverage and download gaps
 
@@ -126,6 +157,8 @@ value and image hash are allowlisted, not a general permission for PNG metadata.
   in the manifest rather than silently repairing the authored files.
 - Two existing Office-rendered template PNGs show the actual designs. They are
   not agent outputs or native-UI screenshots.
+- Four new native Word page PNGs pair the prepared v0.2 template with its actual
+  historical Standard output, with the screenshot-only boundaries above.
 - Two actual Long11 output copies and two matching slide 9 PNGs show the
   cats-and-dogs result and revision, with the explicit provenance above.
 - [`reuse-guide.md`](docs/downloads/reuse-guide.md) explains onboarding and acceptance.
@@ -178,9 +211,10 @@ There is no custom deployment workflow, manual-dispatch gate or approval variabl
 Initial publication used commit
 [`e36e35e`](https://github.com/RyanBowie/copilot-studio-documentation-builder/commit/e36e35e680ebee541e22a808139529459839de99)
 and a [successful GitHub-managed Pages deployment](https://github.com/RyanBowie/copilot-studio-documentation-builder/actions/runs/36330133539).
-The live project-path files, all nine download links and all nine pinned binary
-hashes were verified on 27 September 2026 at 15:37 UTC. The manifest records this
-initial publication receipt separately from the unchanged historical evidence.
+The initial live project-path files, all nine download links and the original
+nine pinned binary hashes were verified on 27 September 2026 at 15:37 UTC. The
+manifest records this initial publication receipt separately from the unchanged
+historical evidence.
 
 1. Run the release tests and validator above; review the exact allowlisted files.
 2. Commit and push only the approved files to the intended repository branch;

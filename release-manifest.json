@@ -175,8 +175,91 @@
       "sha256": "6a751559309206e02b470426267216a93e7a85cd95cb78429075957bbd82473f",
       "width": 1600,
       "height": 901
+    },
+    {
+      "path": "docs/assets/prepared-word-template-page-01.png",
+      "kind": "word-page-preview",
+      "source": "Technical-Design-Tables-v0.2.docx",
+      "sourceRole": "prepared-template",
+      "sourceSha256": "00486f3d164344c68f6b5a3f100c18c77e9c7c80f701cfa7e0d54ca3078c339c",
+      "sourcePage": 1,
+      "nativePageCount": 6,
+      "provenance": "Opening document-control view of the exact authored template used by the prepared Standard Word v0.2 / Orchard Relay POC case.",
+      "transformation": "Fresh native Word PDF export of an unchanged read-only copy, then full-page PNG rasterisation. Word recalculates PAGE/NUMPAGES. No content edits, cropping, redactions or UI. Intermediate PDF stays private.",
+      "sha256": "6c0166c5005591219900939dba5170b26669537e12007000a8dade56ad96aef8",
+      "bytes": 167779,
+      "width": 1600,
+      "height": 2263
+    },
+    {
+      "path": "docs/assets/prepared-word-template-page-02.png",
+      "kind": "word-page-preview",
+      "source": "Technical-Design-Tables-v0.2.docx",
+      "sourceRole": "prepared-template",
+      "sourceSha256": "00486f3d164344c68f6b5a3f100c18c77e9c7c80f701cfa7e0d54ca3078c339c",
+      "sourcePage": 2,
+      "nativePageCount": 6,
+      "provenance": "Requirements placeholder row and architecture view of the exact prepared Word template; paired with actual output page 3, not page 2.",
+      "transformation": "Fresh native Word PDF export of an unchanged read-only copy, then full-page PNG rasterisation. Word recalculates PAGE/NUMPAGES. No content edits, cropping, redactions or UI. Intermediate PDF stays private.",
+      "sha256": "07279e828c35d823aa479b01695ef5a14e37d4d9eb99a07104130e6ab1de52cd",
+      "bytes": 143968,
+      "width": 1600,
+      "height": 2263
+    },
+    {
+      "path": "docs/assets/prepared-word-output-page-01.png",
+      "kind": "word-page-preview",
+      "source": "Prepared Standard Word v0.2 / Orchard Relay POC / actual 24 September 2026 output",
+      "sourceRole": "historical-standard-output",
+      "sourceSha256": "30426cf84a301fd35de6c145f505c8f0544f3fbdff49f039ad709efe7cb8d1e0",
+      "sourcePage": 1,
+      "nativePageCount": 10,
+      "provenance": "Actual generated opening document-control and body view. The precise historical output is hash-verified; not a backend fixture, inspection-copy edit, ad-hoc PID or GHCP result.",
+      "transformation": "Fresh native Word PDF export of an unchanged read-only copy, then full-page PNG rasterisation. Word recalculates PAGE/NUMPAGES. No content edits, cropping, redactions or UI. Output DOCX and intermediate PDF stay private.",
+      "sha256": "fbfaf1e2ce37253cd0aaa5b2422045ae0fa74c34438f9ec140bb855cb111d24c",
+      "bytes": 375585,
+      "width": 1600,
+      "height": 2263
+    },
+    {
+      "path": "docs/assets/prepared-word-output-page-03.png",
+      "kind": "word-page-preview",
+      "source": "Prepared Standard Word v0.2 / Orchard Relay POC / actual 24 September 2026 output",
+      "sourceRole": "historical-standard-output",
+      "sourceSha256": "30426cf84a301fd35de6c145f505c8f0544f3fbdff49f039ad709efe7cb8d1e0",
+      "sourcePage": 3,
+      "nativePageCount": 10,
+      "provenance": "Actual requirements narrative and expanded rows REQ-01 through REQ-07. Erroneous fact labels remain visible; the table continues on output page 4.",
+      "transformation": "Fresh native Word PDF export of an unchanged read-only copy, then full-page PNG rasterisation. Word recalculates PAGE/NUMPAGES. No content edits, cropping, redactions or UI. Output DOCX and intermediate PDF stay private.",
+      "sha256": "93ac7c5e26892838c60658b86a4ec0776704cec7cdc523a3538407f01dee3042",
+      "bytes": 342559,
+      "width": 1600,
+      "height": 2263
     }
   ],
+  "preparedWordPreview": {
+    "case": "Prepared Standard Word v0.2 / Orchard Relay POC",
+    "historicalDate": "2026-09-24",
+    "renderDate": "2026-09-27",
+    "workflow": "Two authorised drafting calls, review/refinement, cancel/resume and one separately confirmed document creation.",
+    "historicalOutput": {
+      "sha256": "30426cf84a301fd35de6c145f505c8f0544f3fbdff49f039ad709efe7cb8d1e0",
+      "bytes": 17956,
+      "pages": 10,
+      "tables": 6,
+      "acceptance": "Historical structural checks passed; edit/save/reopen passed on a separate QA copy. Factual approval withheld.",
+      "binaryAvailability": "Private. Only the reviewed page PNGs are authorised for this release."
+    },
+    "pagePairs": [
+      {"view": "Opening document control", "templatePage": 1, "outputPage": 1},
+      {"view": "Repeating requirements table", "templatePage": 2, "outputPage": 3}
+    ],
+    "renderMethod": "Fresh native Microsoft Word 16.0.20430 ExportAsFixedFormat with KeepIRM=true on exact read-only copies; private PDFs rasterised with PyMuPDF 1.28.0. Full pages at 1600 by 2263; no native UI.",
+    "fidelity": "Original and copy hashes unchanged. Pre/post body, table, header/footer text and field inventory checked; only automatic PAGE/NUMPAGES results may vary. No Save, SaveAs, explicit field refresh, link update, repair or regeneration.",
+    "pagination": "Fresh native template: 6 pages. Fresh native output: 10 pages, matching retained historical evidence. Logical sections, not identical page numbers, are paired.",
+    "review": "Selected visible content and full packages reviewed: synthetic project/team/records, proposed sandbox controls and draft notices. No classification, personal identity, external relationships or protected content found. No redactions applied; images retain factual and layout defects.",
+    "limitations": "Representative pages are not full quality proof. Requirements promote proposed design to fact; other content infers queue/topic classifications and has an incomplete acceptance-test condition. Human factual, layout and editability review required. This does not clear any of the seven original-comparison binaries."
+  },
   "textProvenance": {
     "cats-and-dogs-transcript.txt": "Selected actual user requests and final replies for creation05, revision05 and revision06. Private test marker, delivery URLs, filenames and request identifier visibly redacted. HTML line breaks/link markup converted to text. Internal traces and intermediate UI messages omitted. Editorial context explicitly labelled.",
     "original-word-conversations.txt": "Actual common user request and selected final-answer excerpts from the matched Standard Sonnet and existing GHCP Sonnet C03 cases. Original final-answer claims are immediately qualified by retained file reviews. No hidden reasoning or sample-persona names reproduced. Word/PDF binaries remain withheld.",

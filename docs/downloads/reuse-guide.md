@@ -43,6 +43,23 @@ experiment with an incomplete 3-page/3-table output, not proof that this prepare
 integration accepts arbitrary uploaded templates. GHCP handled ad-hoc attachments
 more flexibly in observed cases, but exact fidelity and completion are not assured.
 
+### Inspect the actual prepared Word result
+
+[Compare the native page previews](../index.html#prepared-word-preview) before
+reusing this template. The genuine v0.2 / Orchard Relay POC case from
+24 September 2026 has a ten-page, six-table Standard output. Opening views pair
+template page 1 with output page 1; requirements pair template page 2 with output
+page 3. These are fresh native Word renders of unchanged historical files, with
+page numbering recalculated by Word, not historical chat screenshots.
+
+Only reviewed full-page PNGs are public; the actual output DOCX and intermediate
+PDFs stay private. Template placeholders and actual output defects are not
+repaired in the images. The visible requirements rows promote proposed design
+to fact; inferred queue/topic classifications and an incomplete acceptance-test
+condition elsewhere also require correction. Representative pages and historical
+edit/save/reopen on a separate QA copy do not establish factual or production
+approval. This pair is not the separate ad-hoc Word comparison.
+
 ## Short presentation templates
 
 `Short-Briefing-5-Slides.pptx` has five distinct layouts and 40 mapped editable

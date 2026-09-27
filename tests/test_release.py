@@ -254,7 +254,7 @@ class ReleaseTests(unittest.TestCase):
         docs = MODULE_PATH.parent.parent / "docs"
         html = (docs / "index.html").read_text(encoding="utf-8")
         body = re.search(r"<body>.*</body>", html, re.S).group()
-        self.assertEqual(release.digest(body.encode()), "353b472d9f2f80255d8462f2c45bdeed59183f772600c74c8c9fd05916583110")
+        self.assertEqual(release.digest(body.encode()), "65e6072cf325469669deadfe544023ea220c4c3363a9db0b62e9007277853782")
         transcripts = {
             "cats-and-dogs-transcript.txt": "135cd23aa6093fd8beab3a98851efc1253e374a895d7f671c0d5195fe752ed10",
             "original-word-conversations.txt": "633d135e4e78977b5fa93c2266cd1015e7e2d003b4cce0e75b980cb74c192abb",
@@ -321,6 +321,61 @@ class ReleaseTests(unittest.TestCase):
                          "No tenant-bound topics, connections, solution ZIPs or deployable flows"):
             self.assertIn(retained, html)
         self.assertIn("deployment, costs and document generation", html)
+
+    def test_prepared_word_screenshots_match_the_two_verified_sources(self):
+        root = MODULE_PATH.parent.parent
+        manifest = json.loads((root / "release-manifest.json").read_text(encoding="utf-8"))
+        previews = [asset for asset in manifest["assets"] if asset["kind"] == "word-page-preview"]
+        template_hash = "00486f3d164344c68f6b5a3f100c18c77e9c7c80f701cfa7e0d54ca3078c339c"
+        output_hash = "30426cf84a301fd35de6c145f505c8f0544f3fbdff49f039ad709efe7cb8d1e0"
+        expected = {
+            "prepared-word-template-page-01.png": (template_hash, 1, 6),
+            "prepared-word-template-page-02.png": (template_hash, 2, 6),
+            "prepared-word-output-page-01.png": (output_hash, 1, 10),
+            "prepared-word-output-page-03.png": (output_hash, 3, 10),
+        }
+        self.assertEqual({Path(asset["path"]).name for asset in previews}, set(expected))
+        for asset in previews:
+            self.assertEqual((asset["sourceSha256"], asset["sourcePage"], asset["nativePageCount"]),
+                             expected[Path(asset["path"]).name])
+            self.assertEqual((asset["width"], asset["height"]), (1600, 2263))
+            self.assertEqual(release.digest((root / asset["path"]).read_bytes()), asset["sha256"])
+        evidence = manifest["preparedWordPreview"]
+        self.assertEqual(evidence["historicalDate"], "2026-09-24")
+        self.assertEqual(evidence["historicalOutput"]["sha256"], output_hash)
+        self.assertEqual(evidence["historicalOutput"]["pages"], 10)
+        self.assertEqual(evidence["historicalOutput"]["tables"], 6)
+        self.assertEqual([(pair["templatePage"], pair["outputPage"]) for pair in evidence["pagePairs"]],
+                         [(1, 1), (2, 3)])
+        self.assertIn("Private", evidence["historicalOutput"]["binaryAvailability"])
+        self.assertFalse(any(asset["sha256"] == output_hash for asset in manifest["assets"]))
+        self.assertEqual(len(manifest["assets"]), 13)
+        self.assertEqual(len(manifest["sourceFiles"]) + len(manifest["assets"]), 27)
+
+    def test_word_previews_are_visible_clickable_and_qualified(self):
+        root = MODULE_PATH.parent.parent
+        html = (root / "docs" / "index.html").read_text(encoding="utf-8")
+        preview = re.search(r'<section id="prepared-word-preview".*?</section>', html, re.S).group()
+        self.assertNotIn("<details", preview)
+        self.assertNotIn(" hidden", preview)
+        self.assertEqual(preview.count("<figure>"), 4)
+        images = re.findall(r'<a href="([^"]+)"><img [^>]*src="([^"]+)"[^>]*></a>', preview)
+        self.assertEqual(len(images), 4)
+        for full_size, image in images:
+            self.assertEqual(full_size, image)
+            self.assertTrue(image.startswith("assets/prepared-word-") and image.endswith(".png"))
+        card = re.search(r'<article id="standard-word".*?</article>', html, re.S).group()
+        self.assertIn('href="#prepared-word-preview"', card)
+        for phrase in ("template page 2 and output page 3", "10 native pages and 6 tables",
+                       "two authorised drafting calls", "one separately confirmed document creation",
+                       "Fresh native Word renders of the unchanged historical files",
+                       "page numbering recalculated by Word", "output DOCX and intermediate PDFs remain private",
+                       "Representative pages, not complete quality proof", "inferred queue/topic",
+                       "REQ-01 through REQ-04", "separate 3-page/3-table ad-hoc"):
+            self.assertIn(phrase, preview)
+        self.assertIn("#prepared-word-preview", (root / "README.md").read_text(encoding="utf-8"))
+        self.assertIn("#prepared-word-preview",
+                      (root / "docs" / "downloads" / "reuse-guide.md").read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":
