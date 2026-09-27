@@ -129,9 +129,13 @@ python scripts/validate_release.py --stage .pages-artifact
 python -m http.server 8000 --bind 127.0.0.1 --directory .pages-artifact
 ```
 
-Open `http://127.0.0.1:8000`. Use `?scoutTheme=light` or `?scoutTheme=dark`
-for deterministic theme previews. All content and downloads work without
-JavaScript; JavaScript adds the theme toggle and evidence filters.
+Open `http://127.0.0.1:8000`. The site matches the
+[SharePoint Search Hub palette](https://ryanbowie.github.io/copilot-studio-sharepoint-search-hub/):
+near-black panels, lavender accents and a blue-purple-magenta hero gradient.
+Dark is the default, including without JavaScript. Use `?scoutTheme=light` or
+`?scoutTheme=dark` for explicit previews; invalid values fall back to dark.
+All content and downloads work without JavaScript; JavaScript adds the theme
+toggle and evidence filters. Forced-colors mode uses a solid, readable heading.
 
 The validator fails on non-allowlisted files, symlinks, checksum changes, missing
 links/fragments, sensitive identifier patterns, embedded active content,

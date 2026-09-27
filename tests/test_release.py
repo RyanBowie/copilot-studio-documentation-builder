@@ -1,6 +1,7 @@
 import importlib.util
 import json
 from pathlib import Path
+import re
 import tempfile
 import unittest
 import xml.etree.ElementTree as ET
@@ -221,6 +222,45 @@ class ReleaseTests(unittest.TestCase):
         site_files = release.validate()
         self.assertIn("docs/index.html", site_files)
         self.assertTrue(all(name.startswith("docs/") for name in site_files))
+
+    def test_reference_palette_overrides_both_foundation_themes(self):
+        html = (MODULE_PATH.parent.parent / "docs" / "index.html").read_text(encoding="utf-8")
+        rules = re.findall(r'(:root|html\[data-theme="dark"\])\s*\{([^}]+)\}', html)
+        self.assertEqual([selector for selector, _ in rules], [":root", 'html[data-theme="dark"]'] * 2)
+        for (_, rule), expected in zip(rules[2:], [
+            {"bg": "#f2f2f8", "surface": "#ffffff", "text": "#102631", "text-muted": "#52637a",
+             "accent": "#7653ae", "accent-hover": "#58378b", "link": "#066bc7",
+             "chart-blue": "#0877dd", "chart-purple": "#7653ae", "chart-magenta": "#b535c3"},
+            {"bg": "#171717", "surface": "#1f1f1f", "text": "#f2f2f2", "text-muted": "#bdbdbd",
+             "accent": "#c3a0ef", "accent-hover": "#debeff", "link": "#80baff",
+             "chart-blue": "#69aeff", "chart-purple": "#bc98ed", "chart-magenta": "#ed8fea"},
+        ]):
+            values = dict(re.findall(r"--cp-([\w-]+):\s*([^;]+);", rule))
+            for name, value in expected.items():
+                self.assertEqual(values[name], value)
+            self.assertEqual(values["shadow"], "0 0 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14)")
+
+    def test_default_dark_override_precedes_rendering(self):
+        html = (MODULE_PATH.parent.parent / "docs" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('<html lang="en" data-theme="dark">', html)
+        scripts = re.findall(r"<script>(.*?)</script>", html, re.S)
+        self.assertEqual(len(scripts), 2)
+        self.assertIn('window.matchMedia("(prefers-color-scheme: dark)")', scripts[0])
+        self.assertIn('explicit === "light" ? "light" : "dark"', scripts[1])
+        self.assertLess(html.index(scripts[1]), html.index("<style>"))
+
+    def test_published_evidence_text_is_unchanged(self):
+        docs = MODULE_PATH.parent.parent / "docs"
+        html = (docs / "index.html").read_text(encoding="utf-8")
+        body = re.search(r"<body>.*</body>", html, re.S).group()
+        self.assertEqual(release.digest(body.encode()), "020ae768faca85d999f9bd98ec799187845800fb11f2b9c695da861efe13d35d")
+        transcripts = {
+            "cats-and-dogs-transcript.txt": "135cd23aa6093fd8beab3a98851efc1253e374a895d7f671c0d5195fe752ed10",
+            "original-word-conversations.txt": "633d135e4e78977b5fa93c2266cd1015e7e2d003b4cce0e75b980cb74c192abb",
+            "original-powerpoint-conversations.txt": "a611980eca847fa2b40a4e270a530d3b98d70b2bfdb779229915c49ce8dde7ee",
+        }
+        for name, expected in transcripts.items():
+            self.assertEqual(release.digest((docs / "downloads" / name).read_text(encoding="utf-8").encode()), expected)
 
 
 if __name__ == "__main__":
