@@ -87,7 +87,7 @@ Business > My files > Technical Documentation Builder > Templates** and create
 the sibling **Generated Drafts** output folder. Import creates neither. Use
 `Technical-Design-Tables-v0.2.docx` for core Word and, only with authorised access
 to the exact approved original, `Copilot-session-7c585847.pptx` for Long.
-Upload unchanged, without resaving or relabelling; give the identity template
+Upload unchanged, without resaving; give the identity template
 read access and output write access.
 Folder names alone do not retarget file IDs/version pins; SharePoint is not a
 drop-in for these OneDrive-wired flows.
@@ -101,9 +101,10 @@ installer. Core Word uses the included 14,564-byte
 v0.2 template; optional legacy Word needs a different 12,629-byte v0.1 template.
 Long requires the exact original 98,985-byte template with SHA-256
 `7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b`
-and its original classification hash. That original is **not included**.
-A differently labelled Public copy is **not compatible** with the unchanged
-contracts/code interpreter. No template guards were removed.
+and all registered integrity/contract checks. That original is **not included**.
+A separately downloadable public-release copy is **not compatible** with the
+unchanged contracts/code interpreter. Without the exact authorised original,
+leave Long disabled. No template guards were removed.
 
 All 92 native parts and three decoded schema-only model specifications were
 reviewed. The archive is unchanged: explicitly approved demo resource bindings,
@@ -173,20 +174,19 @@ claim that all original inputs and outputs are downloadable.
 
 | Original group | Input roles | Historical results | Public availability |
 | --- | --- | --- | --- |
-| Word PID | `Sample-PID-Contoso-Horizon.docx` is the template; `Sample-PID-Northwind-FieldService.pdf` is factual context. | Standard Sonnet: incomplete 3-page/3-table output. GHCP Sonnet C03: broader 13-page/14-table output, not exact-template or factually approved. | [Actual conversation excerpts](docs/downloads/original-word-conversations.txt). Both inputs and both outputs withheld pending confirmation of visible sample classification wording/personas. |
-| Technical PowerPoint | `Copilot session.pptx` is the visual template; no separate source attachment. | Native Standard Sonnet: no file after SystemError. GHCP Astra: 11 editable slides, 6 inherited hidden. Separate engineered Standard technical case05: 11 visible slides with qualified success. | [Actual conversation excerpts](docs/downloads/original-powerpoint-conversations.txt). Input and two delivered technical decks withheld: native labels and personal metadata remain uncleared. |
+| Word PID | `Sample-PID-Contoso-Horizon.docx` is the template; `Sample-PID-Northwind-FieldService.pdf` is factual context. | Standard Sonnet: incomplete 3-page/3-table output. GHCP Sonnet C03: broader 13-page/14-table output, not exact-template or factually approved. | [Actual conversation excerpts](docs/downloads/original-word-conversations.txt). Both inputs and both outputs remain private and are not approved for public redistribution. |
+| Technical PowerPoint | `Copilot session.pptx` is the visual template; no separate source attachment. | Native Standard Sonnet: no file after SystemError. GHCP Astra: 11 editable slides, 6 inherited hidden. Separate engineered Standard technical case05: 11 visible slides with qualified success. | [Actual conversation excerpts](docs/downloads/original-powerpoint-conversations.txt). Input and two delivered technical decks remain private and are not approved for public redistribution. |
 
 All native comparison arms used one request, without correction turns. Word used
 matching configured Sonnet 4.6 labels; native PowerPoint models differed. GHCP ran
 in Studio Preview, not the later published-M365 batch channel. The separate
 engineered Standard technical case05 used registered template bytes, Classic
 routing, GPT-5 reasoning drafting and a GPT-5-chat-configured renderer; it is
-**not cats-and-dogs creation05** and is not covered by those copies' Public authority.
+**not cats-and-dogs creation05** and is not covered by those copies' public-sharing approval.
 
-No new clearance was obtained for the original comparison set. Visible sample
-`Contoso Internal` / `Northwind Internal` wording and the context's Confidential
-description were not erased. The stock empty bibliography custom XML in the Word
-outputs is format metadata, not a tenant identity, but those binaries remain private.
+No new clearance was obtained for the original comparison set. Those files remain
+private and unchanged; public redistribution requires explicit approval.
+Metadata inspection alone does not grant permission to share a document.
 The three later authored starter templates supplement rather than substitute for
 the original inputs. These gaps are deliberate, prominent publication boundaries.
 
@@ -200,14 +200,12 @@ The real user requests and final answers are in
 [`cats-and-dogs-transcript.txt`](docs/downloads/cats-and-dogs-transcript.txt), with
 visible redactions and the failed follow-up retained.
 
-**The actual outputs are available as explicitly labelled Public-release copies:**
+**The actual outputs are available as separate, owner-approved public-release copies:**
 [`creation05`](docs/downloads/Cats-and-Dogs-Creation05-PUBLIC.pptx) and
 [`revision06`](docs/downloads/Cats-and-Dogs-Revision06-PUBLIC.pptx). They are not the
-byte-identical benchmark originals. The owner authorised public sharing; separate
-local copies were changed from General to the actual **Public** policy through
-PowerPoint's native Sensitivity picker and required downgrade-justification dialog.
-The policy describes approved public consumption, without encryption, tracking
-or revocation. Public selection was verified after saving, closing and reopening.
+byte-identical benchmark originals. The owner authorised public sharing of these
+two separate copies, prepared and saved in native PowerPoint. Approval applies
+only to these named release files, not to the withheld original comparison set.
 
 Native `RemovePersonalInformation` cleared Author and LastModifiedBy. No deck
 content, notes, layout, branding or images were repaired or replaced. PowerPoint
@@ -217,14 +215,10 @@ formatting. The ten non-revised native slide images match pixel-for-pixel.
 Slide 9 previews are exports of these exact release copies, not recreated evidence.
 Historical originals and their hashes remain unchanged and private.
 
-One narrowly reviewed exception preserves the real native Public label/site
-GUIDs **only inside `docMetadata/LabelInfo.xml` in these two copies**. They are
-nonsecret policy bookkeeping, not access credentials. The manifest pins the
-record and identifier hashes; all other identifiers remain subject to the
-existing privacy checks. The native UI wrote `method=Privileged`; no API
-impersonation, invented IDs, label removal or raw label-XML rewriting was used.
-Public classification does not certify veterinary/legal accuracy or remove the
-documented editorial qualifications.
+The manifest pins the exact release bytes and reviewed package metadata.
+Approval for these two files is not a general metadata or identifier exemption.
+Public-sharing approval does not certify veterinary/legal accuracy or remove
+the documented editorial qualifications.
 The unchanged logo PNG retains one reviewed `Software=Figma` text chunk; its exact
 value and image hash are allowlisted, not a general permission for PNG metadata.
 
@@ -238,8 +232,8 @@ value and image hash are allowlisted, not a general permission for PNG metadata.
   inventory, setup requirements and imported-with-warnings status above.
 - Three unchanged authored Office templates are included: Word v0.2, Short5 and
   Short5withImages. They are **inputs**, not completed outputs. The Word template
-  includes 47 content-control elements and six tables. No editing lock,
-  external relationship, active label or embedded executable was found.
+  includes 47 content-control elements and six tables. No external relationship
+  or embedded executable was found.
   Both Short PPT templates retain four unused slide-master content-type
   declarations from their exporter. No relationship points to those absent
   parts; retained Office rendering succeeded. The exact exceptions are recorded
@@ -283,9 +277,9 @@ toggle and evidence filters. Forced-colors mode uses a solid, readable heading.
 
 The validator fails on non-allowlisted files, symlinks, checksum changes, missing
 links/fragments, sensitive identifier patterns, embedded active content,
-unreviewed classification metadata, external Office relationships and broken
-package parts. The only label exception is the hash-pinned, native Public record
-in the two named copies; extra history, other IDs or changed attributes fail.
+unreviewed package metadata, external Office relationships and broken
+package parts. Reviewed metadata is restricted to exact, hash-pinned records
+in the two named copies; extra records, other IDs or changed attributes fail.
 The native solution has a separate exact-path/hash exception for its reviewed
 setup metadata only. Its 92-member inventory, expanded size, CRCs, component
 counts and decoded model schemas are checked; rehashed or substituted ZIPs fail.
@@ -329,11 +323,11 @@ directory, never merged into an existing artifact.
 
 Unreviewed tenant/identity metadata, live connections, access tokens, raw API logs,
 raw QA JSON/CSV, credentials, browser profiles, source-workspace paths, raw native-UI
-screenshots, classified Office originals and other solution packages remain
+screenshots, unapproved Office originals and other solution packages remain
 excluded. The private comparison HTML is not copied or embedded.
-The exceptions are the specifically reviewed native Public records in the two
+The exceptions are the specifically reviewed package records in the two
 cats/dogs copies, the approved setup metadata in the exact native solution ZIP,
 and the two authorised, identity-free OneDrive file-list crops.
-These exceptions do not grant permission to publish unrelated identities, labelled documents or
+These exceptions do not grant permission to publish unrelated identities, unapproved documents or
 packages. The import results above record the first failure and verified second
 success with warnings; no target runtime validation is claimed by this publication.

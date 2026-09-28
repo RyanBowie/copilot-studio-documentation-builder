@@ -151,8 +151,8 @@ Upload the separately downloadable Word v0.2 template to **Templates**. If you
 have authorised access to the exact approved original Long template, upload its
 unchanged bytes there as **Copilot-session-7c585847.pptx**. The optional legacy
 Word route needs its separate v0.1 template; the table below distinguishes it.
-Upload the files **without resaving or relabelling them**; confirm the destination
-copies retain the required bytes and classification metadata.
+Upload the files **without resaving them**; confirm the destination copies retain
+the exact required bytes and bind the actual destination file/version.
 **Solution import does not create these folders or copy/upload the templates.**
 Do this in the destination identity's OneDrive, not the source account's drive
 or an unrelated account with a similar display name.
@@ -176,7 +176,7 @@ not made downloadable by this screenshot.*
 **These images show folder arrangement and visible filenames only.** They do
 not establish authenticated connections, exact file bytes/hashes, resource
 bindings, agent publication or runtime. In particular, the visible PPTX filename
-does not establish that a file satisfies the original-byte/classification guards.
+does not establish that a file satisfies the registered byte-integrity/contract checks.
 
 The unchanged Long content action uses
 `/Technical Documentation Builder/Templates/Copilot-session-7c585847.pptx`.
@@ -188,7 +188,7 @@ retention intentionally. Generated files do not need public access.
 
 **Matching folder names alone is insufficient.** In step 3, reselect Word's
 destination drive/file, both Long metadata file IDs, destination ETags/file-version
-pins and returned links while preserving the exact-byte/classification guards.
+pins and returned links while preserving all exact-byte integrity/contract guards.
 **SharePoint is not a drop-in destination for this OneDrive-wired solution.**
 Moving to a SharePoint library requires actual flow changes; uploading the files
 there does not make these actions discover them.
@@ -197,14 +197,14 @@ there does not make these actions discover them.
 | --- | --- |
 | Core prepared Word v0.2 | The separately downloadable [14,564-byte Word template](Technical-Design-Tables-v0.2.docx), SHA-256 `00486f3d164344c68f6b5a3f100c18c77e9c7c80f701cfa7e0d54ca3078c339c`. Store it in authorised target storage and configure its target IDs/ETag and mappings. |
 | Optional legacy/direct Word v0.1 | A different 12,629-byte template, not bundled. Do not substitute v0.2 or treat this retained route as new runtime proof. |
-| Long PowerPoint | The exact original 11-slide, 98,985-byte template, SHA-256 `7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b`, plus its original classification metadata and classification-part hash. The original remains withheld and is not downloadable here. |
+| Long PowerPoint | The exact original 11-slide, 98,985-byte template, SHA-256 `7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b`, satisfying all registered integrity/contract checks. The original remains withheld and is not downloadable here. |
 
-**A differently labelled Public Long copy is not compatible.** Both Long
+**A separately downloadable public-release copy is not compatible.** Both Long
 contracts and the unchanged code interpreter require the exact original bytes
-and label hash. No drop-in Public replacement, new renderer or guard removal is
+and registered integrity checks. No drop-in replacement, new renderer or guard removal is
 included. **Without the exact approved original Long template, leave the Long
-route disabled**; a Public Long copy is insufficient for this unchanged native
-route. Do not remove the hash/label guards or change template bytes, prompt code
+route disabled**; a public-release copy is insufficient for this unchanged native
+route. Do not remove the integrity/contract guards or change template bytes, prompt code
 or the platform signature to make another file pass. Public availability of
 the native ZIP is not clearance to redistribute the original template.
 
@@ -231,7 +231,7 @@ come from the unchanged public archive, not redesigned example flows.
 | Core Word tables v0.2 (`TechnicalDocumentationBuilder-RenderWordTablesv02`) | Point `Check_template_metadata` at the destination v0.2 file in Templates. In `Populate_Word_template`, select its destination `source`, `drive` and `file`; keep the associated composite file selection metadata consistent. Preserve the content-control/repeating-section mappings. Update destination ETag/file-version pins in `Pinned_template_unchanged` while retaining the 14,564-byte template requirement. Configure `Save_Word_draft`'s `folderPath` for `/Technical Documentation Builder/Generated Drafts`, saved-file/folder checks and output-link expressions for the destination. |
 | Optional legacy Word v0.1 (`TechnicalDocumentationBuilder-RenderWordDraftv01`) | Configure the equivalent metadata, `Populate_Word_template`, version pins, `Save_Word_draft` output folder and return-link settings against the separate 12,629-byte v0.1 template. Do not substitute v0.2. Leave this flow disabled unless it is configured and used. |
 | Long drafting (`TDBPowerPoint-DraftSlideContentv01`) | In `Run_dedicated_prompt`, set the Predict `organization` field to the destination Dataverse organisation URL. Confirm the imported Long drafting prompt/configuration and `tdb_DraftingPrompt` binding. |
-| Long rendering (`TDBPowerPoint-RenderPreparedTemplatev01`) | In `Run_renderer`, set the third Predict `organization` field to the destination Dataverse organisation URL. Retarget both metadata file IDs (`Get_template_metadata`, `Recheck_template_metadata`) to the destination original file, `Get_template_content`'s path to `/Technical Documentation Builder/Templates/Copilot-session-7c585847.pptx`, and the destination ETag/file-version pins. Preserve the 98,985-byte, original template/hash/classification and contract checks. Configure `Save_PowerPoint_draft`'s `folderPath` for `/Technical Documentation Builder/Generated Drafts`, saved-file/folder checks and `Return_file` output-link expression for the destination. |
+| Long rendering (`TDBPowerPoint-RenderPreparedTemplatev01`) | In `Run_renderer`, set the third Predict `organization` field to the destination Dataverse organisation URL. Retarget both metadata file IDs (`Get_template_metadata`, `Recheck_template_metadata`) to the destination original file, `Get_template_content`'s path to `/Technical Documentation Builder/Templates/Copilot-session-7c585847.pptx`, and the destination ETag/file-version pins. Preserve the 98,985-byte requirement and all original template/hash/integrity/contract checks. Configure `Save_PowerPoint_draft`'s `folderPath` for `/Technical Documentation Builder/Generated Drafts`, saved-file/folder checks and `Return_file` output-link expression for the destination. |
 
 There are **three Predict organization fields**: Word drafting, Long drafting
 and Long rendering. Do not confuse them with the Word template population
@@ -246,7 +246,7 @@ confirm that identity is the intended destination owner. Rebind drive/file/
 composite IDs and ETags/file-version pins from the actual destination resources,
 not guessed or stale source values.
 
-**Preserve all protective template/hash/classification/contract guards.** Keep
+**Preserve all template/hash/integrity/contract guards.** Keep
 their validation logic and content requirements intact. Destination location
 and version pins must describe resources that actually satisfy those requirements.
 Selecting a Word file must not erase its population mappings. Save each edited
@@ -396,11 +396,11 @@ not fix or deploy those components.
 
 `Cats-and-Dogs-Creation05-PUBLIC.pptx` and
 `Cats-and-Dogs-Revision06-PUBLIC.pptx` are actual historical generated outputs
-prepared as separate, owner-authorised Public-release copies, not starter
-templates or byte-identical benchmark originals. Native PowerPoint applied the
-available Public sensitivity policy with required downgrade justification and
-removed personal Author/LastModifiedBy metadata. The real Public label remains;
-its hash-pinned opaque policy identifiers are the only reviewed metadata exception.
+prepared as separate, owner-authorised public-release copies, not starter
+templates or byte-identical benchmark originals. They were prepared and saved in
+native PowerPoint, with personal Author/LastModifiedBy metadata removed.
+Public-sharing approval applies only to these two named release files; their exact
+bytes and reviewed package metadata remain hash-pinned.
 
 The copies retain the original generated text, notes, shape geometry, formatting,
 images and referential branding. Native saving omitted eight empty text runs on
@@ -408,8 +408,8 @@ slide 4; no content was repaired. Original hashes and all transformations are
 recorded in the release manifest. Slide 9 previews are native exports of the
 downloadable copies. Historical originals remain private and untouched.
 
-The fixed template badges are inherited design content, not live sensitivity
-controls. Editorial, factual and accessibility limitations remain; these examples
+The fixed template badges remain inherited design content.
+Editorial, factual and accessibility limitations remain; these examples
 are not veterinary/legal advice or an approved arbitrary-template renderer.
 
 ## Acceptance is more than structure
@@ -420,7 +420,7 @@ are not veterinary/legal advice or an approved arbitrary-template renderer.
 - Render every page or slide; review overflow, clipping, contrast and citations.
 - On a clearly marked QA copy, edit, save, close and reopen in native Office.
 - Keep immutable originals, failed attempts, provenance and human review decisions.
-- Confirm classification, ownership and permission before sharing anything.
+- Confirm ownership, redistribution rights and permission before sharing anything.
 
 The included synthetic context is a new public teaching fixture, not a historical
 test input. All generated drafts need human factual, editorial and governance

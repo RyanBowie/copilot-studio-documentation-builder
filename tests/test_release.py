@@ -1,5 +1,6 @@
 import importlib.util
 from html import unescape
+from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
@@ -254,14 +255,79 @@ class ReleaseTests(unittest.TestCase):
         docs = MODULE_PATH.parent.parent / "docs"
         html = (docs / "index.html").read_text(encoding="utf-8")
         body = re.search(r"<body>.*</body>", html, re.S).group()
-        self.assertEqual(release.digest(body.encode()), "68e3a10e6d47b7d2a15fc672d954d980d42268b57d7680853f0440e7e3f29f0e")
+        self.assertEqual(release.digest(body.encode()), "3a047b3fe7eeb1ded030ecb663fd2d7b716fa51164b8ab48fbe989f378b190b8")
         transcripts = {
-            "cats-and-dogs-transcript.txt": "135cd23aa6093fd8beab3a98851efc1253e374a895d7f671c0d5195fe752ed10",
-            "original-word-conversations.txt": "633d135e4e78977b5fa93c2266cd1015e7e2d003b4cce0e75b980cb74c192abb",
-            "original-powerpoint-conversations.txt": "a611980eca847fa2b40a4e270a530d3b98d70b2bfdb779229915c49ce8dde7ee",
+            "cats-and-dogs-transcript.txt": ("caa360d3af8dc9151106168311ec18cdf38d881c5d1afbf51ca98dd3c9aefb59",
+                3837, "46c34b985475171d5ee464fc0ae0eb96bead9ca43a33b3ff719caca87351aed8"),
+            "original-word-conversations.txt": ("2f44dc283a1dd81eaea5c3f832e9c85e0cdcb0b7ca0b7c8d112c261901a0bee3",
+                2766, "2ce17280cc62a5bd98a860eab2be46e96ccb43a460f0dc314e91096d6187e1a9"),
+            "original-powerpoint-conversations.txt": ("72681ed174b6c2a57d790df18ccbebc45f0900a2b83105d3591e5474832f42f7",
+                5299, "90f3b0c9695df71510c66af86839127adb983d7c664396fd8753c5299fe8392f"),
         }
-        for name, expected in transcripts.items():
-            self.assertEqual(release.digest((docs / "downloads" / name).read_text(encoding="utf-8").encode()), expected)
+        for name, (expected, prefix_bytes, prefix_hash) in transcripts.items():
+            text = (docs / "downloads" / name).read_text(encoding="utf-8")
+            self.assertEqual(release.digest(text.encode()), expected)
+            marker = "PUBLICATION BOUNDARY / NOT AN AGENT MESSAGE"
+            self.assertEqual(text.count(marker), 1)
+            prefix = text.split(marker)[0].encode()
+            self.assertEqual(len(prefix), prefix_bytes)
+            self.assertEqual(release.digest(prefix), prefix_hash)
+
+    def test_public_narrative_keeps_compatibility_without_policy_discussion(self):
+        root = MODULE_PATH.parent.parent
+        html = (root / "docs" / "index.html").read_text(encoding="utf-8")
+
+        class BodyText(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.parts = []
+
+            def handle_data(self, data):
+                self.parts.append(data)
+
+            def handle_starttag(self, tag, attrs):
+                if tag == "img":
+                    self.parts.append(dict(attrs).get("alt", ""))
+
+        page = BodyText()
+        page.feed(re.search(r"<body>.*</body>", html, re.S).group())
+        prose = [" ".join(page.parts)]
+        for name in ("README.md", "docs/downloads/reuse-guide.md",
+                     "docs/downloads/cats-and-dogs-transcript.txt",
+                     "docs/downloads/original-word-conversations.txt",
+                     "docs/downloads/original-powerpoint-conversations.txt"):
+            prose.append((root / name).read_text(encoding="utf-8"))
+
+        def descriptions(value):
+            if isinstance(value, dict):
+                for key, child in value.items():
+                    if key != "publicSensitivityLabel":
+                        yield from descriptions(child)
+            elif isinstance(value, list):
+                for child in value:
+                    yield from descriptions(child)
+            elif isinstance(value, str):
+                yield value
+
+        manifest = json.loads((root / "release-manifest.json").read_text(encoding="utf-8"))
+        prose.extend(descriptions(manifest))
+        forbidden = (r"(?i)\b(?:sensitivity|encrypt(?:ed|ion)?|revocation|downgrade|"
+                     r"re-?labell?(?:ed|ing)?|KeepIRM|GetLabel|EncryptedPackage|rights-protected)\b|"
+                     r"\b(?:label|classification)[- /]+(?:hash|metadata|record|history|policy|identifiers?)\b|"
+                     r"\b(?:General|Public)\s+(?:policy|label)\b|method=Privileged|"
+                     r"Contoso Internal|Northwind Internal|Internal/Confidential")
+        for text in prose:
+            self.assertNotRegex(text, forbidden)
+            self.assertNotRegex(text.replace("queue/topic classifications", ""), r"(?i)\bclassif\w*")
+        for text in prose[:3]:
+            self.assertIn("7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b", text)
+            self.assertIn("98,985-byte", text)
+            self.assertIn("not compatible", text)
+            self.assertIn("integrity/contract", text)
+            self.assertIn("byte-identical benchmark originals", text)
+        self.assertIn("General source landing pages", prose[0])
+        self.assertIn("inferred queue/topic classifications", prose[0])
+        self.assertIn('aria-labelledby="deployment-setup-title"', html)
 
     def test_harness_focused_titles(self):
         html = (MODULE_PATH.parent.parent / "docs" / "index.html").read_text(encoding="utf-8")
@@ -495,8 +561,8 @@ class ReleaseTests(unittest.TestCase):
                        "Technical-Design-Tables-v0.2.docx", "Copilot-session-7c585847.pptx",
                        "SharePoint is not a drop-in", "three Predict organization fields",
                        "OneDrive prerequisite", "not a separate model-driven app or custom app registration",
-                       "template read access and output write access", "without resaving or relabelling",
-                       "ETags/file-version pins", "template/hash/classification/contract guards",
+                       "template read access and output write access", "without resaving",
+                       "ETags/file-version pins", "template/hash/integrity/contract guards",
                        "zero environment variables", "legacy Word v0.1 disabled",
                        "end-user authentication", "Docs Compare - Standard", "publish both",
                        "Make agent available in Microsoft 365 Copilot", "own account first",

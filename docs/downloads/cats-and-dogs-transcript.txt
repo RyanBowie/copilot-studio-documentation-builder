@@ -59,14 +59,13 @@ This editable draft requires human review for factual accuracy, completeness and
 PUBLICATION BOUNDARY / NOT AN AGENT MESSAGE
 The responses above describe historical private delivery. The owner subsequently
 authorised public sharing of separately named copies of creation05 and revision06.
-PowerPoint's native Sensitivity picker and required downgrade-justification dialog
-applied the available Public policy to those copies. Native personal-information
-removal cleared Author and LastModifiedBy; Public was verified after save/reopen.
+The copies were prepared and saved in native PowerPoint. Native personal-information
+removal cleared Author and LastModifiedBy; the files were saved, closed and reopened.
 Original files and hashes remain unchanged and private. The public copies retain
 the actual generated content, notes, geometry, formatting and referential branding;
 native saving only omitted eight empty text runs on slide 4. No content was repaired
-or regenerated. Matching slide previews are native exports of the Public copies.
-The narrow, hash-pinned native Public label record remains; no labels were stripped
-or XML identifiers fabricated. These copies are not byte-identical benchmark originals.
+or regenerated. Matching slide previews are native exports of the public-release copies.
+Their exact bytes and reviewed package metadata remain hash-pinned. Approval covers
+only these two named files. These copies are not byte-identical benchmark originals.
 Readability, factual accuracy, legal/veterinary suitability and editability
 are separate acceptance questions; the site records their qualifications.

@@ -47,8 +47,7 @@ grounding have defects. Neither Word original is factually approved.
 
 PUBLICATION BOUNDARY / NOT AN AGENT MESSAGE
 The template, supplied PDF and both Word outputs are identified but not downloadable
-in this bounded release. Their visible sample Internal/Confidential wording and
-named sample personas require explicit public-sharing confirmation. No machine
-sensitivity label was found in these Word/PDF files; that alone is not clearance.
-No visible classification text, original file or output content has been repaired
-or relabelled. The three public starter templates are not substitutes for these inputs.
+in this bounded release. They remain private and are not approved for public
+redistribution. Metadata inspection alone does not grant permission to share a document.
+No original file or output content has been repaired or changed.
+The three public starter templates are not substitutes for these inputs.

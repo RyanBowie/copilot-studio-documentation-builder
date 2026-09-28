@@ -82,8 +82,8 @@
       "path": "docs/downloads/Cats-and-Dogs-Creation05-PUBLIC.pptx",
       "kind": "public-release-copy",
       "source": "Standard creation05 immutable delivered original",
-      "provenance": "Actual historical generated eleven-slide deck. Owner explicitly approved public sharing; a separate local copy was relabelled from General to the available Public policy through native PowerPoint with required downgrade justification.",
-      "transformation": "Native Public relabel and RemovePersonalInformation save/reopen. Author and LastModifiedBy are empty. Native save omitted eight empty text runs on slide 4; all actual text, notes, other shape XML, geometry, formatting, images and referential branding are preserved. Not the byte-identical benchmark original; no content repairs or new generation.",
+      "provenance": "Actual historical generated eleven-slide deck. Owner explicitly approved public sharing of this separate release copy, prepared and saved in native PowerPoint. Approval does not extend to withheld originals.",
+      "transformation": "Separate public-release preparation in native PowerPoint, including RemovePersonalInformation save/reopen. Author and LastModifiedBy are empty. Native save omitted eight empty text runs on slide 4; all actual text, notes, other shape XML, geometry, formatting, images and referential branding are preserved. Not the byte-identical benchmark original; no content repairs or new generation.",
       "originalSha256": "e46cca431ab64755190d5f5f4d190eb08c686e7b761f4b9b4961620f10a31423",
       "sha256": "4488e706a539695c10b7a7d113779132e13c7c7eb08b9a21cad2394836f2e5d0",
       "bytes": 89461,
@@ -110,8 +110,8 @@
       "path": "docs/downloads/Cats-and-Dogs-Revision06-PUBLIC.pptx",
       "kind": "public-release-copy",
       "source": "Standard revision06 immutable delivered original",
-      "provenance": "Actual historical same-conversation revision; only slide 9 and its notes changed from creation05. Owner-approved separate copy relabelled through native PowerPoint Public policy and its required justification dialog.",
-      "transformation": "Native Public relabel and RemovePersonalInformation save/reopen. Author and LastModifiedBy are empty. Native save omitted eight empty text runs on slide 4; all actual text, notes, other shape XML, geometry, formatting, images and referential branding are preserved. Not the byte-identical benchmark original; no content repairs or new generation.",
+      "provenance": "Actual historical same-conversation revision; only slide 9 and its notes changed from creation05. Owner-approved separate public-release copy, prepared and saved in native PowerPoint. Approval does not extend to withheld originals.",
+      "transformation": "Separate public-release preparation in native PowerPoint, including RemovePersonalInformation save/reopen. Author and LastModifiedBy are empty. Native save omitted eight empty text runs on slide 4; all actual text, notes, other shape XML, geometry, formatting, images and referential branding are preserved. Not the byte-identical benchmark original; no content repairs or new generation.",
       "originalSha256": "e13a0565143b53dcdd93918cd9305f4c898bfb78ce94d7808c900dab7435f952",
       "sha256": "120d4844228ae5d117574b88b73055a04160e9e66c5a48b9a4ce650a8886c2cf",
       "bytes": 89397,
@@ -138,7 +138,7 @@
       "path": "docs/assets/cats-and-dogs-creation05-slide-09.png",
       "kind": "public-copy-preview",
       "source": "Cats-and-Dogs-Creation05-PUBLIC.pptx / slide 9",
-      "provenance": "Native PowerPoint PNG export from the saved/reopened Public release copy; actual historical generated content, not recreated agent output.",
+      "provenance": "Native PowerPoint PNG export from the saved/reopened owner-approved public-release copy; actual historical generated content, not recreated agent output.",
       "transformation": "Slide-only raster export at 1600 by 900. No native UI, identity, cropping or content edits.",
       "sha256": "e4d9627c6a44c9a61f6b4c02934b464e49b5773ac1004f411c076649f099249f",
       "bytes": 65480,
@@ -149,7 +149,7 @@
       "path": "docs/assets/cats-and-dogs-revision06-slide-09.png",
       "kind": "public-copy-preview",
       "source": "Cats-and-Dogs-Revision06-PUBLIC.pptx / slide 9",
-      "provenance": "Native PowerPoint PNG export from the saved/reopened Public release copy. All ten other native slide renders are pixel-identical to the creation05 copy.",
+      "provenance": "Native PowerPoint PNG export from the saved/reopened owner-approved public-release copy. All ten other native slide renders are pixel-identical to the creation05 copy.",
       "transformation": "Slide-only raster export at 1600 by 900. No native UI, identity, cropping or content edits.",
       "sha256": "6623b87c20ec9214e81b5307bf0dc2aac2131018e5e05c5071910f502b689798",
       "bytes": 56131,
@@ -248,7 +248,7 @@
       "expandedBytes": 2213682,
       "memberInventorySha256": "ae41adea648593d3f9b7484fa15bea244f4760fcd18cb7fbe61d8613c468355b",
       "reviewedMetadataSha256": "27b4a4bf2e4530c89e8d84839a75f88637073bef4c7d6b51b8b006e77cb08444",
-      "reviewedMetadataScope": "Only this exact archive: ordinary native component/schema IDs and approved demo resource bindings, including three Predict organization fields and three renderer return-link expressions. File IDs, paths, ETags, size/template/classification hashes and the native platform code-interpreter signature remain unchanged. These are not credentials, access grants or runtime proof. No live connection IDs are included. No generic identifier or tenant-host exception applies to other assets or text.",
+      "reviewedMetadataScope": "Only this exact archive: ordinary native component/schema IDs and approved demo resource bindings, including three Predict organization fields and three renderer return-link expressions. File IDs, paths, ETags, size/template/integrity hashes and the native platform code-interpreter signature remain unchanged. These are not credentials, access grants or runtime proof. No live connection IDs are included. No generic identifier or tenant-host exception applies to other assets or text.",
       "components": {
         "bots": 2,
         "botComponents": 39,
@@ -265,7 +265,7 @@
         {"bytes": 3545, "sha256": "2ed2d95706e3f412229f39fe6b9d017c3e56e9c8e95942e3c9764134b1638681"}
       ],
       "privacyReview": "All 92 native parts and three decoded base64-GZIP schema-only specifications reviewed; the three trained specifications contain empty input/output schemas. No saved user/test inputs, Office binaries, unreviewed credentials, email addresses or local user paths. Parent explicitly cleared the exact retained demo metadata. Corporate identities and private receipts are not included.",
-      "dependencies": "Three declared platform dependencies on AI Model from msdyn_AISolution (202608.4.19.2). Staging for the controlled second Developer-environment attempt passed with no missing dependencies; import succeeded with warnings. Target configuration remains pending: bind target Word Online (Business) and OneDrive for Business connections and retarget source Predict organization bindings and other flow resources. No environment-variable installer. Core Word v0.2 template is already public; optional legacy Word v0.1 is different. Long requires the exact original 98,985-byte template and its original classification hash, not a differently labelled Public copy.",
+      "dependencies": "Three declared platform dependencies on AI Model from msdyn_AISolution (202608.4.19.2). Staging for the controlled second Developer-environment attempt passed with no missing dependencies; import succeeded with warnings. Target configuration remains pending: bind target Word Online (Business) and OneDrive for Business connections and retarget source Predict organization bindings and other flow resources. No environment-variable installer. Core Word v0.2 template is already public; optional legacy Word v0.1 is different. Long requires the exact original 98,985-byte template and all registered integrity/contract checks. A separately downloadable public-release copy is not compatible; leave Long disabled without compatible authorised original bytes.",
       "requiredLongTemplateSha256": "7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b",
       "targetImportStatus": "SUCCEEDED_WITH_WARNINGS",
       "targetConfigurationStatus": "PENDING",
@@ -334,7 +334,7 @@
       "sourceSha256": "6f29baee1665282b0529cf16c382e41cbaa324b9c6998742bde13054104f1868",
       "provenance": "Explicitly authorised deployment illustration showing the Word v0.2 and original Long template filenames in Templates, not the files' contents.",
       "transformation": "Lossless rectangular crop [24,44,850,347] excludes identifying Modified By and other right-hand columns. Pixels inside the crop are unchanged; PNG metadata removed. No UI recreation. Raw original remains private.",
-      "limitations": "Visible filenames only; not proof of original file bytes/classification, authenticated connections, bindings, agent publication or runtime. The original Long template remains withheld.",
+      "limitations": "Visible filenames only; not proof of original file byte integrity, authenticated connections, bindings, agent publication or runtime. The original Long template remains withheld.",
       "sha256": "0e2d4da212dfc5f57f57ffef9329678ca12a78f92c8623b1ce8467d8e75268a7",
       "bytes": 36571,
       "width": 826,
@@ -358,16 +358,16 @@
       {"view": "Opening document control", "templatePage": 1, "outputPage": 1},
       {"view": "Repeating requirements table", "templatePage": 2, "outputPage": 3}
     ],
-    "renderMethod": "Fresh native Microsoft Word 16.0.20430 ExportAsFixedFormat with KeepIRM=true on exact read-only copies; private PDFs rasterised with PyMuPDF 1.28.0. Full pages at 1600 by 2263; no native UI.",
+    "renderMethod": "Fresh native Microsoft Word 16.0.20430 ExportAsFixedFormat on exact read-only copies; private PDFs rasterised with PyMuPDF 1.28.0. Full pages at 1600 by 2263; no native UI.",
     "fidelity": "Original and copy hashes unchanged. Pre/post body, table, header/footer text and field inventory checked; only automatic PAGE/NUMPAGES results may vary. No Save, SaveAs, explicit field refresh, link update, repair or regeneration.",
     "pagination": "Fresh native template: 6 pages. Fresh native output: 10 pages, matching retained historical evidence. Logical sections, not identical page numbers, are paired.",
-    "review": "Selected visible content and full packages reviewed: synthetic project/team/records, proposed sandbox controls and draft notices. No classification, personal identity, external relationships or protected content found. No redactions applied; images retain factual and layout defects.",
+    "review": "Selected visible content and full packages reviewed: synthetic project/team/records, proposed sandbox controls and draft notices. Screenshot publication approved within the stated scope; no personal identity or external relationships found. No redactions applied; images retain factual and layout defects.",
     "limitations": "Representative pages are not full quality proof. Requirements promote proposed design to fact; other content infers queue/topic classifications and has an incomplete acceptance-test condition. Human factual, layout and editability review required. This does not clear any of the seven original-comparison binaries."
   },
   "textProvenance": {
     "cats-and-dogs-transcript.txt": "Selected actual user requests and final replies for creation05, revision05 and revision06. Private test marker, delivery URLs, filenames and request identifier visibly redacted. HTML line breaks/link markup converted to text. Internal traces and intermediate UI messages omitted. Editorial context explicitly labelled.",
     "original-word-conversations.txt": "Actual common user request and selected final-answer excerpts from the matched Standard Sonnet and existing GHCP Sonnet C03 cases. Original final-answer claims are immediately qualified by retained file reviews. No hidden reasoning or sample-persona names reproduced. Word/PDF binaries remain withheld.",
-    "original-powerpoint-conversations.txt": "Actual native comparison request, Standard Sonnet terminal error, GHCP Astra final reply, and separate engineered Standard technical case05 request/final reply. Private conversation identifier, delivery URL and generated filename explicitly redacted. HTML and zero-width display markup normalised. No traces or labelled slide-content extracts reproduced.",
+    "original-powerpoint-conversations.txt": "Actual native comparison request, Standard Sonnet terminal error, GHCP Astra final reply, and separate engineered Standard technical case05 request/final reply. Private conversation identifier, delivery URL and generated filename explicitly redacted. HTML and zero-width display markup normalised. No traces or withheld slide-content extracts reproduced.",
     "synthetic-context.txt": "Newly authored public teaching fixture. Not historical evidence or an agent output.",
     "site": "Curated observations from retained comparison results, final delivery receipts, structural/content/visual reviews and the reporting-attempt receipt. Raw evidence is not published."
   },
@@ -378,7 +378,7 @@
       "context": "Sample-PID-Northwind-FieldService.pdf",
       "cases": ["Standard Sonnet matched Word: 3 pages / 3 tables", "GHCP Sonnet C03: 13 pages / 14 tables"],
       "publicEvidence": "docs/downloads/original-word-conversations.txt",
-      "binaryAvailability": "Template, context and both outputs withheld. Visible sample Internal/Confidential wording and named sample personas await explicit public-sharing confirmation. No machine sensitivity label was found; that is not clearance.",
+      "binaryAvailability": "Template, context and both outputs remain private and are not approved for public redistribution. Metadata inspection alone does not grant permission to share a document.",
       "substitution": "The authored Technical-Design-Tables-v0.2.docx starter is not this supplied Word template."
     },
     {
@@ -387,15 +387,14 @@
       "context": "No separate factual context attachment",
       "cases": ["Standard Sonnet native attempt: no file", "GHCP GPT 6 Astra: 11 slides, 6 inherited hidden", "Engineered Standard technical case05: 11 visible slides"],
       "publicEvidence": "docs/downloads/original-powerpoint-conversations.txt",
-      "binaryAvailability": "Original template, GHCP technical output and engineered Standard technical case05 output withheld: enabled native sensitivity labels and personal metadata remain outside the two cats/dogs copies' authority.",
+      "binaryAvailability": "Original template, GHCP technical output and engineered Standard technical case05 output remain private and are not approved for public redistribution. The two cats/dogs copies' approval does not extend to these files.",
       "substitution": "Engineered Standard technical case05 is not cats-and-dogs creation05. The authored Short5 designs supplement, not replace, this original template."
     }
   ],
   "publicLabelException": {
-    "scope": "Only the two named owner-approved Public release copies and their exact native-written docMetadata/LabelInfo.xml record. No general identifier exemption.",
-    "nativePolicyTooltip": "Business data specifically prepared and approved for public consumption. Data is not encrypted, and cannot be tracked or revoked.",
-    "verification": "Public selected in the actual native policy picker after save, close and reopen; native sensitivity error zero and encryption permissions disabled. Required downgrade justification supplied truthfully. GetLabel returned IDs but no display name on this Office build; policy name verified in native UI.",
-    "remainingMetadata": "One enabled Public record contains the native policy label/site GUIDs, contentBits=0, removed=0 and method=Privileged. This method was written by the native UI, not by impersonation or fabricated API assignment. Record and canonical identifier hashes are pinned above; no previous label history or private account/connection data is approved.",
+    "scope": "Only the two named owner-approved public-release copies and their exact reviewed package metadata. No general identifier exemption.",
+    "verification": "The two release copies were saved, closed and reopened in native PowerPoint. Content, geometry and rendering checks are recorded above; this is not a new runtime or content-edit acceptance result.",
+    "remainingMetadata": "Only the exact reviewed records and identifier hashes pinned above are approved. Additional records, changed attributes or identifiers remain rejected by the release guard. No private account or connection data is approved.",
     "originals": "Historical original files and hashes remain immutable and private. Authored starter templates remain unchanged."
   },
   "withheldOriginals": [
@@ -403,13 +402,13 @@
       "case": "Standard creation05",
       "sha256": "e46cca431ab64755190d5f5f4d190eb08c686e7b761f4b9b4961620f10a31423",
       "bytes": 86155,
-      "reason": "Immutable historical original retains its General label and personal metadata. A separately named, owner-authorised native-Public release copy is included instead; original bytes remain private and unchanged."
+      "reason": "Immutable historical original remains private and is not approved for public redistribution. A separately named, owner-authorised public-release copy is included instead; original bytes remain unchanged."
     },
     {
       "case": "Standard revision06",
       "sha256": "e13a0565143b53dcdd93918cd9305f4c898bfb78ce94d7808c900dab7435f952",
       "bytes": 86093,
-      "reason": "Immutable historical original retains its General label and personal metadata. A separately named, owner-authorised native-Public release copy is included instead; original bytes remain private and unchanged."
+      "reason": "Immutable historical original remains private and is not approved for public redistribution. A separately named, owner-authorised public-release copy is included instead; original bytes remain unchanged."
     }
   ],
   "excluded": [
@@ -417,6 +416,6 @@
     "Raw native-UI screenshots, except the two explicitly authorised cropped OneDrive file-list illustrations; private comparison HTML and embedded raw evidence",
     "Raw QA JSON/CSV, API transcripts, hidden reasoning and cloud receipts",
     "Agent YAML, environment settings, connections, credentials and solution archives",
-    "Tenant-specific URLs, identifiers, local input paths and browser profiles, except the narrowly reviewed native Public label record in the two named copies"
+    "Tenant-specific URLs, identifiers, local input paths and browser profiles, except the exact reviewed package metadata in the two named public-release copies"
   ]
 }

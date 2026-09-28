@@ -72,11 +72,11 @@ It is distinct from the later pets example and the nine-file Astra cost-study ba
 
 PUBLICATION BOUNDARY / NOT AN AGENT MESSAGE
 The original Copilot session.pptx, GHCP technical output and engineered Standard
-technical case05 output retain enabled native sensitivity labels and personal
-metadata. Their binary files and slide renders are withheld pending separate
+technical case05 output remain private and are not approved for public redistribution.
+Their binary files and slide renders are withheld pending separate
 public-release authority. No new authority was obtained for this group.
 Only the two separately named cats-and-dogs creation05/revision06 copies have
-explicit native Public-reclassification approval in the current release.
+explicit owner approval for public sharing in the current release.
 These excerpts remove a private conversation identifier, delivery URL and generated
 filename. HTML link/line-break markup and zero-width display separators were
 normalised to plain text. All originals remain untouched.
