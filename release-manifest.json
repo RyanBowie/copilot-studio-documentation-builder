@@ -313,6 +313,32 @@
         "retryPerformed": false,
         "runtimeExecuted": false
       }]
+    },
+    {
+      "path": "docs/assets/deployment-onedrive-folders.png",
+      "kind": "deployment-setup-preview",
+      "source": "Owner-supplied OneDrive folder-view screenshot, 28 September 2026.",
+      "sourceSha256": "db99c936e4b02e6cfb4fdc9affe783537ca428f5543efdadceeea2591d1c6a6b",
+      "provenance": "Explicitly authorised deployment illustration showing Templates and Generated Drafts as siblings under My files > Technical Documentation Builder.",
+      "transformation": "Lossless rectangular crop [150,195,735,515] excludes account chrome and identifying columns. Pixels inside the crop are unchanged; PNG metadata removed. No UI recreation. Raw original remains private.",
+      "limitations": "Visible folder arrangement only; not proof of authenticated connections, file hashes, bindings, agent publication or runtime.",
+      "sha256": "872237872dba402f042ebb5b5b5173b75a63d0ea43c86074af8ad1b1b715b06f",
+      "bytes": 18365,
+      "width": 585,
+      "height": 320
+    },
+    {
+      "path": "docs/assets/deployment-onedrive-template-files.png",
+      "kind": "deployment-setup-preview",
+      "source": "Owner-supplied OneDrive template-file-view screenshot, 28 September 2026.",
+      "sourceSha256": "6f29baee1665282b0529cf16c382e41cbaa324b9c6998742bde13054104f1868",
+      "provenance": "Explicitly authorised deployment illustration showing the Word v0.2 and original Long template filenames in Templates, not the files' contents.",
+      "transformation": "Lossless rectangular crop [24,44,850,347] excludes identifying Modified By and other right-hand columns. Pixels inside the crop are unchanged; PNG metadata removed. No UI recreation. Raw original remains private.",
+      "limitations": "Visible filenames only; not proof of original file bytes/classification, authenticated connections, bindings, agent publication or runtime. The original Long template remains withheld.",
+      "sha256": "0e2d4da212dfc5f57f57ffef9329678ca12a78f92c8623b1ce8467d8e75268a7",
+      "bytes": 36571,
+      "width": 826,
+      "height": 303
     }
   ],
   "preparedWordPreview": {
@@ -388,7 +414,7 @@
   ],
   "excluded": [
     "Original organisational Long template and all other benchmark Office originals",
-    "Native-UI screenshots, private comparison HTML and embedded raw evidence",
+    "Raw native-UI screenshots, except the two explicitly authorised cropped OneDrive file-list illustrations; private comparison HTML and embedded raw evidence",
     "Raw QA JSON/CSV, API transcripts, hidden reasoning and cloud receipts",
     "Agent YAML, environment settings, connections, credentials and solution archives",
     "Tenant-specific URLs, identifiers, local input paths and browser profiles, except the narrowly reviewed native Public label record in the two named copies"

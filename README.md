@@ -9,7 +9,7 @@ Target configuration is pending and runtime remains unverified. This is not a
 turnkey or production-ready package.
 
 **Release state:** published at [GitHub Pages](https://ryanbowie.github.io/copilot-studio-documentation-builder/).
-The bounded release contains 28 repository files; the seven original-comparison
+The bounded release contains 30 repository files; the seven original-comparison
 binaries below remain excluded. Pages publishes only `docs` on `main`.
 
 ## What the evidence says
@@ -67,10 +67,37 @@ the state of all external resources. Intermediate import-log successes did not
 prove installed components. Two controlled import attempts in total, not blind
 retries; the first failure is not the current import status.
 
-Follow the [native import and setup guide](docs/downloads/reuse-guide.md#native-standard-solution)
-for connector binding, source-resource retargeting, template assets, prompt
-readiness and separate agent publishing. These are maker configuration steps,
-not a 12-environment-variable installer. Core Word uses the included 14,564-byte
+**Every adopter must complete the [mandatory tenant setup checklist on the site](https://ryanbowie.github.io/copilot-studio-documentation-builder/#deployment-setup).**
+The [detailed guide and flow-to-setting map](docs/downloads/reuse-guide.md#cross-tenant-deployment-setup)
+cover the same five steps: select the destination and bind all three Connected
+connections (plus the retained direct Word action); provision external templates
+and output storage; retarget the three Predict organizations and file/folder/
+version/link settings through the maker designer; activate only fully configured
+intended flows; reconfigure authentication and publish both agents, then set up
+Teams / Microsoft 365 Copilot and self-install before sharing. Sign-in/consent
+may need the deployer, and tenant app policy or admin approval may apply.
+Import copies references, not authenticated connections or publication/distribution.
+These are reusable setup instructions; our ongoing runtime proof is separate.
+**OneDrive is an adopter-owned prerequisite:** provide the destination identity
+with entitled, provisioned and accessible OneDrive for Business storage and
+authenticated connections, not a separate model-driven app or custom app
+registration. Import does not provision OneDrive or transfer connections.
+Store the templates in the destination Word/OneDrive identity's **OneDrive for
+Business > My files > Technical Documentation Builder > Templates** and create
+the sibling **Generated Drafts** output folder. Import creates neither. Use
+`Technical-Design-Tables-v0.2.docx` for core Word and, only with authorised access
+to the exact approved original, `Copilot-session-7c585847.pptx` for Long.
+Upload unchanged, without resaving or relabelling; give the identity template
+read access and output write access.
+Folder names alone do not retarget file IDs/version pins; SharePoint is not a
+drop-in for these OneDrive-wired flows.
+The [two cropped setup screenshots](https://ryanbowie.github.io/copilot-studio-documentation-builder/#deployment-storage-previews)
+show genuine folder and uploaded-filename views, with identifying columns removed.
+They do not prove file hashes, authenticated connections, bindings, publication
+or runtime; neither raw screenshot nor the original Long template is published.
+
+The archive has zero environment variables, not a 12-environment-variable
+installer. Core Word uses the included 14,564-byte
 v0.2 template; optional legacy Word needs a different 12,629-byte v0.1 template.
 Long requires the exact original 98,985-byte template with SHA-256
 `7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b`
@@ -301,11 +328,12 @@ directory, never merged into an existing artifact.
 ## Deliberately excluded
 
 Unreviewed tenant/identity metadata, live connections, access tokens, raw API logs,
-raw QA JSON/CSV, credentials, browser profiles, source-workspace paths, native-UI
+raw QA JSON/CSV, credentials, browser profiles, source-workspace paths, raw native-UI
 screenshots, classified Office originals and other solution packages remain
 excluded. The private comparison HTML is not copied or embedded.
 The exceptions are the specifically reviewed native Public records in the two
-cats/dogs copies and the approved setup metadata in the exact native solution ZIP.
-Neither grants permission to publish unrelated identities, labelled documents or
+cats/dogs copies, the approved setup metadata in the exact native solution ZIP,
+and the two authorised, identity-free OneDrive file-list crops.
+These exceptions do not grant permission to publish unrelated identities, labelled documents or
 packages. The import results above record the first failure and verified second
 success with warnings; no target runtime validation is claimed by this publication.

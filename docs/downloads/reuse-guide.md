@@ -44,9 +44,9 @@ solution or matching agent, flow, AI model or connection-reference records.
 Intermediate import-log successes did not prove installed components. These checks
 covered those record types, not all external resources. Two controlled import
 attempts in total, not blind retries; the first failure is not the current import status.
-Complete these separate steps; do not infer later steps from an import receipt.
+The reusable setup checklist below is separate from these recorded import outcomes.
 
-### 1. Native import
+### Native import boundary
 
 Use an authorised Developer environment after inspecting existing components.
 Three native missing-dependency records refer to the AI Model table from
@@ -59,69 +59,259 @@ Prefer a clean target; importing an unmanaged
 solution can update existing components, and deleting its container does not
 remove them. See [Microsoft's native import guidance](https://learn.microsoft.com/power-apps/maker/data-platform/import-update-export-solutions).
 
-### 2. Connector binding
+## Cross-tenant deployment setup
 
-Bind your own authorised target connections; none are supplied in the ZIP:
+**Required for every adopter, not just the environment in our evidence.**
+Use these five setup steps for the imported native solution. They are configuration
+instructions, not runtime tests or a request to complete our separate proof work.
+The ZIP does not provision authenticated connections, template files or output
+storage, and import is not agent publication or distribution.
+
+### Prerequisite: your own OneDrive for Business
+
+**Adopters must set up their own OneDrive arrangement.** For this solution that
+means **OneDrive for Business storage plus authenticated connector connections**,
+not a separate model-driven app or a custom app registration. The intended
+destination identity needs the appropriate OneDrive entitlement, a provisioned
+business OneDrive, and tenant policy/access that permits the intended use.
+
+Open **OneDrive** from Microsoft 365's app launcher while signed in as that
+destination identity. If its business OneDrive is missing or inaccessible, ask
+the destination tenant administrator to resolve entitlement, provisioning or
+access before proceeding. A personal/consumer OneDrive or another identity's
+drive is not a substitute for the intended business connection.
+
+**Import does not provision OneDrive, create folders, copy templates or transfer
+connections.** Manually create the folders and upload the approved exact files
+in step 2. Ensure the chosen identity has read access to templates and write
+access to the output folder. Create the Word and OneDrive connections under that
+same destination identity, bind their solution references, and reselect the
+destination file IDs/version pins; folder names alone are not configuration.
+
+### 1. Choose destination and bind connections
+
+Select the intended destination tenant and environment in the maker portal and
+Copilot Studio before changing anything. Confirm that the authorised destination
+identity can use that environment and access the intended storage. Do not reuse a
+connection merely because it belongs to the account currently signed in.
+Use the **same authorised destination identity for Word Online (Business) and
+OneDrive for Business**, so Word's `source='me'` selection and the OneDrive
+file actions refer to that identity's destination storage.
+
+Open **Connections** in the Power Apps / Power Automate maker navigation
+(under **More**, or **Data > Connections**, depending on the navigation shown).
+Create or reuse **Connected** connections for all three connectors below. Use
+**New connection**, select the connector, and complete the destination sign-in
+and consent when requested. The deployer may need to participate; import does
+not transfer consent or authenticated sessions from another tenant.
+
+In **Solutions > TechnicalDocumentationBuilderDeployed > Objects > Connection
+references**, open each imported reference, select its intended destination
+connection, and save. Wait for the connection-reference update to complete.
+Use the reference's logical name to distinguish it from similarly named entries:
 
 | Native reference | Target connector |
 | --- | --- |
 | `tdb_DraftingPrompt` | Microsoft Dataverse |
-| `tdb_OneDriveDrafts` | OneDrive for Business |
 | `tdb_WordRenderer` | Word Online (Business) |
+| `tdb_OneDriveDrafts` | OneDrive for Business |
 
-The successful import installed all three connection references. The target
-Dataverse connection was bound, but Word Online (Business) and OneDrive for
-Business remained unbound at verification. Their setup warnings are not runtime proof.
-Confirm licensing, permissions, policy and all flow and direct-Word connector
-associations without publishing connection/account IDs.
+**Import copies connection references, not live authenticated connections.**
+Every adopter must bind all three; the recorded Dataverse binding in our separate
+target is not a default for anyone else. The person enabling a flow must own or
+have authorised use of all its required connections.
 
-### 3. Source-resource retargeting
+Also open the retained **direct Word action** in the imported agent's tool/action
+configuration. Verify its destination Word connection, authentication mode and
+intended user's access. A solution flow's connection-reference binding does
+**not** automatically configure that direct action or the agent's end-user
+authentication. Follow supported prompts for consent and permissions; do not
+bypass tenant policy.
 
-This as-deployed package has **zero environment variables**. A maker must inspect
-and configure the actual flows, not supply settings to a redesigned installer.
-Retarget the three Predict organization literals (Word draft, Long draft and
-Long render) to the target Dataverse URL. Three renderers construct source
-personal SharePoint return URLs and enforce output-folder guards; retarget those
-resources together. Core Word v0.2 also uses `source='me'`, native drive/file and
-composite IDs, an ETag and its template-size check. Long has two metadata-ID/path
-checks and an ETag/size guard. Review every binding; replacing one hostname alone
-does not establish a working flow. Configure storage ownership/access/retention
-without weakening validation or granting public access to generated documents.
+Microsoft references: [manage connections](https://learn.microsoft.com/power-automate/add-manage-connections)
+and [solution connection references](https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference).
 
-### 4. Required template assets
+### 2. Provision templates and output storage
+
+Templates and storage are **external to the solution ZIP**. Sign in to the
+**destination connector identity's OneDrive for Business**, open **My files**,
+and use **New / Add new > Folder** to create **Technical Documentation Builder**.
+Open it and manually create the **Templates** and **Generated Drafts** sibling
+folders:
+
+```text
+Technical Documentation Builder
+  Templates
+    Technical-Design-Tables-v0.2.docx
+    Copilot-session-7c585847.pptx  (approved exact original Long template only)
+  Generated Drafts
+```
+
+Upload the separately downloadable Word v0.2 template to **Templates**. If you
+have authorised access to the exact approved original Long template, upload its
+unchanged bytes there as **Copilot-session-7c585847.pptx**. The optional legacy
+Word route needs its separate v0.1 template; the table below distinguishes it.
+Upload the files **without resaving or relabelling them**; confirm the destination
+copies retain the required bytes and classification metadata.
+**Solution import does not create these folders or copy/upload the templates.**
+Do this in the destination identity's OneDrive, not the source account's drive
+or an unrelated account with a similar display name.
+
+**Actual setup illustrations / 28 September 2026.** The deployer supplied these
+genuine OneDrive screenshots. Local rectangular crops exclude account chrome
+and identifying **Modified By** columns; no UI was recreated and no pixels
+inside the crops were edited. Raw screenshots remain private. Open each image
+for its full-size view.
+
+[![OneDrive My files shows Technical Documentation Builder with Generated Drafts and Templates as sibling folders.](../assets/deployment-onedrive-folders.png)](../assets/deployment-onedrive-folders.png)
+
+*Folder view: create Templates and Generated Drafts under Technical Documentation
+Builder in the destination identity's business OneDrive.*
+
+[![The Templates folder lists Technical-Design-Tables-v0.2.docx and Copilot-session-7c585847.pptx.](../assets/deployment-onedrive-template-files.png)](../assets/deployment-onedrive-template-files.png)
+
+*Template-file view: the two filenames are visible. The original Long file is
+not made downloadable by this screenshot.*
+
+**These images show folder arrangement and visible filenames only.** They do
+not establish authenticated connections, exact file bytes/hashes, resource
+bindings, agent publication or runtime. In particular, the visible PPTX filename
+does not establish that a file satisfies the original-byte/classification guards.
+
+The unchanged Long content action uses
+`/Technical Documentation Builder/Templates/Copilot-session-7c585847.pptx`.
+All three renderer output actions use
+`/Technical Documentation Builder/Generated Drafts`. These are paths within
+the connected OneDrive for Business, not a local computer folder.
+Give the chosen identity the required read/write access; set ownership and
+retention intentionally. Generated files do not need public access.
+
+**Matching folder names alone is insufficient.** In step 3, reselect Word's
+destination drive/file, both Long metadata file IDs, destination ETags/file-version
+pins and returned links while preserving the exact-byte/classification guards.
+**SharePoint is not a drop-in destination for this OneDrive-wired solution.**
+Moving to a SharePoint library requires actual flow changes; uploading the files
+there does not make these actions discover them.
 
 | Route | Actual dependency |
 | --- | --- |
 | Core prepared Word v0.2 | The separately downloadable [14,564-byte Word template](Technical-Design-Tables-v0.2.docx), SHA-256 `00486f3d164344c68f6b5a3f100c18c77e9c7c80f701cfa7e0d54ca3078c339c`. Store it in authorised target storage and configure its target IDs/ETag and mappings. |
 | Optional legacy/direct Word v0.1 | A different 12,629-byte template, not bundled. Do not substitute v0.2 or treat this retained route as new runtime proof. |
-| Long PowerPoint | The original 98,985-byte template, SHA-256 `7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b`, plus its original classification-part hash. The original remains withheld. |
+| Long PowerPoint | The exact original 11-slide, 98,985-byte template, SHA-256 `7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b`, plus its original classification metadata and classification-part hash. The original remains withheld and is not downloadable here. |
 
 **A differently labelled Public Long copy is not compatible.** Both Long
 contracts and the unchanged code interpreter require the exact original bytes
 and label hash. No drop-in Public replacement, new renderer or guard removal is
-included. Without authorised access to the exact required source asset and
-correct target bindings, Long runtime remains unresolved. Public availability
-of the native ZIP is not clearance to redistribute the original template.
+included. **Without the exact approved original Long template, leave the Long
+route disabled**; a Public Long copy is insufficient for this unchanged native
+route. Do not remove the hash/label guards or change template bytes, prompt code
+or the platform signature to make another file pass. Public availability of
+the native ZIP is not clearance to redistribute the original template.
 
-### 5. Prompt readiness
+The available Short5/Short5withImages starter templates and cats-and-dogs output
+downloads are not replacements for the original Long runtime template. The
+optional legacy Word v0.1 route likewise cannot use v0.2 as a drop-in substitute.
+
+### 3. Retarget imported flow settings and save
+
+This archive has **zero environment variables**. It has no 12-environment-variable
+installer: the settings are actual action inputs, resource selections and guard
+expressions in the imported flows.
+
+In the destination maker portal, open **Solutions >
+TechnicalDocumentationBuilderDeployed > Objects > Cloud flows**, select the
+intended flow and **Edit**. Use the supported Power Automate designer and **Save**
+path for the imported flow. Keep flows Off while configuring them. Expand their
+scopes and conditions to reach the following native action names; these names
+come from the unchanged public archive, not redesigned example flows.
+
+| Imported flow / role | Destination settings to configure |
+| --- | --- |
+| Word drafting (`TechnicalDocumentationBuilder-DraftStructuredConte...`) | In `Run_dedicated_prompt`, set the Predict `organization` field to the destination Dataverse organisation URL. Confirm the action resolves the imported drafting prompt/configuration through `tdb_DraftingPrompt`. |
+| Core Word tables v0.2 (`TechnicalDocumentationBuilder-RenderWordTablesv02`) | Point `Check_template_metadata` at the destination v0.2 file in Templates. In `Populate_Word_template`, select its destination `source`, `drive` and `file`; keep the associated composite file selection metadata consistent. Preserve the content-control/repeating-section mappings. Update destination ETag/file-version pins in `Pinned_template_unchanged` while retaining the 14,564-byte template requirement. Configure `Save_Word_draft`'s `folderPath` for `/Technical Documentation Builder/Generated Drafts`, saved-file/folder checks and output-link expressions for the destination. |
+| Optional legacy Word v0.1 (`TechnicalDocumentationBuilder-RenderWordDraftv01`) | Configure the equivalent metadata, `Populate_Word_template`, version pins, `Save_Word_draft` output folder and return-link settings against the separate 12,629-byte v0.1 template. Do not substitute v0.2. Leave this flow disabled unless it is configured and used. |
+| Long drafting (`TDBPowerPoint-DraftSlideContentv01`) | In `Run_dedicated_prompt`, set the Predict `organization` field to the destination Dataverse organisation URL. Confirm the imported Long drafting prompt/configuration and `tdb_DraftingPrompt` binding. |
+| Long rendering (`TDBPowerPoint-RenderPreparedTemplatev01`) | In `Run_renderer`, set the third Predict `organization` field to the destination Dataverse organisation URL. Retarget both metadata file IDs (`Get_template_metadata`, `Recheck_template_metadata`) to the destination original file, `Get_template_content`'s path to `/Technical Documentation Builder/Templates/Copilot-session-7c585847.pptx`, and the destination ETag/file-version pins. Preserve the 98,985-byte, original template/hash/classification and contract checks. Configure `Save_PowerPoint_draft`'s `folderPath` for `/Technical Documentation Builder/Generated Drafts`, saved-file/folder checks and `Return_file` output-link expression for the destination. |
+
+There are **three Predict organization fields**: Word drafting, Long drafting
+and Long rendering. Do not confuse them with the Word template population
+actions. All three renderers also construct source-specific output links and
+enforce output-folder checks; changing a connection reference or one hostname
+does not retarget those expressions.
+
+Choose destination resources through the designer's supported pickers, then
+inspect the saved selections, IDs, paths and associated metadata. With
+`source='me'`, the selected file belongs to the connection identity's storage;
+confirm that identity is the intended destination owner. Rebind drive/file/
+composite IDs and ETags/file-version pins from the actual destination resources,
+not guessed or stale source values.
+
+**Preserve all protective template/hash/classification/contract guards.** Keep
+their validation logic and content requirements intact. Destination location
+and version pins must describe resources that actually satisfy those requirements.
+Selecting a Word file must not erase its population mappings. Save each edited
+flow, resolve designer/checker errors, and reopen it to confirm the intended
+bindings were retained. This is configuration inspection, not a runtime execution.
+
+### 4. Check readiness and activate only intended flows
 
 The three original models and all six native configurations are included, with
 three decoded schema-only specifications and three empty trained input/output
-schemas. Verify target AI Builder/prompt availability, active configurations,
-model references, permissions and code-interpreter readiness. The unchanged
+schemas. Check target AI Builder/prompt availability, active configurations,
+model references, permissions and code-interpreter readiness. Confirm the
+required destination connections are Connected and every selected template,
+output folder, action binding and contract pin is configured; save the flows.
+The unchanged
 native platform signature is not a credential, independent signature validation
 or proof that the target can execute the renderer. Do not alter models or infer
 readiness solely from successful solution import.
 
-### 6. Activation, agent publishing and acceptance
+With the appropriate authorisation, activate **only fully configured intended
+Word/Long flows**, using the destination flow's **Turn on** control. Do not turn
+everything on immediately after import. Keep legacy Word v0.1 disabled unless
+its distinct template and bindings are configured and that route is used. Keep
+Long disabled if its original template or other required setup is unavailable.
+All five flows were Off in our verified target; that is a recorded observation,
+not an instruction to enable all five.
 
-Inspect actual target flow states and bindings after import. Activate only after
-configuration and separate authorisation, then validate agent topics/actions and
-publish the agents separately as appropriate. Record import, activation,
-publication and runtime outcomes independently. Authorised synthetic creation
-and revision tests, factual review, native rendering and edit/save/reopen are
-still required; the site's historical screenshots do not supply target evidence.
-No target execution or production-readiness claim accompanies this download.
+### 5. Configure authentication, publish both agents and distribute
+
+For **both** imported Standard agents, **Technical Documentation Builder** and
+**Docs Compare - Standard**, open the agent from the destination solution's
+**Agents** list in Copilot Studio. Reconfigure and verify end-user authentication
+and intended access in **Settings > Security > Authentication**. Check the
+intended audience and direct-action authentication as well as flow connections;
+imported authentication settings must not be assumed usable in the destination.
+
+Once their intended routes and access are configured, **publish both agents**.
+Importing a solution does not publish an agent or distribute it to users.
+For each agent, open **Channels > Teams and Microsoft 365 Copilot**. Select
+**Make agent available in Microsoft 365 Copilot** under **Turn on Microsoft 365**
+when both Teams and Microsoft 365 Copilot are intended, then **Add channel**.
+Without that selection, the channel is Teams-only.
+
+Install for your **own account first** via **See agent in Teams > Add**. When
+Microsoft 365 Copilot availability was enabled, that installation covers both
+surfaces. Then use the channel's **Availability options** and the intended
+sharing/distribution route. Tenant app policy, sharing permissions or admin
+approval may be required; a link alone does not grant access. Do not bypass
+those controls or treat a successful solution import as completed distribution.
+
+Microsoft guidance: [imported-agent authentication and publishing](https://learn.microsoft.com/microsoft-copilot-studio/authoring-solutions-import-export)
+and [Teams / Microsoft 365 Copilot setup, self-install and sharing](https://learn.microsoft.com/microsoft-copilot-studio/publication-add-bot-to-microsoft-teams).
+Guidance checked 28 September 2026.
+
+### Runtime evidence is separate, not a setup step
+
+The reusable checklist ends with configured publication/distribution. Our
+recorded state remains **imported with warnings; target configuration pending;
+runtime NOT_VERIFIED**. This documentation update does not create connections,
+enable flows, publish target agents or execute them.
+
+Runtime creation/revision evidence, native rendering, edit/save/reopen and human
+factual/editorial approval belong to separate acceptance work, not another action
+in the adopter setup checklist above. Historical source screenshots do not supply
+target-runtime proof or establish production readiness.
 
 ## Word v0.2
 

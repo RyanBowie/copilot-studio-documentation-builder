@@ -254,7 +254,7 @@ class ReleaseTests(unittest.TestCase):
         docs = MODULE_PATH.parent.parent / "docs"
         html = (docs / "index.html").read_text(encoding="utf-8")
         body = re.search(r"<body>.*</body>", html, re.S).group()
-        self.assertEqual(release.digest(body.encode()), "ea2bf4f21578f0791ab1433dfcbef480e3d4832cb2cf89b03654dba97b392020")
+        self.assertEqual(release.digest(body.encode()), "68e3a10e6d47b7d2a15fc672d954d980d42268b57d7680853f0440e7e3f29f0e")
         transcripts = {
             "cats-and-dogs-transcript.txt": "135cd23aa6093fd8beab3a98851efc1253e374a895d7f671c0d5195fe752ed10",
             "original-word-conversations.txt": "633d135e4e78977b5fa93c2266cd1015e7e2d003b4cce0e75b980cb74c192abb",
@@ -349,8 +349,8 @@ class ReleaseTests(unittest.TestCase):
                          [(1, 1), (2, 3)])
         self.assertIn("Private", evidence["historicalOutput"]["binaryAvailability"])
         self.assertFalse(any(asset["sha256"] == output_hash for asset in manifest["assets"]))
-        self.assertEqual(len(manifest["assets"]), 14)
-        self.assertEqual(len(manifest["sourceFiles"]) + len(manifest["assets"]), 28)
+        self.assertEqual(len(manifest["assets"]), 16)
+        self.assertEqual(len(manifest["sourceFiles"]) + len(manifest["assets"]), 30)
 
     def test_word_previews_are_visible_clickable_and_qualified(self):
         root = MODULE_PATH.parent.parent
@@ -472,13 +472,147 @@ class ReleaseTests(unittest.TestCase):
                 self.assertNotIn("Target import: failed", source)
                 self.assertNotIn("NOT STARTED", source)
                 self.assertNotIn("not started", source)
-        for phrase in ("### 1. Native import", "### 2. Connector binding", "### 3. Source-resource retargeting",
-                       "### 4. Required template assets", "### 5. Prompt readiness",
-                       "### 6. Activation, agent publishing and acceptance", "PublishWorkflows=false",
+        for phrase in ("### Native import boundary", "### 1. Choose destination and bind connections",
+                       "### 2. Provision templates and output storage", "### 3. Retarget imported flow settings and save",
+                       "### 4. Check readiness and activate only intended flows",
+                       "### 5. Configure authentication, publish both agents and distribute", "PublishWorkflows=false",
                        "12,629-byte", "14,564-byte", "zero environment variables",
                        "7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b"):
             self.assertIn(phrase, guide)
         self.assertNotIn("No tenant-bound topics, connections, solution ZIPs or deployable flows", html)
+
+    def test_cross_tenant_setup_is_visible_and_separate_from_runtime_evidence(self):
+        root = MODULE_PATH.parent.parent
+        html = (root / "docs" / "index.html").read_text(encoding="utf-8")
+        setup = re.search(r'<aside id="deployment-setup".*?</aside>', html, re.S).group()
+        self.assertEqual(len(re.findall(r"<li>", setup)), 5)
+        self.assertNotIn("<details", setup)
+        self.assertIn('href="#deployment-setup"', html)
+        self.assertIn('aria-labelledby="deployment-setup-title"', setup)
+        for phrase in ("Connected", "tdb_DraftingPrompt", "tdb_WordRenderer", "tdb_OneDriveDrafts",
+                       "same destination identity", "direct Word action", "My files",
+                       "Technical Documentation Builder", "Templates", "Generated Drafts",
+                       "Technical-Design-Tables-v0.2.docx", "Copilot-session-7c585847.pptx",
+                       "SharePoint is not a drop-in", "three Predict organization fields",
+                       "OneDrive prerequisite", "not a separate model-driven app or custom app registration",
+                       "template read access and output write access", "without resaving or relabelling",
+                       "ETags/file-version pins", "template/hash/classification/contract guards",
+                       "zero environment variables", "legacy Word v0.1 disabled",
+                       "end-user authentication", "Docs Compare - Standard", "publish both",
+                       "Make agent available in Microsoft 365 Copilot", "own account first",
+                       "admin approval", "NOT_VERIFIED", "Evidence remains separate"):
+            self.assertIn(phrase, setup)
+        self.assertIn("#deployment-setup", (root / "README.md").read_text(encoding="utf-8"))
+        guide = (root / "docs" / "downloads" / "reuse-guide.md").read_text(encoding="utf-8")
+        steps = guide.split("## Cross-tenant deployment setup", 1)[1].split(
+            "### Runtime evidence is separate, not a setup step", 1)[0]
+        self.assertEqual(re.findall(r"^### (\d)\.", steps, re.M), ["1", "2", "3", "4", "5"])
+        for phrase in ("Import copies connection references, not live authenticated connections",
+                       "### Prerequisite: your own OneDrive for Business",
+                       "Adopters must set up their own OneDrive arrangement",
+                       "not a separate model-driven app or a custom app registration",
+                       "Import does not provision OneDrive, create folders, copy templates or transfer",
+                       "Every adopter must bind all three", "direct Word action",
+                       "does\n**not** automatically configure", "Create or reuse **Connected**",
+                       "Solution import does not create these folders or copy/upload the templates",
+                       "Matching folder names alone is insufficient",
+                       "SharePoint is not a drop-in", "Save", "zero environment variables",
+                       "leave the Long\nroute disabled", "Keep legacy Word v0.1 disabled",
+                       "Settings > Security > Authentication", "publish both agents",
+                       "Channels > Teams and Microsoft 365 Copilot", "See agent in Teams > Add",
+                       "Make agent available in Microsoft 365 Copilot",
+                       "authoring-solutions-import-export", "publication-add-bot-to-microsoft-teams"):
+            self.assertIn(phrase, steps)
+        self.assertNotIn("creation/revision", steps)
+
+    def test_deployment_screenshots_are_pinned_visible_and_qualified(self):
+        root = MODULE_PATH.parent.parent
+        manifest = json.loads((root / "release-manifest.json").read_text(encoding="utf-8"))
+        crops = [a for a in manifest["assets"] if a["kind"] == "deployment-setup-preview"]
+        expected = {
+            "deployment-onedrive-folders.png":
+                ("872237872dba402f042ebb5b5b5173b75a63d0ea43c86074af8ad1b1b715b06f", 585, 320),
+            "deployment-onedrive-template-files.png":
+                ("0e2d4da212dfc5f57f57ffef9329678ca12a78f92c8623b1ce8467d8e75268a7", 826, 303),
+        }
+        self.assertEqual({Path(a["path"]).name for a in crops}, set(expected))
+        for asset in crops:
+            self.assertEqual((asset["sha256"], asset["width"], asset["height"]),
+                             expected[Path(asset["path"]).name])
+            raw = (root / asset["path"]).read_bytes()
+            self.assertEqual(release.digest(raw), asset["sha256"])
+            release.check_png(raw, asset["path"], asset)
+            self.assertIn("Pixels inside the crop are unchanged", asset["transformation"])
+            self.assertIn("Raw original remains private", asset["transformation"])
+        html = (root / "docs" / "index.html").read_text(encoding="utf-8")
+        preview = re.search(r'<aside id="deployment-storage-previews".*?</aside>', html, re.S).group()
+        self.assertNotIn("<details", preview)
+        self.assertEqual(preview.count("<figure>"), 2)
+        images = re.findall(r'<a href="([^"]+)"><img [^>]*src="([^"]+)"[^>]*></a>', preview)
+        self.assertEqual(len(images), 2)
+        guide = (root / "docs" / "downloads" / "reuse-guide.md").read_text(encoding="utf-8")
+        for full_size, image in images:
+            self.assertEqual(full_size, image)
+            self.assertIn(Path(image).name, expected)
+            self.assertIn("../" + image, guide)
+        for phrase in ("Modified By", "no UI was recreated", "Raw screenshots remain private",
+                       "authenticated connections", "exact file bytes/hashes", "bindings",
+                       "agent publication or runtime"):
+            self.assertIn(phrase, preview)
+            self.assertIn(phrase, guide)
+        self.assertIn("NOT_VERIFIED", preview)
+
+    def test_deployment_flow_map_and_storage_match_unchanged_native_archive(self):
+        root = MODULE_PATH.parent.parent
+        guide = (root / "docs" / "downloads" / "reuse-guide.md").read_text(encoding="utf-8")
+        native, _ = self.native_solution()
+        expected = {
+            "DraftStructuredConte": ("Run_dedicated_prompt",),
+            "RenderWordTablesv02": ("Check_template_metadata", "Populate_Word_template", "Save_Word_draft"),
+            "RenderWordDraftv01": ("Check_template_metadata", "Populate_Word_template", "Save_Word_draft"),
+            "DraftSlideContentv01": ("Run_dedicated_prompt",),
+            "RenderPreparedTemplatev01": ("Run_renderer", "Get_template_metadata",
+                                          "Recheck_template_metadata", "Get_template_content",
+                                          "Save_PowerPoint_draft", "Return_file"),
+        }
+
+        def flatten(actions):
+            result = dict(actions)
+            for value in actions.values():
+                result.update(flatten(value.get("actions", {})))
+                result.update(flatten(value.get("else", {}).get("actions", {})))
+            return result
+
+        predict_fields = 0
+        output_actions = 0
+        with zipfile.ZipFile(native) as archive:
+            for flow, action_names in expected.items():
+                paths = [p for p in archive.namelist() if p.startswith("Workflows/") and flow in p]
+                self.assertEqual(len(paths), 1)
+                definition = json.loads(archive.read(paths[0]))["properties"]["definition"]
+                actions = flatten(definition["actions"])
+                self.assertIn(flow, guide)
+                for action in action_names:
+                    self.assertIn(action, actions)
+                    self.assertIn(f"`{action}`", guide)
+                for action in actions.values():
+                    inputs = action.get("inputs", {})
+                    if not isinstance(inputs, dict):
+                        continue
+                    parameters = inputs.get("parameters", {})
+                    predict_fields += "organization" in parameters
+                    if inputs.get("host", {}).get("operationId") == "CreateFile":
+                        self.assertEqual(parameters["folderPath"], "/Technical Documentation Builder/Generated Drafts")
+                        self.assertIn(parameters["folderPath"], guide)
+                        output_actions += 1
+                if "Populate_Word_template" in actions:
+                    self.assertEqual(actions["Populate_Word_template"]["inputs"]["parameters"]["source"], "me")
+                if "Get_template_content" in actions:
+                    path = actions["Get_template_content"]["inputs"]["parameters"]["path"]
+                    self.assertEqual(path, "/Technical Documentation Builder/Templates/Copilot-session-7c585847.pptx")
+                    self.assertIn(path, guide)
+        self.assertEqual(predict_fields, 3)
+        self.assertEqual(output_actions, 3)
 
 
 if __name__ == "__main__":
