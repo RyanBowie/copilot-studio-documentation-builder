@@ -265,11 +265,40 @@
         {"bytes": 3545, "sha256": "2ed2d95706e3f412229f39fe6b9d017c3e56e9c8e95942e3c9764134b1638681"}
       ],
       "privacyReview": "All 92 native parts and three decoded base64-GZIP schema-only specifications reviewed; the three trained specifications contain empty input/output schemas. No saved user/test inputs, Office binaries, unreviewed credentials, email addresses or local user paths. Parent explicitly cleared the exact retained demo metadata. Corporate identities and private receipts are not included.",
-      "dependencies": "Three declared platform dependencies on AI Model from msdyn_AISolution (202608.4.19.2). One separate Developer-environment staging check reported no missing dependencies or validation errors, but import subsequently failed. Bind target Dataverse, OneDrive for Business and Word Online (Business) connections; retarget source literals in maker flow configuration. No environment-variable installer. Core Word v0.2 template is already public; optional legacy Word v0.1 is different. Long requires the exact original 98,985-byte template and its original classification hash, not a differently labelled Public copy.",
+      "dependencies": "Three declared platform dependencies on AI Model from msdyn_AISolution (202608.4.19.2). Staging for the controlled second Developer-environment attempt passed with no missing dependencies; import succeeded with warnings. Target configuration remains pending: bind target Word Online (Business) and OneDrive for Business connections and retarget source Predict organization bindings and other flow resources. No environment-variable installer. Core Word v0.2 template is already public; optional legacy Word v0.1 is different. Long requires the exact original 98,985-byte template and its original classification hash, not a differently labelled Public copy.",
       "requiredLongTemplateSha256": "7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b",
-      "targetImportStatus": "FAILED",
+      "targetImportStatus": "SUCCEEDED_WITH_WARNINGS",
+      "targetConfigurationStatus": "PENDING",
       "targetRuntimeStatus": "NOT_VERIFIED",
       "targetImportObservation": {
+        "date": "2026-09-28",
+        "completedAtUtc": "2026-09-28T12:38Z",
+        "environment": "Separate Developer environment",
+        "attempts": 2,
+        "stagingStatus": "PASSED",
+        "missingDependencies": 0,
+        "summary": "Imported with warnings; target configuration pending; runtime not verified. A controlled second attempt used a fresh download of the same byte-identical public ZIP. Native membership and schema checks verified the unmanaged v1.0.0.0 solution and expected inventory. All five flows were Off at verification; all three saved prompt payloads matched the source/public export.",
+        "installedCounts": {
+          "bots": 2,
+          "botComponents": 39,
+          "flows": 5,
+          "models": 3,
+          "configurations": 6,
+          "connectionReferences": 3,
+          "flowAssociations": 9,
+          "directConnectorAssociations": 1,
+          "solutionMembership": 62
+        },
+        "verificationBasis": "Solution membership and schemas; agent IDs were regenerated in the target. Inventory categories, native membership entries and import-log results are separate measures, not additive component counts.",
+        "allFlowsInactive": true,
+        "savedPromptPayloadsMatchExport": 3,
+        "importLogCounts": {"success": 18, "warning": 5, "failure": 0},
+        "warnings": "Source Predict organization bindings and missing target Word Online (Business) / OneDrive for Business connections require target configuration.",
+        "blindRetries": false,
+        "runtimeVerified": false
+      },
+      "targetImportHistory": [{
+        "status": "FAILED",
         "date": "2026-09-28",
         "environment": "Separate Developer environment",
         "attempts": 1,
@@ -283,7 +312,7 @@
         "overwriteUnmanagedCustomizations": false,
         "retryPerformed": false,
         "runtimeExecuted": false
-      }
+      }]
     }
   ],
   "preparedWordPreview": {

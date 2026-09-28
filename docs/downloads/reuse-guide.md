@@ -1,10 +1,10 @@
 # Reusing the public templates
 
 The three starter templates are authored inputs, not completed agent outputs.
-A separate unchanged native Standard solution export is now included, without
-live connections or proof of successful target import/runtime. One separate
-Developer-environment import attempt failed. Start with your own authorised
-Copilot Studio environment.
+A separate unchanged native Standard solution export is now included without
+live connections. A controlled second Developer-environment import succeeded with
+warnings; target configuration is pending and runtime remains unverified.
+Start with your own authorised Copilot Studio environment.
 
 ## Native Standard solution
 
@@ -21,17 +21,29 @@ The flow set is Word draft, core Word v0.2 render, legacy Word v0.1 render,
 Long draft and Long render. No Short/image extension flows, Office template
 binaries, saved test/user inputs or environment-variable installer are bundled.
 
-**Target import: FAILED. No solution installed. Target runtime: NOT VERIFIED.**
-One separate Developer-environment import attempt used the exact public ZIP on
-28 September 2026. Staging passed with no missing dependencies or validation errors.
-Import failed in the Microsoft agent-to-flow association service with
-`BadGatewayConnection`. Post-failure Dataverse checks found no installed solution
-or matching agent, flow, AI model or connection-reference records. Intermediate
-import-log successes do not prove installed components. These checks cover those
-record types, not all external resources. The import was submitted once; no retry
-or target runtime execution followed.
-Source-runtime history and structural closure are not proof of a successful
-target deployment.
+**Imported with warnings; target configuration pending; runtime not verified.**
+A controlled second import attempt in a separate Developer environment succeeded
+on 28 September 2026 at 12:38 UTC, using a fresh download of the same byte-identical
+public ZIP. Staging passed with no missing dependencies. Native membership and
+schema checks verified the unmanaged v1.0.0.0 solution and expected inventory,
+with 62 solution-membership entries. Agent IDs were regenerated on import, so
+verification used solution membership and schemas rather than old source IDs.
+All five flows were Off at verification; all three saved prompt payloads matched
+the source/public export.
+
+The successful import log recorded 18 success, 5 warning and 0 failure results.
+These are log results, not component counts. Warnings concern source Predict
+organization bindings and missing target Word Online (Business) / OneDrive for
+Business connections. Target configuration is ongoing; import does not establish
+prompt readiness, agent publishing or working runtime.
+
+**First attempt / historical failure:** Staging passed with no missing dependencies
+or validation errors, but import failed in the Microsoft agent-to-flow association
+service with `BadGatewayConnection`. Checks after that attempt found no installed
+solution or matching agent, flow, AI model or connection-reference records.
+Intermediate import-log successes did not prove installed components. These checks
+covered those record types, not all external resources. Two controlled import
+attempts in total, not blind retries; the first failure is not the current import status.
 Complete these separate steps; do not infer later steps from an import receipt.
 
 ### 1. Native import
@@ -40,7 +52,7 @@ Use an authorised Developer environment after inspecting existing components.
 Three native missing-dependency records refer to the AI Model table from
 `msdyn_AISolution (202608.4.19.2)`; check target platform compatibility and retain
 any native import warnings/errors. Do not suppress missing dependencies.
-The failed attempt used `PublishWorkflows=false` and
+The first failed attempt used `PublishWorkflows=false` and
 `OverwriteUnmanagedCustomizations=false`. These flags are not a guarantee that
 existing flows are disabled or existing unmanaged components cannot change.
 Prefer a clean target; importing an unmanaged
@@ -57,9 +69,9 @@ Bind your own authorised target connections; none are supplied in the ZIP:
 | `tdb_OneDriveDrafts` | OneDrive for Business |
 | `tdb_WordRenderer` | Word Online (Business) |
 
-The failed import request supplied a target-owned Dataverse connection; Word
-Online (Business) and OneDrive for Business remained unbound. No native connection
-references remained installed after the failed import. This is not runtime proof.
+The successful import installed all three connection references. The target
+Dataverse connection was bound, but Word Online (Business) and OneDrive for
+Business remained unbound at verification. Their setup warnings are not runtime proof.
 Confirm licensing, permissions, policy and all flow and direct-Word connector
 associations without publishing connection/account IDs.
 
