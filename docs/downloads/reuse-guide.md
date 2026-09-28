@@ -2,7 +2,8 @@
 
 The three starter templates are authored inputs, not completed agent outputs.
 A separate unchanged native Standard solution export is now included, without
-live connections or proof of target import/runtime. Start with your own authorised
+live connections or proof of successful target import/runtime. One separate
+Developer-environment import attempt failed. Start with your own authorised
 Copilot Studio environment.
 
 ## Native Standard solution
@@ -20,8 +21,17 @@ The flow set is Word draft, core Word v0.2 render, legacy Word v0.1 render,
 Long draft and Long render. No Short/image extension flows, Office template
 binaries, saved test/user inputs or environment-variable installer are bundled.
 
-**Target import: NOT STARTED. Target runtime: NOT VERIFIED.** Source-runtime
-history and structural closure are not proof of a successful target deployment.
+**Target import: FAILED. No solution installed. Target runtime: NOT VERIFIED.**
+One separate Developer-environment import attempt used the exact public ZIP on
+28 September 2026. Staging passed with no missing dependencies or validation errors.
+Import failed in the Microsoft agent-to-flow association service with
+`BadGatewayConnection`. Post-failure Dataverse checks found no installed solution
+or matching agent, flow, AI model or connection-reference records. Intermediate
+import-log successes do not prove installed components. These checks cover those
+record types, not all external resources. The import was submitted once; no retry
+or target runtime execution followed.
+Source-runtime history and structural closure are not proof of a successful
+target deployment.
 Complete these separate steps; do not infer later steps from an import receipt.
 
 ### 1. Native import
@@ -30,9 +40,10 @@ Use an authorised Developer environment after inspecting existing components.
 Three native missing-dependency records refer to the AI Model table from
 `msdyn_AISolution (202608.4.19.2)`; check target platform compatibility and retain
 any native import warnings/errors. Do not suppress missing dependencies.
-The planned import uses `PublishWorkflows=false` and no unmanaged overwrite
-request. This is not a guarantee that existing flows are disabled or existing
-unmanaged components cannot change. Prefer a clean target; importing an unmanaged
+The failed attempt used `PublishWorkflows=false` and
+`OverwriteUnmanagedCustomizations=false`. These flags are not a guarantee that
+existing flows are disabled or existing unmanaged components cannot change.
+Prefer a clean target; importing an unmanaged
 solution can update existing components, and deleting its container does not
 remove them. See [Microsoft's native import guidance](https://learn.microsoft.com/power-apps/maker/data-platform/import-update-export-solutions).
 
@@ -46,10 +57,11 @@ Bind your own authorised target connections; none are supplied in the ZIP:
 | `tdb_OneDriveDrafts` | OneDrive for Business |
 | `tdb_WordRenderer` | Word Online (Business) |
 
-The initial target preflight found a connected Dataverse connection but no Word
-Online (Business) or OneDrive for Business connections. That is a setup finding,
-not binding or runtime proof. Confirm licensing, permissions, policy and all flow
-and direct-Word connector associations without publishing connection/account IDs.
+The failed import request supplied a target-owned Dataverse connection; Word
+Online (Business) and OneDrive for Business remained unbound. No native connection
+references remained installed after the failed import. This is not runtime proof.
+Confirm licensing, permissions, policy and all flow and direct-Word connector
+associations without publishing connection/account IDs.
 
 ### 3. Source-resource retargeting
 

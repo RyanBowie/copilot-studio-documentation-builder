@@ -254,7 +254,7 @@ class ReleaseTests(unittest.TestCase):
         docs = MODULE_PATH.parent.parent / "docs"
         html = (docs / "index.html").read_text(encoding="utf-8")
         body = re.search(r"<body>.*</body>", html, re.S).group()
-        self.assertEqual(release.digest(body.encode()), "a6e66aafd60f107e669a0beca68c48ee0a18f2ddec5dbcbc88a709b0a5135914")
+        self.assertEqual(release.digest(body.encode()), "d21141eed5a42a9aeb47bd36a72d061b55bb638d5abeb79d9362445a2e6aa027")
         transcripts = {
             "cats-and-dogs-transcript.txt": "135cd23aa6093fd8beab3a98851efc1253e374a895d7f671c0d5195fe752ed10",
             "original-word-conversations.txt": "633d135e4e78977b5fa93c2266cd1015e7e2d003b4cce0e75b980cb74c192abb",
@@ -318,7 +318,7 @@ class ReleaseTests(unittest.TestCase):
         for retained in ("all nine ran after the stop", "Not compliant sequential metering",
                          "32 instructional paragraphs remain", "five template instructions remain",
                          "nesting depth 9 exceeds", "Human review is part of the workflow.",
-                         "Target import: not started. Target runtime: not verified."):
+                         "Target import: failed. No solution installed. Target runtime: not verified."):
             self.assertIn(retained, html)
         self.assertIn("deployment, costs and document generation", html)
 
@@ -392,8 +392,18 @@ class ReleaseTests(unittest.TestCase):
         self.assertEqual(spec["components"], {"bots": 2, "botComponents": 39, "flows": 5,
                          "models": 3, "configurations": 6, "connectionReferences": 3, "environmentVariables": 0})
         self.assertEqual([item["bytes"] for item in spec["decodedSpecifications"]], [793, 1660, 3545])
-        self.assertEqual(spec["targetImportStatus"], "NOT_STARTED")
+        self.assertEqual(spec["targetImportStatus"], "FAILED")
         self.assertEqual(spec["targetRuntimeStatus"], "NOT_VERIFIED")
+        observation = spec["targetImportObservation"]
+        self.assertEqual(observation["attempts"], 1)
+        self.assertEqual(observation["stagingStatus"], "PASSED")
+        self.assertEqual(observation["missingDependencies"], 0)
+        self.assertEqual(observation["validationResults"], 0)
+        self.assertEqual(observation["errorCode"], "BadGatewayConnection")
+        self.assertIn("no installed solution", observation["summary"])
+        self.assertIn("not all external resources", observation["readbackScope"])
+        for flag in ("publishWorkflows", "overwriteUnmanagedCustomizations", "retryPerformed", "runtimeExecuted"):
+            self.assertIs(observation[flag], False)
 
     def test_native_solution_exception_is_not_a_generic_zip_allowance(self):
         path, spec = self.native_solution()
@@ -426,10 +436,22 @@ class ReleaseTests(unittest.TestCase):
         card = re.search(r'<article id="native-solution".*?</article>', html, re.S).group()
         self.assertIn(f'href="{release.NATIVE_SOLUTION_PATH.removeprefix("docs/")}" download', card)
         self.assertEqual(len(re.findall(r"<a\b[^>]*\bdownload(?:\s|>)", html)), 10)
-        for phrase in ("Target import: not started", "Target runtime: not verified",
+        for phrase in ("Target import: failed", "No solution installed", "Target runtime: not verified",
                        "98,985-byte template", "not compatible", "No environment variables"):
             self.assertIn(phrase, card)
         guide = (root / "docs" / "downloads" / "reuse-guide.md").read_text(encoding="utf-8")
+        readme = (root / "README.md").read_text(encoding="utf-8")
+        for source in (card, guide, readme):
+            with self.subTest(source=source[:40]):
+                self.assertIn("one separate developer-environment import attempt", source.lower())
+                self.assertIn("staging passed with no missing dependencies or validation errors", source.lower())
+                self.assertIn("BadGatewayConnection", source)
+                self.assertIn("agent-to-flow association service", source)
+                self.assertIn("import-log successes do not prove installed components", source)
+                self.assertIn("Post-failure Dataverse checks found no installed solution", source)
+                self.assertNotIn("rolled back", source)
+                self.assertNotIn("NOT STARTED", source)
+                self.assertNotIn("not started", source)
         for phrase in ("### 1. Native import", "### 2. Connector binding", "### 3. Source-resource retargeting",
                        "### 4. Required template assets", "### 5. Prompt readiness",
                        "### 6. Activation, agent publishing and acceptance", "PublishWorkflows=false",

@@ -3,8 +3,9 @@
 A curated technical reference for template-aligned Word and PowerPoint drafting.
 The static site records working Standard-harness routes, unfinished extensions,
 qualified GitHub Copilot harness comparisons, and reusable authored templates.
-It also includes an unchanged native Standard solution export. Target import
-and runtime are not yet proved; this is not a turnkey or production-ready package.
+It also includes an unchanged native Standard solution export. One separate
+Developer-environment import attempt failed; target runtime remains unverified.
+This is not a turnkey or production-ready package.
 
 **Release state:** published at [GitHub Pages](https://ryanbowie.github.io/copilot-studio-documentation-builder/).
 The bounded release contains 28 repository files; the seven original-comparison
@@ -43,11 +44,18 @@ There are **no environment variables or live connection IDs**. The five flows
 cover Word drafting, core Word rendering, optional legacy Word rendering, Long
 drafting and Long rendering; unrelated Short/image flows are not in this ZIP.
 
-**Target import: NOT STARTED. Target runtime: NOT VERIFIED.** Historical source
-results are not target-deployment evidence. The planned native import uses
-`PublishWorkflows=false` and does not request unmanaged overwrite; these choices
-are not proof of inactive flows or protection against all unmanaged component
-updates. Inspect the target and its dependencies first.
+**Target import: FAILED. No solution installed. Target runtime: NOT VERIFIED.**
+One separate Developer-environment import attempt used the exact public ZIP on
+28 September 2026. Staging passed with no missing dependencies or validation errors.
+Import failed in the Microsoft agent-to-flow association service with
+`BadGatewayConnection`. Post-failure Dataverse checks found no installed solution
+or matching agent, flow, AI model or connection-reference records. Intermediate
+import-log successes do not prove installed components.
+
+The import was submitted once with `PublishWorkflows=false` and
+`OverwriteUnmanagedCustomizations=false`; no retry or target runtime execution
+followed. These flags do not guarantee protection against all existing unmanaged
+component updates. Historical source results remain separate from target evidence.
 
 Follow the [native import and setup guide](docs/downloads/reuse-guide.md#native-standard-solution)
 for connector binding, source-resource retargeting, template assets, prompt
@@ -190,7 +198,7 @@ value and image hash are allowlisted, not a general permission for PNG metadata.
 - [`release-manifest.json`](release-manifest.json) is the explicit repository/site
   allowlist, asset provenance and SHA-256 integrity record.
 - One exact native unmanaged Standard solution ZIP is included with the
-  inventory, setup requirements and pending target status above.
+  inventory, setup requirements and failed target-import status above.
 - Three unchanged authored Office templates are included: Word v0.2, Short5 and
   Short5withImages. They are **inputs**, not completed outputs. The Word template
   includes 47 content-control elements and six tables. No editing lock,
@@ -211,7 +219,7 @@ value and image hash are allowlisted, not a general permission for PNG metadata.
 
 Bind and verify the exported prompts, topics and flows in your own environment;
 configure connections, source-resource settings, access and retention.
-There is no automated installer or tested cross-tenant import. Human factual,
+There is no automated installer or successful cross-tenant import proof. Human factual,
 editorial, visual, editability and governance review remains required.
 Public availability does not grant rights to Microsoft's trademarks or to any
 excluded third-party or organisational template.
@@ -289,5 +297,5 @@ excluded. The private comparison HTML is not copied or embedded.
 The exceptions are the specifically reviewed native Public records in the two
 cats/dogs copies and the approved setup metadata in the exact native solution ZIP.
 Neither grants permission to publish unrelated identities, labelled documents or
-packages. No new inference, target deployment or runtime validation is part of
-this publication; target results will be recorded only after native proof.
+packages. The failed import result above records a separate target attempt;
+no new inference or target runtime validation is part of this publication.

@@ -265,10 +265,25 @@
         {"bytes": 3545, "sha256": "2ed2d95706e3f412229f39fe6b9d017c3e56e9c8e95942e3c9764134b1638681"}
       ],
       "privacyReview": "All 92 native parts and three decoded base64-GZIP schema-only specifications reviewed; the three trained specifications contain empty input/output schemas. No saved user/test inputs, Office binaries, unreviewed credentials, email addresses or local user paths. Parent explicitly cleared the exact retained demo metadata. Corporate identities and private receipts are not included.",
-      "dependencies": "Three declared platform dependencies on AI Model from msdyn_AISolution (202608.4.19.2); target compatibility unresolved. Bind target Dataverse, OneDrive for Business and Word Online (Business) connections; retarget source literals in maker flow configuration. No environment-variable installer. Core Word v0.2 template is already public; optional legacy Word v0.1 is different. Long requires the exact original 98,985-byte template and its original classification hash, not a differently labelled Public copy.",
+      "dependencies": "Three declared platform dependencies on AI Model from msdyn_AISolution (202608.4.19.2). One separate Developer-environment staging check reported no missing dependencies or validation errors, but import subsequently failed. Bind target Dataverse, OneDrive for Business and Word Online (Business) connections; retarget source literals in maker flow configuration. No environment-variable installer. Core Word v0.2 template is already public; optional legacy Word v0.1 is different. Long requires the exact original 98,985-byte template and its original classification hash, not a differently labelled Public copy.",
       "requiredLongTemplateSha256": "7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b",
-      "targetImportStatus": "NOT_STARTED",
-      "targetRuntimeStatus": "NOT_VERIFIED"
+      "targetImportStatus": "FAILED",
+      "targetRuntimeStatus": "NOT_VERIFIED",
+      "targetImportObservation": {
+        "date": "2026-09-28",
+        "environment": "Separate Developer environment",
+        "attempts": 1,
+        "stagingStatus": "PASSED",
+        "missingDependencies": 0,
+        "validationResults": 0,
+        "errorCode": "BadGatewayConnection",
+        "summary": "One separate Developer-environment import attempt used the exact public ZIP. Staging passed with no missing dependencies or validation errors. Import failed in the Microsoft agent-to-flow association service with BadGatewayConnection. Post-failure Dataverse checks found no installed solution or matching agent, flow, AI model or connection-reference records. Runtime remains unverified.",
+        "readbackScope": "The checks cover those Dataverse record types, not all external resources. Intermediate import-log successes do not prove installed components.",
+        "publishWorkflows": false,
+        "overwriteUnmanagedCustomizations": false,
+        "retryPerformed": false,
+        "runtimeExecuted": false
+      }
     }
   ],
   "preparedWordPreview": {
