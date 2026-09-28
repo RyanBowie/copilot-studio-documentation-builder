@@ -3,10 +3,11 @@
 A curated technical reference for template-aligned Word and PowerPoint drafting.
 The static site records working Standard-harness routes, unfinished extensions,
 qualified GitHub Copilot harness comparisons, and reusable authored templates.
-It does **not** contain an importable agent or claim production readiness.
+It also includes an unchanged native Standard solution export. Target import
+and runtime are not yet proved; this is not a turnkey or production-ready package.
 
 **Release state:** published at [GitHub Pages](https://ryanbowie.github.io/copilot-studio-documentation-builder/).
-The bounded release contains 27 repository files; the seven original-comparison
+The bounded release contains 28 repository files; the seven original-comparison
 binaries below remain excluded. Pages publishes only `docs` on `main`.
 
 ## What the evidence says
@@ -24,6 +25,47 @@ arbitrary-template-dynamic**. New designs need mappings, limits, bindings and QA
 Observed GHCP cases handled ad-hoc attachments more flexibly, but exact template
 fidelity and content completion are not assured. This is not a controlled
 harness-only/model comparison. Costs have not been established; no savings claim.
+
+## Native Standard solution export
+
+[Download the native unmanaged ZIP](https://ryanbowie.github.io/copilot-studio-documentation-builder/downloads/TechnicalDocumentationBuilderDeployed_unmanaged_20260928T105706Z.zip)
+or [inspect the download and caveats](https://ryanbowie.github.io/copilot-studio-documentation-builder/#native-solution).
+`TechnicalDocumentationBuilderDeployed` v1.0.0.0 is a native export-only wrapper
+referencing the unchanged deployed Standard Word and Long PowerPoint components.
+It is not the redesigned portable renderer or an installer.
+
+**185,544 bytes; SHA-256
+`1ed91d72266aab9fecf5639b8a1adc47e1d153574f99574779301b44e3c0442b`.**
+Export completed 28 September 2026 at 10:57:37 UTC. Included: 2 agents,
+39 agent components, 5 flows, 3 models / 6 configurations, 3 connector-only
+connection references, 9 flow associations and 1 direct Word connector association.
+There are **no environment variables or live connection IDs**. The five flows
+cover Word drafting, core Word rendering, optional legacy Word rendering, Long
+drafting and Long rendering; unrelated Short/image flows are not in this ZIP.
+
+**Target import: NOT STARTED. Target runtime: NOT VERIFIED.** Historical source
+results are not target-deployment evidence. The planned native import uses
+`PublishWorkflows=false` and does not request unmanaged overwrite; these choices
+are not proof of inactive flows or protection against all unmanaged component
+updates. Inspect the target and its dependencies first.
+
+Follow the [native import and setup guide](docs/downloads/reuse-guide.md#native-standard-solution)
+for connector binding, source-resource retargeting, template assets, prompt
+readiness and separate agent publishing. These are maker configuration steps,
+not a 12-environment-variable installer. Core Word uses the included 14,564-byte
+v0.2 template; optional legacy Word needs a different 12,629-byte v0.1 template.
+Long requires the exact original 98,985-byte template with SHA-256
+`7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b`
+and its original classification hash. That original is **not included**.
+A differently labelled Public copy is **not compatible** with the unchanged
+contracts/code interpreter. No template guards were removed.
+
+All 92 native parts and three decoded schema-only model specifications were
+reviewed. The archive is unchanged: explicitly approved demo resource bindings,
+component IDs and the native code-interpreter platform signature remain as
+exported, not as credentials, an access grant or runtime proof. No Office binaries,
+saved user/test inputs, corporate identities or private receipts are included.
+This exact-file approval does not clear the seven original-comparison binaries.
 
 ## Can I use my own Word template?
 
@@ -147,6 +189,8 @@ value and image hash are allowlisted, not a general permission for PNG metadata.
   analytics, cookies, external fonts or runtime tenant API calls.
 - [`release-manifest.json`](release-manifest.json) is the explicit repository/site
   allowlist, asset provenance and SHA-256 integrity record.
+- One exact native unmanaged Standard solution ZIP is included with the
+  inventory, setup requirements and pending target status above.
 - Three unchanged authored Office templates are included: Word v0.2, Short5 and
   Short5withImages. They are **inputs**, not completed outputs. The Word template
   includes 47 content-control elements and six tables. No editing lock,
@@ -165,8 +209,9 @@ value and image hash are allowlisted, not a general permission for PNG metadata.
   [`synthetic-context.txt`](docs/downloads/synthetic-context.txt) is a newly authored
   public teaching fixture, not a historical benchmark input.
 
-Configure your own prompts, topics, flows, connections, access and retention.
-There is no install command or tested cross-tenant import. Human factual,
+Bind and verify the exported prompts, topics and flows in your own environment;
+configure connections, source-resource settings, access and retention.
+There is no automated installer or tested cross-tenant import. Human factual,
 editorial, visual, editability and governance review remains required.
 Public availability does not grant rights to Microsoft's trademarks or to any
 excluded third-party or organisational template.
@@ -196,8 +241,11 @@ links/fragments, sensitive identifier patterns, embedded active content,
 unreviewed classification metadata, external Office relationships and broken
 package parts. The only label exception is the hash-pinned, native Public record
 in the two named copies; extra history, other IDs or changed attributes fail.
+The native solution has a separate exact-path/hash exception for its reviewed
+setup metadata only. Its 92-member inventory, expanded size, CRCs, component
+counts and decoded model schemas are checked; rehashed or substituted ZIPs fail.
 It checks actual editable Office structures and PNG metadata, not just extensions.
-It scans the full publication tree, including decompressed Office XML; it is
+It scans the full publication tree, including decompressed Office and solution content; it is
 a release guard, **not** a proof of all redistribution rights or a substitute for
 human review. It does not call any agent, connector or cloud service.
 
@@ -234,12 +282,12 @@ directory, never merged into an existing artifact.
 
 ## Deliberately excluded
 
-Private tenant/env/agent/flow identifiers, connection references, access URLs,
-raw API logs, raw QA JSON/CSV, credentials, browser profiles, source-workspace
-paths, native-UI screenshots, classified Office originals and tenant-scoped
-solution packages. The private comparison HTML is not copied or embedded.
-The only retained policy identifiers are the specifically reviewed Public label
-record in the two release copies; this does not expose tenant evidence or grant
-permission to publish other labelled files.
-No new generation prompts, agent deployments or live Power Platform tests are
-part of this release.
+Unreviewed tenant/identity metadata, live connections, access tokens, raw API logs,
+raw QA JSON/CSV, credentials, browser profiles, source-workspace paths, native-UI
+screenshots, classified Office originals and other solution packages remain
+excluded. The private comparison HTML is not copied or embedded.
+The exceptions are the specifically reviewed native Public records in the two
+cats/dogs copies and the approved setup metadata in the exact native solution ZIP.
+Neither grants permission to publish unrelated identities, labelled documents or
+packages. No new inference, target deployment or runtime validation is part of
+this publication; target results will be recorded only after native proof.

@@ -254,7 +254,7 @@ class ReleaseTests(unittest.TestCase):
         docs = MODULE_PATH.parent.parent / "docs"
         html = (docs / "index.html").read_text(encoding="utf-8")
         body = re.search(r"<body>.*</body>", html, re.S).group()
-        self.assertEqual(release.digest(body.encode()), "65e6072cf325469669deadfe544023ea220c4c3363a9db0b62e9007277853782")
+        self.assertEqual(release.digest(body.encode()), "a6e66aafd60f107e669a0beca68c48ee0a18f2ddec5dbcbc88a709b0a5135914")
         transcripts = {
             "cats-and-dogs-transcript.txt": "135cd23aa6093fd8beab3a98851efc1253e374a895d7f671c0d5195fe752ed10",
             "original-word-conversations.txt": "633d135e4e78977b5fa93c2266cd1015e7e2d003b4cce0e75b980cb74c192abb",
@@ -318,7 +318,7 @@ class ReleaseTests(unittest.TestCase):
         for retained in ("all nine ran after the stop", "Not compliant sequential metering",
                          "32 instructional paragraphs remain", "five template instructions remain",
                          "nesting depth 9 exceeds", "Human review is part of the workflow.",
-                         "No tenant-bound topics, connections, solution ZIPs or deployable flows"):
+                         "Target import: not started. Target runtime: not verified."):
             self.assertIn(retained, html)
         self.assertIn("deployment, costs and document generation", html)
 
@@ -349,8 +349,8 @@ class ReleaseTests(unittest.TestCase):
                          [(1, 1), (2, 3)])
         self.assertIn("Private", evidence["historicalOutput"]["binaryAvailability"])
         self.assertFalse(any(asset["sha256"] == output_hash for asset in manifest["assets"]))
-        self.assertEqual(len(manifest["assets"]), 13)
-        self.assertEqual(len(manifest["sourceFiles"]) + len(manifest["assets"]), 27)
+        self.assertEqual(len(manifest["assets"]), 14)
+        self.assertEqual(len(manifest["sourceFiles"]) + len(manifest["assets"]), 28)
 
     def test_word_previews_are_visible_clickable_and_qualified(self):
         root = MODULE_PATH.parent.parent
@@ -376,6 +376,67 @@ class ReleaseTests(unittest.TestCase):
         self.assertIn("#prepared-word-preview", (root / "README.md").read_text(encoding="utf-8"))
         self.assertIn("#prepared-word-preview",
                       (root / "docs" / "downloads" / "reuse-guide.md").read_text(encoding="utf-8"))
+
+    @staticmethod
+    def native_solution():
+        root = MODULE_PATH.parent.parent
+        manifest = json.loads((root / "release-manifest.json").read_text(encoding="utf-8"))
+        spec = next(asset for asset in manifest["assets"] if asset["kind"] == "native-solution-export")
+        return root / spec["path"], spec
+
+    def test_native_solution_exact_archive_and_decoded_schemas(self):
+        path, spec = self.native_solution()
+        release.check_native_solution(path, spec)
+        self.assertEqual(spec["bytes"], 185544)
+        self.assertEqual(spec["members"], 92)
+        self.assertEqual(spec["components"], {"bots": 2, "botComponents": 39, "flows": 5,
+                         "models": 3, "configurations": 6, "connectionReferences": 3, "environmentVariables": 0})
+        self.assertEqual([item["bytes"] for item in spec["decodedSpecifications"]], [793, 1660, 3545])
+        self.assertEqual(spec["targetImportStatus"], "NOT_STARTED")
+        self.assertEqual(spec["targetRuntimeStatus"], "NOT_VERIFIED")
+
+    def test_native_solution_exception_is_not_a_generic_zip_allowance(self):
+        path, spec = self.native_solution()
+        for key, value in (("kind", "authored-template"), ("path", "docs/downloads/unreviewed.zip")):
+            altered = dict(spec, **{key: value})
+            with self.assertRaisesRegex(release.ReleaseError, "restricted to the reviewed export"):
+                release.check_native_solution(path, altered)
+
+    def test_native_solution_rejects_changed_bytes_even_with_new_manifest_hash(self):
+        path, spec = self.native_solution()
+        altered = path.read_bytes() + b"unreviewed"
+        with tempfile.TemporaryDirectory() as directory:
+            copy = Path(directory) / path.name
+            copy.write_bytes(altered)
+            spec.update(sha256=release.digest(altered), bytes=len(altered))
+            with self.assertRaisesRegex(release.ReleaseError, "exact approved native ZIP"):
+                release.check_native_solution(copy, spec)
+
+    def test_native_solution_rejects_changed_review_pins(self):
+        path, spec = self.native_solution()
+        for key, value in (("memberInventorySha256", "0" * 64),
+                           ("reviewedMetadataSha256", "0" * 64),
+                           ("decodedSpecifications", []), ("components", {})):
+            with self.subTest(pin=key), self.assertRaises(release.ReleaseError):
+                release.check_native_solution(path, dict(spec, **{key: value}))
+
+    def test_native_solution_download_and_setup_boundaries(self):
+        root = MODULE_PATH.parent.parent
+        html = (root / "docs" / "index.html").read_text(encoding="utf-8")
+        card = re.search(r'<article id="native-solution".*?</article>', html, re.S).group()
+        self.assertIn(f'href="{release.NATIVE_SOLUTION_PATH.removeprefix("docs/")}" download', card)
+        self.assertEqual(len(re.findall(r"<a\b[^>]*\bdownload(?:\s|>)", html)), 10)
+        for phrase in ("Target import: not started", "Target runtime: not verified",
+                       "98,985-byte template", "not compatible", "No environment variables"):
+            self.assertIn(phrase, card)
+        guide = (root / "docs" / "downloads" / "reuse-guide.md").read_text(encoding="utf-8")
+        for phrase in ("### 1. Native import", "### 2. Connector binding", "### 3. Source-resource retargeting",
+                       "### 4. Required template assets", "### 5. Prompt readiness",
+                       "### 6. Activation, agent publishing and acceptance", "PublishWorkflows=false",
+                       "12,629-byte", "14,564-byte", "zero environment variables",
+                       "7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b"):
+            self.assertIn(phrase, guide)
+        self.assertNotIn("No tenant-bound topics, connections, solution ZIPs or deployable flows", html)
 
 
 if __name__ == "__main__":

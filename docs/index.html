@@ -415,13 +415,22 @@
             <li>Validate native activation and topic types, then test creation, missing inputs, refusal, validation failures and isolated revisions with synthetic data.</li>
             <li>Review every rendered page or slide, check placeholder removal and factual grounding, and verify a marked copy can edit/save/reopen. Retain immutable originals and failed attempts.</li>
           </ol>
-          <p>No tenant-bound topics, connections, solution ZIPs or deployable flows are included here. The checklist is implementation guidance, not tested cross-tenant installation.</p>
+          <p>The separately listed native solution ZIP includes the as-deployed Standard agents, flows and prompt configurations, with source-specific setup metadata but no live connections. Download availability is not tested cross-tenant installation; follow the native solution setup guide before any activation.</p>
         </div>
       </details>
     </section>
 
     <section id="downloads" class="section" aria-labelledby="downloads-title">
-      <div class="section-head"><p class="eyebrow">04 / Public starter materials</p><h2 id="downloads-title">Inspect the templates. Keep the caveats.</h2><p class="lede">Three authored Office templates, copied byte-for-byte after package inspection. They are reusable design inputs, <strong>not agent-generated outputs</strong> or a working importable agent.</p></div>
+      <div class="section-head"><p class="eyebrow">04 / Native export and starter materials</p><h2 id="downloads-title">Inspect the export and templates. Keep the caveats.</h2><p class="lede">One unchanged native Standard solution export and three authored Office templates. The templates are reusable design inputs, <strong>not agent-generated outputs</strong>. Neither the export nor the templates establish a working target deployment.</p></div>
+      <article id="native-solution" class="card comparison">
+        <span class="badge held">Native export / import not started</span>
+        <h3>Standard Word + Long PowerPoint / as-deployed solution</h3>
+        <p><strong>TechnicalDocumentationBuilderDeployed v1.0.0.0</strong> / unmanaged ZIP / 185,544 bytes. Native export completed 28 September 2026 at 10:57 UTC from an export-only wrapper referencing unchanged deployed components: 2 agents, 39 agent components, 5 flows, 3 models with 6 configurations, 3 connection references, 9 flow associations and 1 direct Word connector association. No environment variables, redesigned renderer or installer are included.</p>
+        <p><strong>Target import: not started. Target runtime: not verified.</strong> Historical source results above do not prove this package works in another environment. Native import, connection binding, source-resource retargeting, template provisioning, prompt readiness and agent publishing are separate steps. The planned import does not request process activation or unmanaged overwrite; actual target states still need inspection.</p>
+        <p>Configure your own Dataverse, OneDrive for Business and Word Online (Business) connections and retarget the source-bound flow settings. Core Word uses the public v0.2 template; the optional legacy Word route needs a different v0.1 file. <strong>Long requires the exact original 98,985-byte template and original classification hash.</strong> That template is not included: a differently labelled Public copy is <strong>not compatible</strong>, and no guard has been removed. This is not a plug-and-play or production-approved package.</p>
+        <div class="actions"><a class="button" href="downloads/TechnicalDocumentationBuilderDeployed_unmanaged_20260928T105706Z.zip" download>Download native Standard solution (ZIP)</a><a href="downloads/reuse-guide.md#native-standard-solution">Read native import and setup requirements</a></div>
+        <p class="meta">SHA-256: <code>1ed91d72266aab9fecf5639b8a1adc47e1d153574f99574779301b44e3c0442b</code><br>Byte-identical native export: 92 reviewed parts plus 3 decoded schema-only model specifications. Approved demo resource bindings and native identifiers are retained; no credentials, live connection IDs, private corporate evidence or Office binaries are included. The original seven-binary exclusions remain unchanged.</p>
+      </article>
       <div class="grid three">
         <article class="card download"><span class="filetype">DOCX / v0.2 / 14,564 bytes</span><h3>Technical design / Word</h3><p>Editable content controls, five repeating tables, a document-control table and explicit human-review notices. Proposed POC standard, not corporate policy.</p><a class="button" href="downloads/Technical-Design-Tables-v0.2.docx" download>Download Word template</a></article>
         <article class="card download"><span class="filetype">PPTX / Short5 / 123,288 bytes</span><h3>Short briefing</h3><p>Five varied, editable layouts with 40 mapped text fields. Instructions deliberately remain in this <em>template</em>; they must not remain in a completed output.</p><a class="button" href="downloads/Short-Briefing-5-Slides.pptx" download>Download Short template</a></article>
@@ -443,7 +452,7 @@
 
     <section id="sources" class="section" aria-labelledby="sources-title">
       <p class="eyebrow">Reference and provenance</p><h2 id="sources-title">A deliberately scoped public record.</h2>
-      <p>Claims are curated from retained private run receipts, package comparisons, conversation captures and completed quality reviews. Public text uses case names instead of tenant identifiers. Raw logs, access links, UI screenshots and benchmark originals are intentionally not published. The two cats-and-dogs Public copies retain only their narrowly reviewed native classification identifiers.</p>
+      <p>Claims are curated from retained private run receipts, package comparisons, conversation captures and completed quality reviews. Public prose uses case names instead of tenant identifiers. Raw logs, private delivery links, UI screenshots and benchmark originals are intentionally not published. The two cats-and-dogs Public copies retain their narrowly reviewed native classification identifiers. Separately, the exact native solution ZIP retains explicitly approved demo resource bindings and native component metadata, not credentials or target-corporate configuration.</p>
       <ul class="sources">
         <li><a href="https://github.com/RyanBowie/copilot-studio-documentation-builder">Source repository and release instructions</a></li>
         <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/harnesses-overview">Microsoft / agent harnesses overview</a></li>

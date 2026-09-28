@@ -1,8 +1,11 @@
 """Offline release allowlist, link, privacy and Office integrity checks."""
 
 import argparse
+import base64
+import gzip
 import hashlib
 from html.parser import HTMLParser
+import io
 import json
 import os
 from pathlib import Path, PurePosixPath
@@ -44,6 +47,8 @@ PUBLIC_COPIES = {
     "docs/downloads/Cats-and-Dogs-Creation05-PUBLIC.pptx",
     "docs/downloads/Cats-and-Dogs-Revision06-PUBLIC.pptx",
 }
+NATIVE_SOLUTION_PATH = "docs/downloads/TechnicalDocumentationBuilderDeployed_unmanaged_20260928T105706Z.zip"
+NATIVE_SOLUTION_SHA256 = "1ed91d72266aab9fecf5639b8a1adc47e1d153574f99574779301b44e3c0442b"
 
 
 class ReleaseError(ValueError):
@@ -270,6 +275,99 @@ def check_office(path, spec):
                 require(bool(xml[slide].findall(f".//{{{DRAW_NS}}}t")), f"{label}: no editable slide text")
 
 
+def check_native_solution(path, spec):
+    label = "Native solution"
+    require(spec.get("kind") == "native-solution-export" and spec.get("path") == NATIVE_SOLUTION_PATH
+            and path.name == PurePosixPath(NATIVE_SOLUTION_PATH).name,
+            f"{label}: exception is restricted to the reviewed export")
+    data = path.read_bytes()
+    require(spec.get("sha256") == NATIVE_SOLUTION_SHA256 and digest(data) == NATIVE_SOLUTION_SHA256
+            and len(data) == spec.get("bytes") == 185544,
+            f"{label}: not the exact approved native ZIP")
+    members, metadata, decoded = [], [], []
+
+    def fingerprint(value):
+        return digest(json.dumps(value, sort_keys=True, separators=(",", ":")).encode())
+
+    def scan_member(text, name):
+        # Only this immutable reviewed archive may retain its native setup metadata.
+        for category, pattern in [("source-host", re.compile(PATTERNS["tenant host"], re.I)),
+                                  ("identifier", UUID)]:
+            for match in pattern.finditer(text):
+                metadata.append([name, category, match.start(), digest(match.group().encode())])
+            text = pattern.sub("", text)
+        scan_text(text, f"{label} member")
+
+    with zipfile.ZipFile(io.BytesIO(data)) as archive:
+        entries = archive.infolist()
+        names = [entry.filename for entry in entries]
+        require(len(entries) == spec.get("members") == 92 and len(set(names)) == len(names),
+                f"{label}: unexpected or duplicate members")
+        require(sum(entry.file_size for entry in entries) == spec.get("expandedBytes") == 2213682,
+                f"{label}: unexpected expanded size")
+        require(not archive.comment, f"{label}: unexpected ZIP comment")
+        for entry in entries:
+            safe_path(entry.filename)
+            require(not entry.is_dir() and not entry.flag_bits & 1
+                    and (entry.external_attr >> 16) & 0o170000 != 0o120000
+                    and not entry.comment, f"{label}: encrypted or non-file member")
+        require(archive.testzip() is None, f"{label}: ZIP CRC failure")
+        require({"solution.xml", "customizations.xml", "[Content_Types].xml"} <= set(names),
+                f"{label}: missing native solution parts")
+        xml = {}
+        for name in sorted(names):
+            body = archive.read(name)
+            members.append([name, len(body), digest(body)])
+            text = body.decode("utf-8-sig")
+            scan_member(text, name)
+            suffix = PurePosixPath(name).suffix
+            if suffix == ".xml":
+                xml[name] = ET.fromstring(text)
+            elif suffix == ".json":
+                json.loads(text)
+            else:
+                require(name.startswith("botcomponents/") and name.endswith("/data"),
+                        f"{label}: unreviewed member type")
+        require(fingerprint(members) == spec.get("memberInventorySha256"),
+                f"{label}: member inventory changed")
+        solution = xml["solution.xml"].find("SolutionManifest")
+        require(solution is not None and solution.findtext("UniqueName") == "TechnicalDocumentationBuilderDeployed"
+                and solution.findtext("Version") == "1.0.0.0" and solution.findtext("Managed") == "0",
+                f"{label}: unexpected solution identity or type")
+        custom = xml["customizations.xml"]
+        counts = {
+            "bots": sum(name.startswith("bots/") and name.endswith("/bot.xml") for name in names),
+            "botComponents": sum(name.startswith("botcomponents/") and name.endswith("/data") for name in names),
+            "flows": sum(name.startswith("Workflows/") and name.endswith(".json") for name in names),
+            "models": len(custom.findall(".//AIModel")),
+            "configurations": len(custom.findall(".//AIConfiguration")),
+            "connectionReferences": len(custom.findall(".//connectionreference")),
+            "environmentVariables": len(custom.findall(".//environmentvariabledefinition")),
+        }
+        require(counts == spec.get("components"), f"{label}: component counts changed")
+        fields = list(custom.iter("msdyn_modelrundataspecification"))
+        require(len(fields) == 6, f"{label}: unexpected model specification count")
+        for field in fields:
+            text = field.text or ""
+            if text.startswith("H4sI"):
+                with gzip.GzipFile(fileobj=io.BytesIO(base64.b64decode(text, validate=True))) as compressed:
+                    body = compressed.read(65537)
+                require(len(body) <= 65536, f"{label}: oversized decoded model specification")
+                value = json.loads(body)
+                require(set(value) == {"SpecFormatVersion", "InputRootEntity", "OutputRootEntity"},
+                        f"{label}: unexpected decoded specification")
+                scan_member(body.decode("utf-8"), "decoded-schema")
+                decoded.append({"bytes": len(body), "sha256": digest(body)})
+            else:
+                require(json.loads(text) == {"schemaVersion": 2, "input": {}, "output": {}},
+                        f"{label}: trained specification contains data")
+        require(len(decoded) == 3 and sorted(decoded, key=lambda item: item["bytes"])
+                == spec.get("decodedSpecifications"), f"{label}: decoded schemas changed")
+        require(fingerprint(metadata) == spec.get("reviewedMetadataSha256")
+                == "27b4a4bf2e4530c89e8d84839a75f88637073bef4c7d6b51b8b006e77cb08444",
+                f"{label}: metadata differs from exact reviewed fields")
+
+
 class Page(HTMLParser):
     def __init__(self, text):
         super().__init__(convert_charrefs=True)
@@ -353,6 +451,8 @@ def validate(root=ROOT):
             check_office(path, asset)
         elif path.suffix == ".png":
             check_png(data, path.name, asset)
+        elif path.suffix == ".zip":
+            check_native_solution(path, asset)
         else:
             raise ReleaseError("Unreviewed binary type")
     for name, page in pages.items():

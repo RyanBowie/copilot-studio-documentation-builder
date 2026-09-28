@@ -1,8 +1,103 @@
 # Reusing the public templates
 
-The three starter templates are authored inputs, not completed agent outputs or an importable solution.
-No tenant connections, prompts deployed in an environment, agent YAML or solution
-packages are included. Start with your own authorised Copilot Studio environment.
+The three starter templates are authored inputs, not completed agent outputs.
+A separate unchanged native Standard solution export is now included, without
+live connections or proof of target import/runtime. Start with your own authorised
+Copilot Studio environment.
+
+## Native Standard solution
+
+[Download the native unmanaged export](TechnicalDocumentationBuilderDeployed_unmanaged_20260928T105706Z.zip):
+`TechnicalDocumentationBuilderDeployed` v1.0.0.0, 185,544 bytes, SHA-256
+`1ed91d72266aab9fecf5639b8a1adc47e1d153574f99574779301b44e3c0442b`.
+Verify the downloaded bytes before importing. This is a native export-only
+wrapper around unchanged deployed code, not a portable-renderer redesign.
+
+It contains 2 agents (Technical Documentation Builder and Docs Compare - Standard),
+39 agent components, 5 flows, 3 models with 6 configurations, 3 connection
+references, 9 flow associations and 1 direct Word connector association.
+The flow set is Word draft, core Word v0.2 render, legacy Word v0.1 render,
+Long draft and Long render. No Short/image extension flows, Office template
+binaries, saved test/user inputs or environment-variable installer are bundled.
+
+**Target import: NOT STARTED. Target runtime: NOT VERIFIED.** Source-runtime
+history and structural closure are not proof of a successful target deployment.
+Complete these separate steps; do not infer later steps from an import receipt.
+
+### 1. Native import
+
+Use an authorised Developer environment after inspecting existing components.
+Three native missing-dependency records refer to the AI Model table from
+`msdyn_AISolution (202608.4.19.2)`; check target platform compatibility and retain
+any native import warnings/errors. Do not suppress missing dependencies.
+The planned import uses `PublishWorkflows=false` and no unmanaged overwrite
+request. This is not a guarantee that existing flows are disabled or existing
+unmanaged components cannot change. Prefer a clean target; importing an unmanaged
+solution can update existing components, and deleting its container does not
+remove them. See [Microsoft's native import guidance](https://learn.microsoft.com/power-apps/maker/data-platform/import-update-export-solutions).
+
+### 2. Connector binding
+
+Bind your own authorised target connections; none are supplied in the ZIP:
+
+| Native reference | Target connector |
+| --- | --- |
+| `tdb_DraftingPrompt` | Microsoft Dataverse |
+| `tdb_OneDriveDrafts` | OneDrive for Business |
+| `tdb_WordRenderer` | Word Online (Business) |
+
+The initial target preflight found a connected Dataverse connection but no Word
+Online (Business) or OneDrive for Business connections. That is a setup finding,
+not binding or runtime proof. Confirm licensing, permissions, policy and all flow
+and direct-Word connector associations without publishing connection/account IDs.
+
+### 3. Source-resource retargeting
+
+This as-deployed package has **zero environment variables**. A maker must inspect
+and configure the actual flows, not supply settings to a redesigned installer.
+Retarget the three Predict organization literals (Word draft, Long draft and
+Long render) to the target Dataverse URL. Three renderers construct source
+personal SharePoint return URLs and enforce output-folder guards; retarget those
+resources together. Core Word v0.2 also uses `source='me'`, native drive/file and
+composite IDs, an ETag and its template-size check. Long has two metadata-ID/path
+checks and an ETag/size guard. Review every binding; replacing one hostname alone
+does not establish a working flow. Configure storage ownership/access/retention
+without weakening validation or granting public access to generated documents.
+
+### 4. Required template assets
+
+| Route | Actual dependency |
+| --- | --- |
+| Core prepared Word v0.2 | The separately downloadable [14,564-byte Word template](Technical-Design-Tables-v0.2.docx), SHA-256 `00486f3d164344c68f6b5a3f100c18c77e9c7c80f701cfa7e0d54ca3078c339c`. Store it in authorised target storage and configure its target IDs/ETag and mappings. |
+| Optional legacy/direct Word v0.1 | A different 12,629-byte template, not bundled. Do not substitute v0.2 or treat this retained route as new runtime proof. |
+| Long PowerPoint | The original 98,985-byte template, SHA-256 `7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b`, plus its original classification-part hash. The original remains withheld. |
+
+**A differently labelled Public Long copy is not compatible.** Both Long
+contracts and the unchanged code interpreter require the exact original bytes
+and label hash. No drop-in Public replacement, new renderer or guard removal is
+included. Without authorised access to the exact required source asset and
+correct target bindings, Long runtime remains unresolved. Public availability
+of the native ZIP is not clearance to redistribute the original template.
+
+### 5. Prompt readiness
+
+The three original models and all six native configurations are included, with
+three decoded schema-only specifications and three empty trained input/output
+schemas. Verify target AI Builder/prompt availability, active configurations,
+model references, permissions and code-interpreter readiness. The unchanged
+native platform signature is not a credential, independent signature validation
+or proof that the target can execute the renderer. Do not alter models or infer
+readiness solely from successful solution import.
+
+### 6. Activation, agent publishing and acceptance
+
+Inspect actual target flow states and bindings after import. Activate only after
+configuration and separate authorisation, then validate agent topics/actions and
+publish the agents separately as appropriate. Record import, activation,
+publication and runtime outcomes independently. Authorised synthetic creation
+and revision tests, factual review, native rendering and edit/save/reopen are
+still required; the site's historical screenshots do not supply target evidence.
+No target execution or production-readiness claim accompanies this download.
 
 ## Word v0.2
 

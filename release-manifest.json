@@ -235,6 +235,40 @@
       "bytes": 342559,
       "width": 1600,
       "height": 2263
+    },
+    {
+      "path": "docs/downloads/TechnicalDocumentationBuilderDeployed_unmanaged_20260928T105706Z.zip",
+      "kind": "native-solution-export",
+      "source": "Native export-only solution wrapper around the existing deployed Standard Word and Long PowerPoint components.",
+      "provenance": "TechnicalDocumentationBuilderDeployed, version 1.0.0.0, unmanaged. Native export completed 28 September 2026 at 10:57:37 UTC. Source-preservation review found seven source datasets unchanged, original flow/model payloads preserved and agent data matching after native serialization normalization.",
+      "transformation": "None. Byte-identical native ZIP. No renderer redesign, repacking, redaction, guard removal, model changes, new inference or installer assets.",
+      "sha256": "1ed91d72266aab9fecf5639b8a1adc47e1d153574f99574779301b44e3c0442b",
+      "bytes": 185544,
+      "members": 92,
+      "expandedBytes": 2213682,
+      "memberInventorySha256": "ae41adea648593d3f9b7484fa15bea244f4760fcd18cb7fbe61d8613c468355b",
+      "reviewedMetadataSha256": "27b4a4bf2e4530c89e8d84839a75f88637073bef4c7d6b51b8b006e77cb08444",
+      "reviewedMetadataScope": "Only this exact archive: ordinary native component/schema IDs and approved demo resource bindings, including three Predict organization fields and three renderer return-link expressions. File IDs, paths, ETags, size/template/classification hashes and the native platform code-interpreter signature remain unchanged. These are not credentials, access grants or runtime proof. No live connection IDs are included. No generic identifier or tenant-host exception applies to other assets or text.",
+      "components": {
+        "bots": 2,
+        "botComponents": 39,
+        "flows": 5,
+        "models": 3,
+        "configurations": 6,
+        "connectionReferences": 3,
+        "environmentVariables": 0
+      },
+      "associations": {"flows": 9, "directWordConnector": 1},
+      "decodedSpecifications": [
+        {"bytes": 793, "sha256": "a3e56a1b1e210e59dc82e06ad939cd3caa2749bf7ea8563387bb8ba18857ebf9"},
+        {"bytes": 1660, "sha256": "2234c4b3cc4637fd242ad14a5f1db58e91487e2a8d02b0260593135fe0e331e6"},
+        {"bytes": 3545, "sha256": "2ed2d95706e3f412229f39fe6b9d017c3e56e9c8e95942e3c9764134b1638681"}
+      ],
+      "privacyReview": "All 92 native parts and three decoded base64-GZIP schema-only specifications reviewed; the three trained specifications contain empty input/output schemas. No saved user/test inputs, Office binaries, unreviewed credentials, email addresses or local user paths. Parent explicitly cleared the exact retained demo metadata. Corporate identities and private receipts are not included.",
+      "dependencies": "Three declared platform dependencies on AI Model from msdyn_AISolution (202608.4.19.2); target compatibility unresolved. Bind target Dataverse, OneDrive for Business and Word Online (Business) connections; retarget source literals in maker flow configuration. No environment-variable installer. Core Word v0.2 template is already public; optional legacy Word v0.1 is different. Long requires the exact original 98,985-byte template and its original classification hash, not a differently labelled Public copy.",
+      "requiredLongTemplateSha256": "7c5858479154c2c5d20a2e8c636faddd252c90fbcd97acd209fa13880e21916b",
+      "targetImportStatus": "NOT_STARTED",
+      "targetRuntimeStatus": "NOT_VERIFIED"
     }
   ],
   "preparedWordPreview": {
