@@ -1,140 +1,248 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en-GB" data-theme="dark">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An evidence-led reference for template-aligned Word and PowerPoint drafting in Copilot Studio. Working routes, staged extensions, observed failures and reusable templates.">
-  <meta name="referrer" content="no-referrer">
-  <title>Standard and GitHub Copilot harnesses | Copilot Studio</title>
   <script>
     (() => {
       const param = new URLSearchParams(window.location.search).get("scoutTheme");
-      const theme =
-        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      const theme = param === "light" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", theme);
     })();
   </script>
   <script>
     (() => {
-      const explicit = new URLSearchParams(window.location.search).get("scoutTheme");
-      document.documentElement.setAttribute("data-theme", explicit === "light" ? "light" : "dark");
+      const root = document.documentElement;
+      root.classList.add("js");
     })();
   </script>
-  <style>
-    :root {
-      color-scheme: light;
-      --cp-bg: #f7f4ef;
-      --cp-bg-elevated: #fcfbf8;
-      --cp-surface: #ffffff;
-      --cp-surface-soft: #f5f5f5;
-      --cp-border: #dedede;
-      --cp-border-strong: #919191;
-      --cp-text: #242424;
-      --cp-text-muted: #5c5c5c;
-      --cp-text-soft: #6f6f6f;
-      --cp-accent: #b11f4b;
-      --cp-accent-hover: #9a1a41;
-      --cp-accent-soft: rgba(177, 31, 75, 0.08);
-      --cp-accent-fg: #ffffff;
-      --cp-success: #16a34a;
-      --cp-danger: #dc2626;
-      --cp-warning: #f59e0b;
-      --cp-link: #0078d4;
-      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
-      --cp-overlay: rgba(255, 255, 255, 0.8);
-      --cp-panel: rgba(255, 255, 255, 0.86);
-      --cp-panel-strong: rgba(255, 255, 255, 0.96);
-      --cp-sheen: rgba(255, 255, 255, 0.55);
-      --cp-highlight: rgba(177, 31, 75, 0.12);
-    }
-    html[data-theme="dark"] {
-      color-scheme: dark;
-      --cp-bg: #3d3b3a;
-      --cp-bg-elevated: #343231;
-      --cp-surface: #292929;
-      --cp-surface-soft: #2e2e2e;
-      --cp-border: #474747;
-      --cp-border-strong: #5f5f5f;
-      --cp-text: #dedede;
-      --cp-text-muted: #919191;
-      --cp-text-soft: #b0b0b0;
-      --cp-accent: #fd8ea1;
-      --cp-accent-hover: #fb7b91;
-      --cp-accent-soft: rgba(253, 142, 161, 0.14);
-      --cp-accent-fg: #1a1a1a;
-      --cp-success: #4ade80;
-      --cp-danger: #f87171;
-      --cp-warning: #fbbf24;
-      --cp-link: #4da6ff;
-      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
-      --cp-overlay: rgba(41, 41, 41, 0.88);
-      --cp-panel: rgba(41, 41, 41, 0.72);
-      --cp-panel-strong: rgba(41, 41, 41, 0.96);
-      --cp-sheen: rgba(255, 255, 255, 0.04);
-      --cp-highlight: rgba(253, 142, 161, 0.12);
-    }
-    /* The requested Search Hub palette overrides the shared Clawpilot foundation. */
-    :root {
-      --cp-bg: #f2f2f8;
-      --cp-bg-elevated: #f8f7fc;
-      --cp-surface: #ffffff;
-      --cp-surface-soft: #f2f2f8;
-      --cp-border: #e3dfed;
-      --cp-border-strong: #9285aa;
-      --cp-text: #102631;
-      --cp-text-muted: #52637a;
-      --cp-text-soft: #667287;
-      --cp-accent: #7653ae;
-      --cp-accent-hover: #58378b;
-      --cp-accent-soft: #eee8f7;
-      --cp-accent-fg: #ffffff;
-      --cp-link: #066bc7;
-      --cp-success: #207346;
-      --cp-danger: #b4233e;
-      --cp-warning: #8c6208;
-      --cp-chart-blue: #0877dd;
-      --cp-chart-indigo: #5364ba;
-      --cp-chart-purple: #7653ae;
-      --cp-chart-violet: #9651bb;
-      --cp-chart-magenta: #b535c3;
-      --cp-chart-track: #e8e3f0;
-      --cp-transparent: transparent;
-      --cp-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14);
-      --cp-highlight: rgba(118, 83, 174, 0.12);
-    }
-    html[data-theme="dark"] {
-      --cp-bg: #171717;
-      --cp-bg-elevated: #222222;
-      --cp-surface: #1f1f1f;
-      --cp-surface-soft: #262626;
-      --cp-border: #3b3b3b;
-      --cp-border-strong: #858585;
-      --cp-text: #f2f2f2;
-      --cp-text-muted: #bdbdbd;
-      --cp-text-soft: #aaaaaa;
-      --cp-accent: #c3a0ef;
-      --cp-accent-hover: #debeff;
-      --cp-accent-soft: #2b2b2b;
-      --cp-accent-fg: #181818;
-      --cp-link: #80baff;
-      --cp-chart-blue: #69aeff;
-      --cp-chart-indigo: #98a5ff;
-      --cp-chart-purple: #bc98ed;
-      --cp-chart-violet: #d097ee;
-      --cp-chart-magenta: #ed8fea;
-      --cp-chart-track: #3b3b3b;
-      --cp-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14);
-      --cp-overlay: rgba(31, 31, 31, 0.88);
-      --cp-panel: rgba(31, 31, 31, 0.72);
-      --cp-panel-strong: rgba(31, 31, 31, 0.96);
-      --cp-highlight: rgba(195, 160, 239, 0.12);
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="An evidence-led community reference for template-aligned Word and PowerPoint drafting in Copilot Studio, comparing the Standard and GitHub Copilot harnesses with reusable downloads and setup caveats.">
+  <meta name="referrer" content="no-referrer">
+  <title>Standard and GitHub Copilot harnesses | Copilot Studio</title>
+  <meta property="og:title" content="Copilot Studio Documentation Builder">
+  <meta property="og:description" content="Template-aligned Word and PowerPoint documents from Copilot Studio, comparing the Standard and GitHub Copilot harnesses.">
+  <meta property="og:type" content="website">
+  <!-- dl-meta:start -->
+  <meta property="og:url" content="https://ryanbowie.github.io/copilot-studio-documentation-builder/">
+  <meta property="og:image" content="https://ryanbowie.github.io/copilot-studio-documentation-builder/og.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="Copilot Studio Documentation Builder: template-aligned Word and PowerPoint documents from Copilot Studio.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Copilot Studio Documentation Builder">
+  <meta name="twitter:description" content="Template-aligned Word and PowerPoint documents from Copilot Studio, comparing the Standard and GitHub Copilot harnesses.">
+  <meta name="twitter:image" content="https://ryanbowie.github.io/copilot-studio-documentation-builder/og.png">
+  <!-- dl-meta:end -->
+  <link rel="icon" href="og.png">
   <link rel="stylesheet" href="assets/site.css">
   <script src="assets/site.js" defer></script>
+  <style>
+:root {
+  color-scheme: light;
+  --cp-bg: #f2f2f8;
+  --cp-bg-elevated: #f8f7fc;
+  --cp-surface: #ffffff;
+  --cp-surface-soft: #f2f2f8;
+  --cp-border: #e3dfed;
+  --cp-border-strong: #9285aa;
+  --cp-text: #102631;
+  --cp-text-muted: #52637a;
+  --cp-text-soft: #667287;
+  --cp-accent: #7653ae;
+  --cp-accent-hover: #58378b;
+  --cp-accent-soft: #eee8f7;
+  --cp-accent-fg: #ffffff;
+  --cp-success: #207346;
+  --cp-danger: #b4233e;
+  --cp-warning: #8c6208;
+  --cp-link: #066bc7;
+  --cp-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14);
+  --cp-overlay: rgba(255, 255, 255, 0.8);
+  --cp-panel: rgba(255, 255, 255, 0.86);
+  --cp-panel-strong: rgba(255, 255, 255, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.55);
+  --cp-highlight: rgba(118, 83, 174, 0.12);
+  --cp-chart-blue: #0877dd;
+  --cp-chart-indigo: #5364ba;
+  --cp-chart-purple: #7653ae;
+  --cp-chart-violet: #9651bb;
+  --cp-chart-magenta: #b535c3;
+  --cp-transparent: transparent;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --cp-bg: #171717;
+  --cp-bg-elevated: #222222;
+  --cp-surface: #1f1f1f;
+  --cp-surface-soft: #262626;
+  --cp-border: #3b3b3b;
+  --cp-border-strong: #858585;
+  --cp-text: #f2f2f2;
+  --cp-text-muted: #bdbdbd;
+  --cp-text-soft: #aaaaaa;
+  --cp-accent: #c3a0ef;
+  --cp-accent-hover: #debeff;
+  --cp-accent-soft: #2b2b2b;
+  --cp-accent-fg: #181818;
+  --cp-success: #4ade80;
+  --cp-danger: #f87171;
+  --cp-warning: #fbbf24;
+  --cp-link: #80baff;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+  --cp-overlay: rgba(31, 31, 31, 0.88);
+  --cp-panel: rgba(31, 31, 31, 0.72);
+  --cp-panel-strong: rgba(31, 31, 31, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.04);
+  --cp-highlight: rgba(195, 160, 239, 0.12);
+  --cp-chart-blue: #69aeff;
+  --cp-chart-indigo: #98a5ff;
+  --cp-chart-purple: #bc98ed;
+  --cp-chart-violet: #d097ee;
+  --cp-chart-magenta: #ed8fea;
+  --cp-transparent: transparent;
+}
+@media print {
+  html[data-theme="dark"] { color-scheme: light; --cp-bg: #f2f2f8; --cp-bg-elevated: #f8f7fc; --cp-surface: #ffffff; --cp-surface-soft: #f2f2f8; --cp-border: #e3dfed; --cp-border-strong: #9285aa; --cp-text: #102631; --cp-text-muted: #52637a; --cp-text-soft: #667287; --cp-accent: #7653ae; --cp-accent-hover: #58378b; --cp-accent-soft: #eee8f7; --cp-accent-fg: #ffffff; --cp-success: #207346; --cp-danger: #b4233e; --cp-warning: #8c6208; --cp-link: #066bc7; --cp-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14); --cp-overlay: rgba(255, 255, 255, 0.8); --cp-panel: rgba(255, 255, 255, 0.86); --cp-panel-strong: rgba(255, 255, 255, 0.96); --cp-sheen: rgba(255, 255, 255, 0.55); --cp-highlight: rgba(118, 83, 174, 0.12); --cp-chart-blue: #0877dd; --cp-chart-indigo: #5364ba; --cp-chart-purple: #7653ae; --cp-chart-violet: #9651bb; --cp-chart-magenta: #b535c3; --cp-transparent: transparent; }
+}
+/* design-layer:start */
+/* "Blueprint signal" design layer, shared by both pages. Colours come only from --cp-* variables. */
+.hero { position: relative; isolation: isolate; margin-top: 20px; padding: 48px 28px 32px; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border: 1px solid var(--cp-border); border-radius: var(--radius-card); background-color: var(--cp-bg-elevated); background-image: radial-gradient(circle, color-mix(in srgb, var(--cp-border-strong) 45%, transparent) 1px, transparent 1.6px); background-size: 20px 20px; -webkit-mask-image: linear-gradient(to bottom, var(--cp-text) 60%, transparent); mask-image: linear-gradient(to bottom, var(--cp-text) 60%, transparent); }
+.hero::after { content: ""; position: absolute; top: -5px; left: -5px; right: -5px; height: 18px; z-index: -1; pointer-events: none; background: linear-gradient(var(--cp-accent), var(--cp-accent)) left top / 18px 2px no-repeat, linear-gradient(var(--cp-accent), var(--cp-accent)) left top / 2px 18px no-repeat, linear-gradient(var(--cp-accent), var(--cp-accent)) right top / 18px 2px no-repeat, linear-gradient(var(--cp-accent), var(--cp-accent)) right top / 2px 18px no-repeat; }
+.hero h1 { width: fit-content; max-width: 100%; color: var(--cp-chart-blue); }
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .hero h1 { background: linear-gradient(105deg, var(--cp-chart-blue), var(--cp-chart-purple) 56%, var(--cp-chart-magenta)); -webkit-background-clip: text; background-clip: text; color: var(--cp-transparent); -webkit-text-fill-color: var(--cp-transparent); }
+}
+.hero h1::after { content: ""; display: block; width: 64px; height: 4px; margin-top: 14px; border-radius: 2px; background: linear-gradient(90deg, var(--cp-chart-blue), var(--cp-chart-purple), var(--cp-chart-magenta)); transform-origin: left center; animation: dl-grow 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes dl-grow { from { transform: scaleX(0); } }
+/* Signal diagram in the hero */
+.dl-signal { margin: 28px 0 16px; border: 1px solid var(--cp-border); border-radius: var(--radius-card); background: var(--cp-surface); box-shadow: var(--card-shadow); overflow: hidden; }
+.dl-signal figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; margin: 0; padding: 10px 16px; border-bottom: 1px solid var(--cp-border); background: var(--cp-surface-soft); color: var(--cp-text-soft); font: 600 0.72rem/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.dl-signal figcaption b { color: var(--cp-accent); }
+.dl-scroll { overflow-x: auto; padding: 12px; }
+.dl-scroll:focus-visible, .dl-wide:focus-visible { outline: 2px solid var(--cp-accent); outline-offset: -2px; }
+/* Wide diagrams on small screens (classes set by the script): a cue, and a fade until the end is reached */
+.dl-wide::before { content: "Scroll sideways for the full diagram →"; content: "Scroll sideways for the full diagram →" / ""; display: block; margin: 0 0 8px; color: var(--cp-accent); font: 700 0.7rem/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.dl-more { -webkit-mask-image: linear-gradient(to right, var(--cp-text) calc(100% - 56px), transparent); mask-image: linear-gradient(to right, var(--cp-text) calc(100% - 56px), transparent); }
+.dl-scroll svg { display: block; width: 100%; min-width: 660px; height: auto; font-family: var(--font); }
+.dl-node rect { fill: var(--cp-surface-soft); stroke: var(--cp-border-strong); stroke-width: 1; }
+.dl-node text { fill: var(--cp-text); font-size: 13px; font-weight: 600; }
+.dl-node text.dl-sub { fill: var(--cp-text-soft); font-size: 11px; font-weight: 400; }
+.dl-node .dl-badge { fill: var(--cp-surface); stroke: var(--cp-border-strong); }
+.dl-node text.dl-letter { fill: var(--cp-text); font: 700 11px var(--mono); }
+.dl-node.dl-hot rect { fill: var(--cp-accent-soft); stroke: var(--cp-accent); stroke-width: 1.5; }
+.dl-node.dl-hot .dl-badge { fill: var(--cp-accent); stroke: var(--cp-accent); }
+.dl-node.dl-hot text.dl-letter { fill: var(--cp-accent-fg); }
+.dl-node.dl-hot text.dl-sub { fill: var(--cp-accent); font-weight: 600; }
+.dl-path { fill: none; stroke: var(--cp-border-strong); stroke-width: 1.5; stroke-dasharray: 3 6; animation: dl-flow 1.4s linear infinite; }
+.dl-path.dl-hot { stroke: var(--cp-accent); stroke-width: 2.25; }
+.dl-note { fill: var(--cp-text-muted); font: 600 10.5px var(--mono); letter-spacing: 0.06em; }
+.dl-note.dl-hot { fill: var(--cp-accent); }
+@keyframes dl-flow { to { stroke-dashoffset: -18; } }
+/* Bento "at a glance" facts with a feature tile */
+.hero .facts { max-width: none; }
+.hero .facts strong { font-variant-numeric: tabular-nums; }
+.hero .facts li { transition: border-color 0.2s ease, transform 0.2s ease; }
+.hero .facts li:hover { border-color: color-mix(in srgb, var(--cp-accent) 55%, var(--cp-border)); transform: translateY(-2px); }
+.hero .facts li:first-child { background: linear-gradient(var(--cp-accent-soft), var(--cp-accent-soft)), var(--cp-surface); border-color: color-mix(in srgb, var(--cp-accent) 40%, var(--cp-border)); }
+.hero .facts li:first-child span, .dl-card[aria-current="page"] .dl-desc { color: color-mix(in srgb, var(--cp-text) 82%, transparent); }
+.hero .facts li:first-child strong { font-size: 1.7rem; line-height: 1.15; color: var(--cp-accent); }
+@media (min-width: 440px) { .hero .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero .facts li:first-child { grid-column: span 2; } }
+@media (min-width: 440px) and (max-width: 779px) { .hero .facts li:last-child:nth-child(even) { grid-column: span 2; } }
+@media (min-width: 780px) { .hero .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* Numbered chapters */
+main { counter-reset: dlch; }
+.section-kicker::before { counter-increment: dlch; content: counter(dlch, decimal-leading-zero) " · "; content: counter(dlch, decimal-leading-zero) " · " / ""; color: var(--cp-text-soft); font-family: var(--mono); }
+/* Reading progress and reveal on scroll (motion only when allowed; see the script) */
+#dl-progress { position: fixed; z-index: 60; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--cp-chart-blue), var(--cp-chart-purple), var(--cp-chart-magenta)); transform: scaleX(var(--dl-p, 0)); transform-origin: 0 50%; pointer-events: none; }
+html.dl-motion .dl-reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
+html.dl-motion .dl-reveal.dl-in { opacity: 1; transform: none; }
+/* Browser-frame chrome on screenshots */
+.shot-btn::before, .shot a[data-lightbox]::before { content: ""; display: block; height: 22px; border-bottom: 1px solid var(--cp-border); background: radial-gradient(circle, var(--cp-accent) 0 3px, transparent 3.6px) 12px 50% / 10px 10px no-repeat, radial-gradient(circle, var(--cp-border-strong) 0 3px, transparent 3.6px) 28px 50% / 10px 10px no-repeat, radial-gradient(circle, var(--cp-border-strong) 0 3px, transparent 3.6px) 44px 50% / 10px 10px no-repeat, var(--cp-surface-soft); }
+.shot a[data-lightbox]::before { margin: -8px -8px 8px; border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0; }
+/* Two-part series band */
+.dl-series { margin: 72px 0 8px; padding: 24px; border: 1px solid var(--cp-border); border-radius: var(--radius-card); background-color: var(--cp-bg-elevated); background-image: radial-gradient(circle, color-mix(in srgb, var(--cp-border-strong) 40%, transparent) 1px, transparent 1.6px); background-size: 20px 20px; }
+.dl-series-k { margin: 0 0 14px; color: var(--cp-accent); font: 700 0.75rem/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; }
+.dl-series ol { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.dl-series li { margin: 0; }
+.dl-card { display: flex; flex-direction: column; gap: 6px; height: 100%; padding: 18px 20px; border: 1px solid var(--cp-border); border-radius: var(--radius); background: var(--cp-surface); box-shadow: var(--card-shadow); color: var(--cp-text); text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease; }
+.dl-card:hover, .dl-card:focus-visible { border-color: var(--cp-accent); color: var(--cp-text); transform: translateY(-2px); }
+.dl-card[aria-current="page"] { border-color: color-mix(in srgb, var(--cp-accent) 45%, var(--cp-border)); background: linear-gradient(var(--cp-accent-soft), var(--cp-accent-soft)), var(--cp-surface); }
+.dl-no { color: var(--cp-accent); font: 700 1.9rem/1 var(--mono); }
+.dl-card strong { font-size: 1.05rem; }
+.dl-desc { color: var(--cp-text-muted); font-size: 0.9rem; }
+.dl-go { margin-top: auto; padding-top: 6px; color: var(--cp-accent); font-size: 0.9rem; font-weight: 600; }
+.dl-here { align-self: flex-start; margin-top: auto; padding: 2px 10px; border-radius: 999px; background: var(--cp-accent); color: var(--cp-accent-fg); font: 700 0.7rem/1.6 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+@media (max-width: 600px) { .hero { padding: 36px 14px 20px; } .dl-series { padding: 18px 14px; } }
+@media (forced-colors: active) {
+  .hero h1 { background: none; color: CanvasText; -webkit-text-fill-color: CanvasText; }
+  .hero h1::after, #dl-progress { forced-color-adjust: none; background: Highlight; }
+}
+@media print {
+  .hero h1 { background: none; color: var(--cp-text); -webkit-text-fill-color: currentColor; }
+  .hero h1::after { background: var(--cp-accent); }
+  #dl-progress, .hero::before, .hero::after, .shot-btn::before, .shot a[data-lightbox]::before, .dl-wide::before { display: none; }
+  .dl-more { -webkit-mask-image: none; mask-image: none; }
+  .hero { margin-top: 0; padding: 24px 0 0; }
+  .dl-series { background-image: none; }
+  .dl-reveal { opacity: 1 !important; transform: none !important; }
+  .dl-path { animation: none; }
+}
+/* Documentation Builder adaptations */
+:root { --header-h: 4.75rem; --chips-h: 3rem; --radius: 0.625rem; --radius-card: 16px; --card-shadow: var(--cp-shadow); --font: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif; --mono: Consolas, "Courier New", Courier, monospace; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--cp-bg); color: var(--cp-text); font-family: var(--font); }
+.skip, .skip-link { position: absolute; left: 16px; top: -120px; z-index: 100; background: var(--cp-accent); color: var(--cp-accent-fg); padding: 8px 16px; border-radius: var(--radius); font-weight: 600; text-decoration: none; }
+.skip:focus, .skip-link:focus { top: 8px; }
+.masthead { background: var(--cp-panel-strong); }
+.brand-mark { color: var(--cp-accent-fg); background: var(--cp-accent); }
+.quiet-button { background: var(--cp-surface); color: var(--cp-text); }
+.chips { position: sticky; top: var(--header-h); z-index: 4; background: var(--cp-panel-strong); border-bottom: 1px solid var(--cp-border); overflow-x: auto; scrollbar-width: thin; }
+.chips ul { display: flex; gap: 8px; list-style: none; margin: 0; padding: 8px 32px; width: max-content; }
+.chips a { display: inline-block; padding: 4px 12px; border: 1px solid var(--cp-border); border-radius: 999px; background: var(--cp-surface); color: var(--cp-text); text-decoration: none; font-size: 0.85rem; white-space: nowrap; }
+.chips a:hover { border-color: var(--cp-accent); color: var(--cp-accent); }
+.hero { display: block; }
+.hero > div { max-width: 920px; }
+.hero .actions { margin-bottom: 18px; }
+.hero .meta { max-width: 76ch; }
+.pill { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 16px; padding: 4px 12px; border: 1px solid var(--cp-highlight); border-radius: 999px; background: var(--cp-accent-soft); color: var(--cp-accent); font-size: 0.85rem; font-weight: 600; }
+.hero h1 { font-size: clamp(2rem, 5vw, 4rem); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; list-style: none; margin: 20px 0 0; padding: 0; }
+.facts li { margin: 0; padding: 12px 16px; border: 1px solid var(--cp-border); border-radius: var(--radius); background: var(--cp-surface); box-shadow: var(--card-shadow); }
+.facts strong { display: block; }
+.facts span { color: var(--cp-text-muted); font-size: 0.85rem; }
+.toc-panel ul { columns: 2; padding-left: 20px; }
+.toc-panel li { break-inside: avoid; }
+.callout { margin: 16px 0; padding: 16px 20px; border: 1px solid var(--cp-border); border-left: 4px solid var(--cp-accent); border-radius: var(--radius); background: var(--cp-surface); }
+.callout-warning { border-left-color: var(--cp-warning); }
+.callout-danger { border-left-color: var(--cp-danger); }
+.diagram-wrap { margin: 16px 0; padding: 12px; overflow-x: auto; border: 1px solid var(--cp-border); border-radius: var(--radius-card); background: var(--cp-surface); }
+.diagram-wrap svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.d-box, .arch-box { fill: var(--cp-surface-soft); stroke: var(--cp-border-strong); stroke-width: 1.25; }
+.arch-accent { fill: var(--cp-accent-soft); stroke: var(--cp-accent); stroke-width: 1.5; }
+.d-title, .arch-title { font: 700 13px var(--font); fill: var(--cp-text); }
+.d-text, .arch-text { font: 12px var(--font); fill: var(--cp-text-muted); }
+.arch-line { fill: none; stroke: var(--cp-border-strong); stroke-width: 1.5; marker-end: url(#arch-arrow); }
+.arch-hot { stroke: var(--cp-accent); stroke-width: 2; }
+.stepper { list-style: none; margin: 16px 0; padding: 0; counter-reset: step; }
+.stepper > li { position: relative; margin: 0; padding: 0 0 18px 48px; counter-increment: step; }
+.stepper > li::before { content: counter(step); position: absolute; left: 0; top: 0; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1px solid var(--cp-accent); border-radius: 50%; background: var(--cp-accent-soft); color: var(--cp-accent); font-size: 0.9rem; font-weight: 700; }
+.stepper > li::after { content: ""; position: absolute; left: 15px; top: 38px; bottom: 6px; width: 2px; background: var(--cp-border); }
+.stepper > li:last-child::after { display: none; }
+.downloads-table td:nth-child(1) { min-width: 210px; }
+.site-footer { margin-top: 32px; padding: 32px 20px; border-top: 1px solid var(--cp-border); background: var(--cp-bg-elevated); color: var(--cp-text-muted); font-size: 0.875rem; }
+.site-footer .inner { max-width: 1184px; margin: 0 auto; }
+.site-footer p { max-width: 92ch; }
+@media (max-width: 760px) { .toc-panel ul { columns: 1; } .chips ul { padding-inline: 20px; } }
+@media (forced-colors: active) { h1 { background: none; color: CanvasText; -webkit-text-fill-color: CanvasText; } }
+@media print { .chips, #dl-progress { display: none !important; } .hero { padding: 24px 0 0; } .dl-reveal { opacity: 1 !important; transform: none !important; } }
+/* design-layer:end */
+</style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+<span id="top" hidden></span>
+<a class="skip" href="#main">Skip to content</a>
   <header class="masthead">
     <div class="wrap nav-row">
       <a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">D</span>Documentation<br>Builder</a>
@@ -144,10 +252,24 @@
       <button class="quiet-button" id="theme-toggle" type="button" hidden>Dark theme</button>
     </div>
   </header>
+  <nav class="chips" aria-label="Section shortcuts">
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#read-first">Read this first</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#prepared-word-preview">Word preview</a></li>
+      <li><a href="#original-comparisons">Original comparisons</a></li>
+      <li><a href="#cats-and-dogs">Cats and dogs</a></li>
+      <li><a href="#implementation">Setup</a></li>
+      <li><a href="#downloads">Downloads</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ul>
+  </nav>
   <main id="main" class="wrap">
     <section id="overview" class="hero" aria-labelledby="hero-title">
       <div>
         <p class="eyebrow">Copilot Studio / field reference</p>
+        <p class="pill">Community project. This is not a Microsoft product.</p>
         <h1 id="hero-title">Template-aligned documents in<br> <span>Copilot Studio&#8217;s Standard and GitHub Copilot harnesses</span></h1>
         <p class="lede">Editable Word and PowerPoint drafts, built with prepared templates. A candid record of what worked, what is still staged, and what failed.</p>
         <div class="actions">
@@ -156,21 +278,89 @@
         </div>
         <p class="meta">Evidence snapshot: 27 September 2026. Independent project reference, not a Microsoft product or production-ready solution.</p>
       </div>
-      <aside class="card pipeline" aria-label="Proved Standard route at a glance">
-        <header><strong>The prepared Standard route</strong><span class="badge proved">Observed</span></header>
-        <div class="step"><span class="number">01</span><div><strong>Authorised context + template</strong><p>Separate supplied facts from public research.</p></div></div>
-        <div class="step"><span class="number">02</span><div><strong>Saved prompt + content contract</strong><p>Draft once; validate structure and length.</p></div></div>
-        <div class="step"><span class="number">03</span><div><strong>Power Automate + controlled rendering</strong><p>Populate registered destinations; preserve the design.</p></div></div>
-        <div class="step"><span class="number">04</span><div><strong>Editable file + human review</strong><p>Delivery is not factual, visual or release approval.</p></div></div>
-        <footer><strong>Content-dynamic.</strong> Not arbitrary-template-dynamic.</footer>
-      </aside>
+      <!-- dl-hero:start -->
+        <figure class="dl-signal" aria-labelledby="hero-signal-caption">
+          <figcaption id="hero-signal-caption"><span><b>Documentation path</b> request to editable Office output</span><span>Standard prepared route ? GitHub Copilot harness comparison</span></figcaption>
+          <div class="dl-scroll">
+            <svg viewBox="0 0 980 300" role="img" aria-labelledby="docbuilder-signal-title docbuilder-signal-desc">
+              <title id="docbuilder-signal-title">Documentation Builder signal diagram</title>
+              <desc id="docbuilder-signal-desc">A user request and prepared context flow through a Copilot Studio agent into either the Standard prepared-template route or the GitHub Copilot harness comparison. Prepared Word or PowerPoint templates then produce editable documents that still need human review.</desc>
+              <path class="dl-path dl-hot" d="M150 90 H250 C280 90 280 60 306 60"/>
+              <path class="dl-path" d="M150 90 H250 C280 90 280 140 306 140"/>
+              <path class="dl-path dl-hot" d="M590 60 H700 C730 60 730 110 756 110"/>
+              <path class="dl-path" d="M590 140 H700 C730 140 730 110 756 110"/>
+              <g class="dl-node"><rect x="20" y="62" width="130" height="56" rx="10"/><text x="85" y="84" text-anchor="middle">Request</text><text class="dl-sub" x="85" y="102" text-anchor="middle">subject + context</text></g>
+              <g class="dl-node dl-hot"><rect x="310" y="32" width="280" height="56" rx="10"/><text x="450" y="54" text-anchor="middle">Standard prepared route</text><text class="dl-sub" x="450" y="72" text-anchor="middle">saved prompt + mapped template contract</text></g>
+              <g class="dl-node"><rect x="310" y="112" width="280" height="56" rx="10"/><text x="450" y="134" text-anchor="middle">GitHub Copilot harness</text><text class="dl-sub" x="450" y="152" text-anchor="middle">attachment-led comparison cases</text></g>
+              <g class="dl-node dl-hot"><rect x="760" y="74" width="195" height="72" rx="12"/><text x="857" y="99" text-anchor="middle">Editable output</text><text class="dl-sub" x="857" y="118" text-anchor="middle">Word / PowerPoint</text><text class="dl-sub" x="857" y="135" text-anchor="middle">human review required</text></g>
+              <text class="dl-note dl-hot" x="20" y="232">CONTENT-DYNAMIC, NOT ARBITRARY-TEMPLATE-DYNAMIC</text>
+              <text class="dl-note" x="955" y="232" text-anchor="end">REUSABLE DOWNLOADS + IMPORT CAVEATS</text>
+            </svg>
+          </div>
+        </figure>
+        <ul class="facts" aria-label="At a glance">
+          <li><strong>Community project</strong><span>Not a Microsoft product</span></li>
+          <li><strong>MIT licence</strong><span>As-is, no SLA</span></li>
+          <li><strong>Native solution ZIP</strong><span>Imported with warnings; runtime not verified</span></li>
+          <li><strong>Prepared templates</strong><span>Reusable inputs, not completed outputs</span></li>
+          <li><strong>Human review</strong><span>Required before adoption</span></li>
+        </ul>
+        <!-- dl-hero:end -->
     </section>
     <div class="ribbon" aria-label="Key boundaries">
       <div><strong>Word + Long PowerPoint work</strong><span>Prepared Standard routes, with qualifications</span></div>
       <div><strong>Three-choice extension is staged</strong><span>Short and image routes are not end-to-end proved</span></div>
       <div><strong>New Word content, prepared layout</strong><span>A different Word design needs maker setup first</span></div>
     </div>
-
+    <section id="read-first" class="section" aria-labelledby="read-first-title">
+      <div class="section-head">
+        <p class="eyebrow">Read this first</p>
+        <h2 id="read-first-title">Community project, shared as-is.</h2>
+        <p class="lede">This site documents a community reference implementation and the evidence gathered from it. It is not a Microsoft product, is not supported by Microsoft and does not come with an SLA or warranty.</p>
+      </div>
+      <div class="callout callout-warning" role="note">
+        <p><strong>Before importing anything:</strong> test in a non-production environment first, get your organisation's approvals, review the solution contents, configure your own connections and storage, and decide whether the approach is appropriate for environments that hold real data.</p>
+        <p>The MIT licence permits reuse, but it does not provide support, fitness guarantees, security approval, production readiness or rights to excluded templates and private comparison files. You are responsible for assessing, operating and securing anything you deploy from this site.</p>
+      </div>
+      <article class="card toc-panel" aria-labelledby="toc-title">
+        <h3 id="toc-title">Contents</h3>
+        <ul>
+          <li><a href="#results">Results and readiness</a></li>
+          <li><a href="#prepared-word-preview">Prepared Word template and output pages</a></li>
+          <li><a href="#original-comparisons">Original comparison boundaries</a></li>
+          <li><a href="#cats-and-dogs">Successful Standard PowerPoint example</a></li>
+          <li><a href="#implementation">Template onboarding and setup approach</a></li>
+          <li><a href="#downloads">Downloads, native export and starter materials</a></li>
+          <li><a href="#deployment-setup">Mandatory cross-tenant setup</a></li>
+          <li><a href="#sources">Sources and publication boundaries</a></li>
+        </ul>
+      </article>
+    </section>
+    <section id="architecture" class="section" aria-labelledby="architecture-title">
+      <div class="section-head">
+        <p class="eyebrow">Architecture</p>
+        <h2 id="architecture-title">Prepared templates are explicit contracts.</h2>
+        <p class="lede">The documented Standard route separates drafting, rendering and review. The comparison cases remain useful, but they are not interchangeable with a deployed, configured Standard implementation.</p>
+      </div>
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 980 360" role="img" aria-labelledby="arch-title arch-desc">
+          <title id="arch-title">Documentation Builder architecture</title>
+          <desc id="arch-desc">The maker prepares templates and mappings. The user provides a request and authorised context. Copilot Studio prompts draft structured content. Power Automate renders it into Word or PowerPoint using configured connections and OneDrive storage. Human review decides whether the editable output can be accepted.</desc>
+          <defs><marker id="arch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="var(--cp-border-strong)"/></marker></defs>
+          <rect class="arch-accent" x="26" y="54" width="180" height="78" rx="12"/><text class="arch-title" x="116" y="84" text-anchor="middle">Maker setup</text><text class="arch-text" x="116" y="106" text-anchor="middle">controls, mappings</text><text class="arch-text" x="116" y="122" text-anchor="middle">template version</text>
+          <rect class="d-box" x="26" y="210" width="180" height="70" rx="12"/><text class="arch-title" x="116" y="238" text-anchor="middle">User request</text><text class="arch-text" x="116" y="260" text-anchor="middle">subject + context</text>
+          <path class="arch-line arch-hot" d="M206 93 H292"/><path class="arch-line" d="M206 245 H292"/>
+          <rect class="arch-accent" x="292" y="50" width="190" height="84" rx="12"/><text class="arch-title" x="387" y="80" text-anchor="middle">Copilot Studio</text><text class="arch-text" x="387" y="102" text-anchor="middle">saved prompt drafts</text><text class="arch-text" x="387" y="118" text-anchor="middle">structured content</text>
+          <rect class="d-box" x="292" y="205" width="190" height="84" rx="12"/><text class="arch-title" x="387" y="235" text-anchor="middle">Comparison harness</text><text class="arch-text" x="387" y="257" text-anchor="middle">GHCP observed cases</text>
+          <path class="arch-line arch-hot" d="M482 93 H570"/><path class="arch-line" d="M482 247 H570"/>
+          <rect class="arch-accent" x="570" y="50" width="190" height="84" rx="12"/><text class="arch-title" x="665" y="80" text-anchor="middle">Power Automate</text><text class="arch-text" x="665" y="102" text-anchor="middle">Word / OneDrive</text><text class="arch-text" x="665" y="118" text-anchor="middle">configured actions</text>
+          <rect class="d-box" x="570" y="205" width="190" height="84" rx="12"/><text class="arch-title" x="665" y="235" text-anchor="middle">Boundary record</text><text class="arch-text" x="665" y="257" text-anchor="middle">what worked / failed</text>
+          <path class="arch-line arch-hot" d="M760 93 H846"/><path class="arch-line" d="M760 247 H846"/>
+          <rect class="arch-accent" x="846" y="52" width="108" height="82" rx="12"/><text class="arch-title" x="900" y="84" text-anchor="middle">Editable</text><text class="arch-text" x="900" y="106" text-anchor="middle">DOCX/PPTX</text>
+          <rect class="d-box" x="846" y="208" width="108" height="78" rx="12"/><text class="arch-title" x="900" y="238" text-anchor="middle">Review</text><text class="arch-text" x="900" y="260" text-anchor="middle">accept or fix</text>
+        </svg>
+      </div>
+    </section>
     <section id="results" class="section" aria-labelledby="results-title">
       <div class="section-head">
         <p class="eyebrow">01 / Results and readiness</p>
@@ -229,7 +419,6 @@
       </div>
       <div class="notice"><p><strong>No model leaderboard.</strong> Models, channels, tools and preparation differ. Observed GHCP cases handled ad-hoc attachments more flexibly, but exact template fidelity and content completion are not assured. These cases do not establish universal reliability or equivalent quality.</p></div>
     </section>
-
     <section id="prepared-word-preview" class="section" aria-labelledby="prepared-word-preview-title">
       <div class="section-head">
         <p class="eyebrow">Prepared Standard Word / actual document pages</p>
@@ -272,7 +461,6 @@
       </div>
       <div class="notice"><p><strong>Representative pages, not complete quality proof.</strong> Review found proposed design presented as fact in requirements rows, inferred queue/topic classifications elsewhere, and an acceptance-test condition that omits the non-duplicate requirement. Dense text, page continuations and static instructional guidance remain as generated. These screenshots do not establish exact factual alignment, full content completion or production approval. Human factual, layout and editability review remains required.</p></div>
     </section>
-
     <section id="original-comparisons" class="section" aria-labelledby="original-title">
       <div class="section-head"><p class="eyebrow">The two original input/output comparisons</p><h2 id="original-title">Template, context, conversation, result.</h2><p class="lede">The original request supplied a Word PID template with a separate source PDF, then a PowerPoint template for a technical introduction to Copilot Studio. These are not the later starter templates or the pets example.</p></div>
       <div class="notice"><p><strong>Conversation evidence is public; these original binaries are not.</strong> The exact input names, actual requests/final replies and reviewed results are paired below. Their downloadable template/output sets remain incomplete pending public-sharing clearance. No substitute template or newly generated output is presented as the original.</p></div>
@@ -324,7 +512,6 @@
         <p class="meta"><strong>Availability:</strong> the original PowerPoint template, GHCP technical output and engineered Standard technical case05 output remain private and are not approved for public redistribution. Their files and slide renders are withheld. The explicit public-sharing approval covers only the separately named cats-and-dogs copies below, not this group. Short5/Long11 choices supplement these original comparisons; they do not replace them.</p>
       </article>
     </section>
-
     <section id="cats-and-dogs" class="section" aria-labelledby="cats-title">
       <div class="section-head">
         <p class="eyebrow">02 / The successful Standard example</p>
@@ -365,13 +552,18 @@
         </div>
       </details>
     </section>
-
     <section id="implementation" class="section" aria-labelledby="build-title">
       <div class="section-head">
         <p class="eyebrow">03 / Reuse the approach, not the tenant</p>
         <h2 id="build-title">A template is an integration contract.</h2>
         <p class="lede">Conversation, research and revision logic can be reused. Each design still needs its own destinations, bounds, flow/topic bindings and quality review.</p>
       </div>
+      <ol class="stepper" aria-label="Setup sequence">
+        <li><strong>Prepare the template contract.</strong> Add supported controls or mapped slide fields, freeze the file version and record the required template boundaries.</li>
+        <li><strong>Bind the environment.</strong> Configure destination connections, OneDrive folders, prompt settings and file IDs in the maker designer.</li>
+        <li><strong>Validate before activation.</strong> Test with synthetic data, preserve failed attempts and activate only the intended, fully configured routes.</li>
+        <li><strong>Review the output.</strong> Check factual accuracy, layout, editability, placeholders, governance and access before any real use.</li>
+      </ol>
       <div class="grid">
         <article id="prepared-word" class="card">
           <h3>Prepared Word</h3>
@@ -419,9 +611,24 @@
         </div>
       </details>
     </section>
-
     <section id="downloads" class="section" aria-labelledby="downloads-title">
       <div class="section-head"><p class="eyebrow">04 / Native export and starter materials</p><h2 id="downloads-title">Inspect the export and templates. Keep the caveats.</h2><p class="lede">One unchanged native Standard solution export and three authored Office templates. The templates are reusable design inputs, <strong>not agent-generated outputs</strong>. Neither the export nor the templates establish a working target deployment.</p></div>
+      <div class="callout" role="note"><p><strong>No GitHub Releases are currently published for this repository.</strong> The downloadable release materials are the checked-in files below, served from the GitHub Pages site and pinned by the manifest.</p></div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="All downloadable files">
+        <table class="downloads-table"><caption>Every file in docs/downloads</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th><th scope="col">Version or date</th><th scope="col">Size</th></tr></thead><tbody>
+          <tr><th scope="row"><a href="downloads/TechnicalDocumentationBuilderDeployed_unmanaged_20260928T105706Z.zip" download>TechnicalDocumentationBuilderDeployed_unmanaged_20260928T105706Z.zip</a></th><td>Native unmanaged Standard solution ZIP</td><td>v1.0.0.0 / exported 28 September 2026 10:57 UTC</td><td>185,544 bytes</td></tr>
+<tr><th scope="row"><a href="downloads/Technical-Design-Tables-v0.2.docx" download>Technical-Design-Tables-v0.2.docx</a></th><td>Prepared Word v0.2 template</td><td>v0.2 / authored reusable input</td><td>14,564 bytes</td></tr>
+<tr><th scope="row"><a href="downloads/Short-Briefing-5-Slides.pptx" download>Short-Briefing-5-Slides.pptx</a></th><td>Short5 PowerPoint template</td><td>Short5 / authored reusable input</td><td>123,288 bytes</td></tr>
+<tr><th scope="row"><a href="downloads/Short-Briefing-With-Images-5-Slides.pptx" download>Short-Briefing-With-Images-5-Slides.pptx</a></th><td>Short5withImages PowerPoint template</td><td>Short5withImages / authored reusable input</td><td>124,012 bytes</td></tr>
+<tr><th scope="row"><a href="downloads/Cats-and-Dogs-Creation05-PUBLIC.pptx" download>Cats-and-Dogs-Creation05-PUBLIC.pptx</a></th><td>Owner-approved public-release output copy</td><td>Creation05 / separate public-release copy</td><td>89,461 bytes</td></tr>
+<tr><th scope="row"><a href="downloads/Cats-and-Dogs-Revision06-PUBLIC.pptx" download>Cats-and-Dogs-Revision06-PUBLIC.pptx</a></th><td>Owner-approved public-release output copy</td><td>Revision06 / separate public-release copy</td><td>89,397 bytes</td></tr>
+<tr><th scope="row"><a href="downloads/reuse-guide.md" download>reuse-guide.md</a></th><td>Detailed reuse guide and flow-to-setting map</td><td>Markdown guide</td><td>28,104 bytes</td></tr>
+<tr><th scope="row"><a href="downloads/cats-and-dogs-transcript.txt" download>cats-and-dogs-transcript.txt</a></th><td>Redacted cats-and-dogs conversation excerpts</td><td>TXT evidence excerpt</td><td>4,945 bytes</td></tr>
+<tr><th scope="row"><a href="downloads/original-word-conversations.txt" download>original-word-conversations.txt</a></th><td>Redacted original Word conversation excerpts</td><td>TXT evidence excerpt</td><td>3,252 bytes</td></tr>
+<tr><th scope="row"><a href="downloads/original-powerpoint-conversations.txt" download>original-powerpoint-conversations.txt</a></th><td>Redacted original PowerPoint conversation excerpts</td><td>TXT evidence excerpt</td><td>6,096 bytes</td></tr>
+<tr><th scope="row"><a href="downloads/synthetic-context.txt" download>synthetic-context.txt</a></th><td>Synthetic practice context fixture</td><td>Newly authored public teaching fixture</td><td>1,598 bytes</td></tr>
+        </tbody></table>
+      </div>
       <article id="native-solution" class="card comparison">
         <span class="badge held">Native export / imported with warnings</span>
         <h3>Standard Word + Long PowerPoint / as-deployed solution</h3>
@@ -461,7 +668,7 @@
         <article class="card download"><span class="filetype">PPTX / Short5 / 123,288 bytes</span><h3>Short briefing</h3><p>Five varied, editable layouts with 40 mapped text fields. Instructions deliberately remain in this <em>template</em>; they must not remain in a completed output.</p><a class="button" href="downloads/Short-Briefing-5-Slides.pptx" download>Download Short template</a></article>
         <article class="card download"><span class="filetype">PPTX / Short5withImages / 124,012 bytes</span><h3>Short briefing with images</h3><p>A separate five-slide design with 35 mapped text fields and an authored image placeholder. The native image rendering route is blocked, not delivered.</p><a class="button" href="downloads/Short-Briefing-With-Images-5-Slides.pptx" download>Download image template</a></article>
       </div>
-      <details>
+      <details open>
         <summary>Preview two actual template slides</summary>
         <div class="detail-body">
           <p class="meta">Existing Office-rendered images of the authored templates, not screenshots of an agent conversation, not freshly generated outputs. No native UI or identity is shown.</p>
@@ -474,7 +681,6 @@
       <div class="actions"><a class="button" href="downloads/synthetic-context.txt" download>Download synthetic practice context</a><a href="downloads/reuse-guide.md">Read the reuse guide</a><a href="https://github.com/RyanBowie/copilot-studio-documentation-builder/blob/main/release-manifest.json">Inspect source &amp; asset manifest</a></div>
       <p class="meta">The practice context is a newly authored teaching fixture, not evidence from the historical runs. The three templates and all historical originals remain unchanged. The <a href="#cats-and-dogs">two actual Long output downloads</a> are separately named, owner-authorised public-release copies with native personal-information cleanup, not replacement benchmark originals.</p>
     </section>
-
     <section id="sources" class="section" aria-labelledby="sources-title">
       <p class="eyebrow">Reference and provenance</p><h2 id="sources-title">A deliberately scoped public record.</h2>
       <p>Claims are curated from retained private run receipts, package comparisons, conversation captures and completed quality reviews. Public prose uses case names instead of tenant identifiers. Raw logs, private delivery links, raw UI screenshots and benchmark originals are intentionally not published. Only the two explicitly authorised, identity-free OneDrive file-list crops illustrate deployment setup; they are not runtime evidence. Approval for the two cats-and-dogs public-release copies is limited to their exact reviewed bytes and package metadata. Separately, the exact native solution ZIP retains explicitly approved demo resource bindings and native component metadata, not credentials or target-corporate configuration.</p>
@@ -486,7 +692,105 @@
       </ul>
       <p class="meta">Product capabilities can change. Documentation checked 27 September 2026. Case outcomes are observations, not a controlled causal comparison of harnesses or models. Costs have not been established; no savings claim.</p>
     </section>
+    <!-- dl-series:start -->
+    <aside class="dl-series" aria-label="More community projects">
+      <p class="dl-series-k">More community projects</p>
+      <ol>
+        <li><a class="dl-card" href="https://ryanbowie.github.io/custom-agent-reporting-architecture/"><span class="dl-no" aria-hidden="true">01</span><strong>Custom Agent Reporting ? Architecture</strong><span class="dl-desc">How a custom Power BI model can report on agents across Copilot Studio, Agent Builder and Microsoft Foundry. Documentation only.</span><span class="dl-go">Open ?</span></a></li>
+        <li><a class="dl-card" href="https://ryanbowie.github.io/copilot-interaction-logging/"><span class="dl-no" aria-hidden="true">02</span><strong>Copilot Interaction Logging</strong><span class="dl-desc">Build guide: Copilot interaction records from the Purview audit log, collected into Dataverse by two Power Automate flows.</span><span class="dl-go">Open ?</span></a></li>
+        <li><a class="dl-card" href="https://ryanbowie.github.io/copilot-studio-powerplatform-solution-reviewer-site/"><span class="dl-no" aria-hidden="true">03</span><strong>Power Platform Solution Reviewer</strong><span class="dl-desc">A Copilot Studio agent that reviews Power Platform solutions, with a real canvas-app walkthrough, detailed output and setup guidance.</span><span class="dl-go">Open ?</span></a></li>
+        <li><a class="dl-card" href="https://ryanbowie.github.io/copilot-studio-sharepoint-search-hub/"><span class="dl-no" aria-hidden="true">04</span><strong>SharePoint Search Hub</strong><span class="dl-desc">Hub-and-spoke SharePoint search in Copilot Studio, with caller-checked results, a private Excel export and a verified 512-item demo.</span><span class="dl-go">Open ?</span></a></li>
+        <li><a class="dl-card" href="https://ryanbowie.github.io/copilot-studio-powerbi-agent/"><span class="dl-no" aria-hidden="true">05</span><strong>Power BI Agent</strong><span class="dl-desc">A standard Copilot Studio agent that writes DAX and queries Power BI semantic models as the signed-in user.</span><span class="dl-go">Open ?</span></a></li>
+        <li><a class="dl-card" href="#top" aria-current="page"><span class="dl-no" aria-hidden="true">06</span><strong>Documentation Builder</strong><span class="dl-desc">Template-aligned Word and PowerPoint documents from Copilot Studio, comparing the Standard and GitHub Copilot harnesses.</span><span class="dl-here">You are here</span></a></li>
+      </ol>
+    </aside>
+    <!-- dl-series:end -->
   </main>
-  <footer class="wrap page-footer"><p>Documentation Builder / public technical reference<br>Authored templates. Qualified observations. No live tenant connection.</p><a href="#overview">Back to top</a></footer>
+  <footer class="site-footer">
+    <div class="inner">
+      <p>Documentation Builder ? <a href="https://github.com/RyanBowie/copilot-studio-documentation-builder/blob/main/LICENSE">MIT licence</a> ? <a href="https://github.com/RyanBowie/copilot-studio-documentation-builder#readme">README</a> ? <a href="https://github.com/RyanBowie/copilot-studio-documentation-builder/blob/main/release-manifest.json">Release manifest</a> ? <a href="#downloads">Downloads</a></p>
+      <p>Provided as is, without warranty of any kind. You're responsible for assessing, operating and securing anything you deploy from this site.</p>
+    </div>
+  </footer>
+<!-- design-layer-js:start -->
+<script>
+(() => {
+  "use strict";
+  const root = document.documentElement;
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const motion = !reduce && "IntersectionObserver" in window && "requestAnimationFrame" in window;
+  // Reading progress bar along the top edge.
+  const bar = document.createElement("div");
+  bar.id = "dl-progress";
+  bar.setAttribute("aria-hidden", "true");
+  document.body.appendChild(bar);
+  let queued = false;
+  const paint = () => {
+    queued = false;
+    const max = root.scrollHeight - window.innerHeight;
+    const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    bar.style.setProperty("--dl-p", p.toFixed(4));
+  };
+  const queue = () => {
+    if (queued) return;
+    queued = true;
+    if (window.requestAnimationFrame) window.requestAnimationFrame(paint); else paint();
+  };
+  window.addEventListener("scroll", queue, { passive: true });
+  window.addEventListener("resize", queue);
+  paint();
+  // Wide diagrams scroll sideways on small screens: cue them, make them keyboard
+  // scrollable and fade the clipped edge until the reader reaches the end.
+  const wides = Array.prototype.slice.call(document.querySelectorAll(".dl-scroll, .diagram-wrap"));
+  const edge = (el) => {
+    const over = el.scrollWidth - el.clientWidth;
+    el.classList.toggle("dl-wide", over > 4);
+    el.classList.toggle("dl-more", over - el.scrollLeft > 4);
+    if (over > 4 && !el.hasAttribute("tabindex")) {
+      const t = el.querySelector("svg title");
+      el.tabIndex = 0;
+      el.setAttribute("role", "region");
+      el.setAttribute("aria-label", (t ? t.textContent : "Diagram") + " (scrolls sideways)");
+    }
+  };
+  wides.forEach((el) => { el.addEventListener("scroll", () => edge(el), { passive: true }); edge(el); });
+  window.addEventListener("resize", () => wides.forEach(edge));
+  if (!motion) return;
+  root.classList.add("dl-motion");
+  // Sections below the fold fade up once as they arrive.
+  const fold = window.innerHeight;
+  const targets = Array.prototype.filter.call(
+    document.querySelectorAll("main > section:not(.hero), main > .dl-series"),
+    (el) => el.getBoundingClientRect().top > fold
+  );
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("dl-in");
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: "0px 0px -6% 0px" });
+  targets.forEach((el) => { el.classList.add("dl-reveal"); io.observe(el); });
+  // Hero numbers count up once, only when the facts are already on screen.
+  const facts = document.querySelector(".hero .facts");
+  if (!facts || facts.getBoundingClientRect().top > fold) return;
+  const nums = [];
+  Array.prototype.forEach.call(facts.querySelectorAll("strong"), (el) => {
+    const m = /^(\d+)(\D.*)?$/.exec(el.textContent.trim());
+    if (m && el.children.length === 0) nums.push({ el, n: parseInt(m[1], 10), rest: m[2] || "" });
+  });
+  if (!nums.length) return;
+  const t0 = performance.now();
+  const step = (now) => {
+    const k = Math.min(1, (now - t0) / 900);
+    const eased = 1 - Math.pow(1 - k, 3);
+    nums.forEach((x) => { x.el.textContent = Math.round(x.n * eased) + x.rest; });
+    if (k < 1) window.requestAnimationFrame(step);
+  };
+  nums.forEach((x) => { x.el.textContent = "0" + x.rest; });
+  window.requestAnimationFrame(step);
+})();
+</script>
+<!-- design-layer-js:end -->
 </body>
 </html>

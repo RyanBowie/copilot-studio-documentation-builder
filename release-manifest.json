@@ -14,11 +14,13 @@
   "sourceFiles": [
     ".gitignore",
     "README.md",
+    "LICENSE",
     "release-manifest.json",
     "scripts/validate_release.py",
     "tests/test_release.py",
     "docs/.nojekyll",
     "docs/index.html",
+    "docs/og.html",
     "docs/assets/site.css",
     "docs/assets/site.js",
     "docs/downloads/cats-and-dogs-transcript.txt",
@@ -258,11 +260,23 @@
         "connectionReferences": 3,
         "environmentVariables": 0
       },
-      "associations": {"flows": 9, "directWordConnector": 1},
+      "associations": {
+        "flows": 9,
+        "directWordConnector": 1
+      },
       "decodedSpecifications": [
-        {"bytes": 793, "sha256": "a3e56a1b1e210e59dc82e06ad939cd3caa2749bf7ea8563387bb8ba18857ebf9"},
-        {"bytes": 1660, "sha256": "2234c4b3cc4637fd242ad14a5f1db58e91487e2a8d02b0260593135fe0e331e6"},
-        {"bytes": 3545, "sha256": "2ed2d95706e3f412229f39fe6b9d017c3e56e9c8e95942e3c9764134b1638681"}
+        {
+          "bytes": 793,
+          "sha256": "a3e56a1b1e210e59dc82e06ad939cd3caa2749bf7ea8563387bb8ba18857ebf9"
+        },
+        {
+          "bytes": 1660,
+          "sha256": "2234c4b3cc4637fd242ad14a5f1db58e91487e2a8d02b0260593135fe0e331e6"
+        },
+        {
+          "bytes": 3545,
+          "sha256": "2ed2d95706e3f412229f39fe6b9d017c3e56e9c8e95942e3c9764134b1638681"
+        }
       ],
       "privacyReview": "All 92 native parts and three decoded base64-GZIP schema-only specifications reviewed; the three trained specifications contain empty input/output schemas. No saved user/test inputs, Office binaries, unreviewed credentials, email addresses or local user paths. Parent explicitly cleared the exact retained demo metadata. Corporate identities and private receipts are not included.",
       "dependencies": "Three declared platform dependencies on AI Model from msdyn_AISolution (202608.4.19.2). Staging for the controlled second Developer-environment attempt passed with no missing dependencies; import succeeded with warnings. Target configuration remains pending: bind target Word Online (Business) and OneDrive for Business connections and retarget source Predict organization bindings and other flow resources. No environment-variable installer. Core Word v0.2 template is already public; optional legacy Word v0.1 is different. Long requires the exact original 98,985-byte template and all registered integrity/contract checks. A separately downloadable public-release copy is not compatible; leave Long disabled without compatible authorised original bytes.",
@@ -292,27 +306,33 @@
         "verificationBasis": "Solution membership and schemas; agent IDs were regenerated in the target. Inventory categories, native membership entries and import-log results are separate measures, not additive component counts.",
         "allFlowsInactive": true,
         "savedPromptPayloadsMatchExport": 3,
-        "importLogCounts": {"success": 18, "warning": 5, "failure": 0},
+        "importLogCounts": {
+          "success": 18,
+          "warning": 5,
+          "failure": 0
+        },
         "warnings": "Source Predict organization bindings and missing target Word Online (Business) / OneDrive for Business connections require target configuration.",
         "blindRetries": false,
         "runtimeVerified": false
       },
-      "targetImportHistory": [{
-        "status": "FAILED",
-        "date": "2026-09-28",
-        "environment": "Separate Developer environment",
-        "attempts": 1,
-        "stagingStatus": "PASSED",
-        "missingDependencies": 0,
-        "validationResults": 0,
-        "errorCode": "BadGatewayConnection",
-        "summary": "One separate Developer-environment import attempt used the exact public ZIP. Staging passed with no missing dependencies or validation errors. Import failed in the Microsoft agent-to-flow association service with BadGatewayConnection. Post-failure Dataverse checks found no installed solution or matching agent, flow, AI model or connection-reference records. Runtime remains unverified.",
-        "readbackScope": "The checks cover those Dataverse record types, not all external resources. Intermediate import-log successes do not prove installed components.",
-        "publishWorkflows": false,
-        "overwriteUnmanagedCustomizations": false,
-        "retryPerformed": false,
-        "runtimeExecuted": false
-      }]
+      "targetImportHistory": [
+        {
+          "status": "FAILED",
+          "date": "2026-09-28",
+          "environment": "Separate Developer environment",
+          "attempts": 1,
+          "stagingStatus": "PASSED",
+          "missingDependencies": 0,
+          "validationResults": 0,
+          "errorCode": "BadGatewayConnection",
+          "summary": "One separate Developer-environment import attempt used the exact public ZIP. Staging passed with no missing dependencies or validation errors. Import failed in the Microsoft agent-to-flow association service with BadGatewayConnection. Post-failure Dataverse checks found no installed solution or matching agent, flow, AI model or connection-reference records. Runtime remains unverified.",
+          "readbackScope": "The checks cover those Dataverse record types, not all external resources. Intermediate import-log successes do not prove installed components.",
+          "publishWorkflows": false,
+          "overwriteUnmanagedCustomizations": false,
+          "retryPerformed": false,
+          "runtimeExecuted": false
+        }
+      ]
     },
     {
       "path": "docs/assets/deployment-onedrive-folders.png",
@@ -339,6 +359,17 @@
       "bytes": 36571,
       "width": 826,
       "height": 303
+    },
+    {
+      "path": "docs/og.png",
+      "kind": "social-preview",
+      "source": "docs/og.html",
+      "provenance": "Rendered Open Graph card for the public documentation site at 1280 by 640.",
+      "transformation": "Python Playwright Chromium launch with channel msedge, device scale factor 1.",
+      "sha256": "533f178d9ed89f50449c036eef02396419fadd765382303262220c1fed82bbc9",
+      "bytes": 310818,
+      "width": 1280,
+      "height": 640
     }
   ],
   "preparedWordPreview": {
@@ -355,8 +386,16 @@
       "binaryAvailability": "Private. Only the reviewed page PNGs are authorised for this release."
     },
     "pagePairs": [
-      {"view": "Opening document control", "templatePage": 1, "outputPage": 1},
-      {"view": "Repeating requirements table", "templatePage": 2, "outputPage": 3}
+      {
+        "view": "Opening document control",
+        "templatePage": 1,
+        "outputPage": 1
+      },
+      {
+        "view": "Repeating requirements table",
+        "templatePage": 2,
+        "outputPage": 3
+      }
     ],
     "renderMethod": "Fresh native Microsoft Word 16.0.20430 ExportAsFixedFormat on exact read-only copies; private PDFs rasterised with PyMuPDF 1.28.0. Full pages at 1600 by 2263; no native UI.",
     "fidelity": "Original and copy hashes unchanged. Pre/post body, table, header/footer text and field inventory checked; only automatic PAGE/NUMPAGES results may vary. No Save, SaveAs, explicit field refresh, link update, repair or regeneration.",
@@ -376,7 +415,10 @@
       "group": "Original Word PID",
       "template": "Sample-PID-Contoso-Horizon.docx",
       "context": "Sample-PID-Northwind-FieldService.pdf",
-      "cases": ["Standard Sonnet matched Word: 3 pages / 3 tables", "GHCP Sonnet C03: 13 pages / 14 tables"],
+      "cases": [
+        "Standard Sonnet matched Word: 3 pages / 3 tables",
+        "GHCP Sonnet C03: 13 pages / 14 tables"
+      ],
       "publicEvidence": "docs/downloads/original-word-conversations.txt",
       "binaryAvailability": "Template, context and both outputs remain private and are not approved for public redistribution. Metadata inspection alone does not grant permission to share a document.",
       "substitution": "The authored Technical-Design-Tables-v0.2.docx starter is not this supplied Word template."
@@ -385,7 +427,11 @@
       "group": "Original technical PowerPoint",
       "template": "Copilot session.pptx",
       "context": "No separate factual context attachment",
-      "cases": ["Standard Sonnet native attempt: no file", "GHCP GPT 6 Astra: 11 slides, 6 inherited hidden", "Engineered Standard technical case05: 11 visible slides"],
+      "cases": [
+        "Standard Sonnet native attempt: no file",
+        "GHCP GPT 6 Astra: 11 slides, 6 inherited hidden",
+        "Engineered Standard technical case05: 11 visible slides"
+      ],
       "publicEvidence": "docs/downloads/original-powerpoint-conversations.txt",
       "binaryAvailability": "Original template, GHCP technical output and engineered Standard technical case05 output remain private and are not approved for public redistribution. The two cats/dogs copies' approval does not extend to these files.",
       "substitution": "Engineered Standard technical case05 is not cats-and-dogs creation05. The authored Short5 designs supplement, not replace, this original template."

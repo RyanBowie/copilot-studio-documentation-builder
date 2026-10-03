@@ -331,3 +331,7 @@ and the two authorised, identity-free OneDrive file-list crops.
 These exceptions do not grant permission to publish unrelated identities, unapproved documents or
 packages. The import results above record the first failure and verified second
 success with warnings; no target runtime validation is claimed by this publication.
+
+## Licence and support
+
+This is a community project shared under the MIT licence. It is not a Microsoft product, is not supported by Microsoft, and is provided as is without warranty or SLA. Test in a non-production environment first and obtain your organisation's approvals before importing or operating anything from this repository.
