@@ -366,8 +366,8 @@
       "source": "docs/og.html",
       "provenance": "Rendered Open Graph card for the public documentation site at 1280 by 640.",
       "transformation": "Python Playwright Chromium launch with channel msedge, device scale factor 1.",
-      "sha256": "533f178d9ed89f50449c036eef02396419fadd765382303262220c1fed82bbc9",
-      "bytes": 310818,
+      "sha256": "5de5d0299559b15fd3f9b738a9ff5cf5b3cbf878ccd08e32bab3dd3cf4447f30",
+      "bytes": 310436,
       "width": 1280,
       "height": 640
     }
