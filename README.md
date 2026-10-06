@@ -8,6 +8,10 @@ imported with warnings on a controlled second Developer-environment attempt.
 Target configuration is pending and runtime remains unverified. This is not a
 turnkey or production-ready package.
 
+> **Community project, built with GitHub Copilot, under the [MIT licence](LICENSE).**
+> Not a Microsoft product and not supported by Microsoft; provided as is, without
+> warranty. See [Licence and support](#licence-and-support).
+
 **Release state:** published at [GitHub Pages](https://ryanbowie.github.io/copilot-studio-documentation-builder/).
 The bounded release contains 30 repository files; the seven original-comparison
 binaries below remain excluded. Pages publishes only `docs` on `main`.
@@ -334,4 +338,4 @@ success with warnings; no target runtime validation is claimed by this publicati
 
 ## Licence and support
 
-This is a community project shared under the MIT licence. It is not a Microsoft product, is not supported by Microsoft, and is provided as is without warranty or SLA. Test in a non-production environment first and obtain your organisation's approvals before importing or operating anything from this repository.
+This is a community project, built with GitHub Copilot and shared under the [MIT licence](LICENSE). It is not a Microsoft product, is not supported by Microsoft, and is provided as is without warranty or SLA. Test in a non-production environment first and obtain your organisation's approvals before importing or operating anything from this repository.

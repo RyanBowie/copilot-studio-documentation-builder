@@ -228,7 +228,7 @@ class ReleaseTests(unittest.TestCase):
         docs = MODULE_PATH.parent.parent / "docs"
         html = (docs / "index.html").read_text(encoding="utf-8")
         body = re.search(r"<body>.*</body>", html, re.S).group()
-        self.assertEqual(release.digest(body.encode()), "b1ceba3d46c5702097de432cd669c2b65e26f05e7cd3845c91a0872446bd32a1")
+        self.assertEqual(release.digest(body.encode()), "6af043b8bcf6b3d37ce5dd403ab94a3aeddbd4507bf38fb096688411d7a1b273")
         transcripts = {
             "cats-and-dogs-transcript.txt": ("caa360d3af8dc9151106168311ec18cdf38d881c5d1afbf51ca98dd3c9aefb59",
                 3837, "46c34b985475171d5ee464fc0ae0eb96bead9ca43a33b3ff719caca87351aed8"),
